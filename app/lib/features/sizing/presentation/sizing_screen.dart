@@ -2,11 +2,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:solar_core/solar_core.dart';
 
 import '../../../core/format/indian_format.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../bills/application/bills_providers.dart';
 import '../../bills/domain/bill.dart';
@@ -394,6 +396,14 @@ class _SizingBodyState extends ConsumerState<_SizingBody> {
                   ],
                 ),
                 _SavingsCard(calc: calc, option: option, rupees: rupees),
+                FilledButton.icon(
+                  key: const Key('sizing.createProposal'),
+                  onPressed: () => context.push(
+                    '${Routes.newProposal(widget.lead.id)}?kw=$selected',
+                  ),
+                  icon: const Icon(Icons.note_add_outlined),
+                  label: Text(l10n.createProposal),
+                ),
               ],
             ],
             const SizedBox(height: 32),

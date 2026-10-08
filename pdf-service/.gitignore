@@ -1,0 +1,7 @@
+node_modules/
+.vercel/
+sample-proposal-*.pdf
+sample-*.png
+.secret.local
+.vercel
+.env*

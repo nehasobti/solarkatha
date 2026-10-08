@@ -67,7 +67,22 @@ jobs:
         with:
           deno-version: v2.x
       - run: deno test tests/
-      - run: deno check bill-scan/index.ts generation-estimate/index.ts
+      - run: deno check */index.ts
+
+  pdf_service:
+    name: PDF service (template + signing tests)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pdf-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci || npm install
+      - run: npx tsc --noEmit
+      - run: npm test
 
   database:
     name: Database (RLS tests)

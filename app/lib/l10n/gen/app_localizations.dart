@@ -1633,6 +1633,486 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Payback'**
   String get rowPayback;
+
+  /// No description provided for @addProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Add product'**
+  String get addProduct;
+
+  /// No description provided for @editProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit product'**
+  String get editProduct;
+
+  /// No description provided for @productType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get productType;
+
+  /// No description provided for @typePanel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panel'**
+  String get typePanel;
+
+  /// No description provided for @typeInverter.
+  ///
+  /// In en, this message translates to:
+  /// **'Inverter'**
+  String get typeInverter;
+
+  /// No description provided for @typeStructure.
+  ///
+  /// In en, this message translates to:
+  /// **'Structure'**
+  String get typeStructure;
+
+  /// No description provided for @typeOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get typeOther;
+
+  /// No description provided for @brandLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get brandLabel;
+
+  /// No description provided for @modelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Model'**
+  String get modelLabel;
+
+  /// No description provided for @wattPeakLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Watt peak (Wp)'**
+  String get wattPeakLabel;
+
+  /// No description provided for @dcrLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'DCR (made-in-India cells)'**
+  String get dcrLabel;
+
+  /// No description provided for @almmLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'ALMM listed'**
+  String get almmLabel;
+
+  /// No description provided for @approvedListLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'On the approved inverter list'**
+  String get approvedListLabel;
+
+  /// No description provided for @warrantyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Warranty (years)'**
+  String get warrantyLabel;
+
+  /// No description provided for @unitPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Price (₹)'**
+  String get unitPriceLabel;
+
+  /// No description provided for @activeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Available for proposals'**
+  String get activeLabel;
+
+  /// No description provided for @noProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'No products yet'**
+  String get noProducts;
+
+  /// No description provided for @noProductsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the panels and inverters you sell. Only DCR and ALMM-listed panels get the subsidy.'**
+  String get noProductsBody;
+
+  /// No description provided for @deleteProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete product'**
+  String get deleteProduct;
+
+  /// No description provided for @productSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Product saved'**
+  String get productSaved;
+
+  /// No description provided for @ownerOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can change products.'**
+  String get ownerOnly;
+
+  /// No description provided for @newProposal.
+  ///
+  /// In en, this message translates to:
+  /// **'New proposal'**
+  String get newProposal;
+
+  /// No description provided for @proposalVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Proposal v{version}'**
+  String proposalVersion(String version);
+
+  /// No description provided for @statusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get statusDraft;
+
+  /// No description provided for @statusSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent'**
+  String get statusSent;
+
+  /// No description provided for @statusSigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed'**
+  String get statusSigned;
+
+  /// No description provided for @statusExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get statusExpired;
+
+  /// No description provided for @noProposalsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No proposals yet'**
+  String get noProposalsTitle;
+
+  /// No description provided for @noProposalsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a proposal, share it on WhatsApp, take the signature and the advance.'**
+  String get noProposalsBody;
+
+  /// No description provided for @systemSection.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get systemSection;
+
+  /// No description provided for @systemKwLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'System size (kW)'**
+  String get systemKwLabel;
+
+  /// No description provided for @panelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panels'**
+  String get panelLabel;
+
+  /// No description provided for @inverterLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Inverter'**
+  String get inverterLabel;
+
+  /// No description provided for @selectProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get selectProduct;
+
+  /// No description provided for @panelsNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} panels × {wp} Wp = {kw}'**
+  String panelsNeeded(String count, String wp, String kw);
+
+  /// No description provided for @priceSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get priceSection;
+
+  /// No description provided for @grossPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'System price (₹)'**
+  String get grossPriceLabel;
+
+  /// No description provided for @languageForProposal.
+  ///
+  /// In en, this message translates to:
+  /// **'Proposal language'**
+  String get languageForProposal;
+
+  /// No description provided for @complianceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Compliance checklist'**
+  String get complianceTitle;
+
+  /// No description provided for @checkPanelsDcr.
+  ///
+  /// In en, this message translates to:
+  /// **'Panels are DCR (made-in-India cells)'**
+  String get checkPanelsDcr;
+
+  /// No description provided for @checkPanelsAlmm.
+  ///
+  /// In en, this message translates to:
+  /// **'Panels are ALMM-listed'**
+  String get checkPanelsAlmm;
+
+  /// No description provided for @checkInverterApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Inverter is on the approved list'**
+  String get checkInverterApproved;
+
+  /// No description provided for @checkOwnConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity connection is in the customer\'s own name'**
+  String get checkOwnConnection;
+
+  /// No description provided for @checkConsumerNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Consumer number entered (customer registered on the national portal)'**
+  String get checkConsumerNumber;
+
+  /// No description provided for @checkRoofPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'At least 4 site photos ({count} taken)'**
+  String checkRoofPhotos(String count);
+
+  /// No description provided for @checkRoofType.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof type recorded'**
+  String get checkRoofType;
+
+  /// No description provided for @checkSingleSubsidy.
+  ///
+  /// In en, this message translates to:
+  /// **'No other subsidy on this consumer number'**
+  String get checkSingleSubsidy;
+
+  /// No description provided for @ownerOverride.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner override: allow sending anyway'**
+  String get ownerOverride;
+
+  /// No description provided for @complianceBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish the checklist before sending. Only the owner can override.'**
+  String get complianceBlocked;
+
+  /// No description provided for @saveDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Save draft'**
+  String get saveDraft;
+
+  /// No description provided for @proposalSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Proposal saved'**
+  String get proposalSaved;
+
+  /// No description provided for @actionsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Share, sign and collect advance'**
+  String get actionsSection;
+
+  /// No description provided for @generatePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Create PDF'**
+  String get generatePdf;
+
+  /// No description provided for @regeneratePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Update PDF'**
+  String get regeneratePdf;
+
+  /// No description provided for @pdfReady.
+  ///
+  /// In en, this message translates to:
+  /// **'PDF ready'**
+  String get pdfReady;
+
+  /// No description provided for @sharePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Share PDF file'**
+  String get sharePdf;
+
+  /// No description provided for @shareWhatsapp.
+  ///
+  /// In en, this message translates to:
+  /// **'Send on WhatsApp'**
+  String get shareWhatsapp;
+
+  /// No description provided for @openPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Open PDF'**
+  String get openPdf;
+
+  /// No description provided for @needsOnline.
+  ///
+  /// In en, this message translates to:
+  /// **'This needs the internet. Connect and try again.'**
+  String get needsOnline;
+
+  /// No description provided for @captureSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Take customer signature'**
+  String get captureSignature;
+
+  /// No description provided for @signHereHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask the customer to sign inside the box'**
+  String get signHereHint;
+
+  /// No description provided for @clearSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clearSignature;
+
+  /// No description provided for @saveSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Save signature'**
+  String get saveSignature;
+
+  /// No description provided for @signedOnDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed on {date}'**
+  String signedOnDate(String date);
+
+  /// No description provided for @paymentSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance payment'**
+  String get paymentSection;
+
+  /// No description provided for @advanceAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance amount (₹)'**
+  String get advanceAmount;
+
+  /// No description provided for @createPaymentLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Create UPI payment link'**
+  String get createPaymentLink;
+
+  /// No description provided for @sendPaymentLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Send link on WhatsApp'**
+  String get sendPaymentLink;
+
+  /// No description provided for @paymentPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paymentPaid;
+
+  /// No description provided for @paymentWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for payment'**
+  String get paymentWaiting;
+
+  /// No description provided for @paymentExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get paymentExpired;
+
+  /// No description provided for @newVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'New version'**
+  String get newVersion;
+
+  /// No description provided for @proposalLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'This proposal has been sent, so it cannot be edited. Create a new version to change it.'**
+  String get proposalLocked;
+
+  /// No description provided for @copyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get copyLink;
+
+  /// No description provided for @linkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get linkCopied;
+
+  /// No description provided for @waitingToSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved on this phone. It will upload when online; then you can create the PDF.'**
+  String get waitingToSync;
+
+  /// No description provided for @netPriceShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer pays'**
+  String get netPriceShort;
+
+  /// No description provided for @tagNoSubsidy.
+  ///
+  /// In en, this message translates to:
+  /// **'No subsidy'**
+  String get tagNoSubsidy;
+
+  /// No description provided for @tagApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get tagApproved;
+
+  /// No description provided for @createProposal.
+  ///
+  /// In en, this message translates to:
+  /// **'Create proposal'**
+  String get createProposal;
 }
 
 class _AppLocalizationsDelegate

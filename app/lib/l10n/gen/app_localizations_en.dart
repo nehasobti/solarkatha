@@ -847,4 +847,259 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rowPayback => 'Payback';
+
+  @override
+  String get addProduct => 'Add product';
+
+  @override
+  String get editProduct => 'Edit product';
+
+  @override
+  String get productType => 'Type';
+
+  @override
+  String get typePanel => 'Panel';
+
+  @override
+  String get typeInverter => 'Inverter';
+
+  @override
+  String get typeStructure => 'Structure';
+
+  @override
+  String get typeOther => 'Other';
+
+  @override
+  String get brandLabel => 'Brand';
+
+  @override
+  String get modelLabel => 'Model';
+
+  @override
+  String get wattPeakLabel => 'Watt peak (Wp)';
+
+  @override
+  String get dcrLabel => 'DCR (made-in-India cells)';
+
+  @override
+  String get almmLabel => 'ALMM listed';
+
+  @override
+  String get approvedListLabel => 'On the approved inverter list';
+
+  @override
+  String get warrantyLabel => 'Warranty (years)';
+
+  @override
+  String get unitPriceLabel => 'Price (₹)';
+
+  @override
+  String get activeLabel => 'Available for proposals';
+
+  @override
+  String get noProducts => 'No products yet';
+
+  @override
+  String get noProductsBody =>
+      'Add the panels and inverters you sell. Only DCR and ALMM-listed panels get the subsidy.';
+
+  @override
+  String get deleteProduct => 'Delete product';
+
+  @override
+  String get productSaved => 'Product saved';
+
+  @override
+  String get ownerOnly => 'Only the owner can change products.';
+
+  @override
+  String get newProposal => 'New proposal';
+
+  @override
+  String proposalVersion(String version) {
+    return 'Proposal v$version';
+  }
+
+  @override
+  String get statusDraft => 'Draft';
+
+  @override
+  String get statusSent => 'Sent';
+
+  @override
+  String get statusSigned => 'Signed';
+
+  @override
+  String get statusExpired => 'Expired';
+
+  @override
+  String get noProposalsTitle => 'No proposals yet';
+
+  @override
+  String get noProposalsBody =>
+      'Create a proposal, share it on WhatsApp, take the signature and the advance.';
+
+  @override
+  String get systemSection => 'System';
+
+  @override
+  String get systemKwLabel => 'System size (kW)';
+
+  @override
+  String get panelLabel => 'Panels';
+
+  @override
+  String get inverterLabel => 'Inverter';
+
+  @override
+  String get selectProduct => 'Select';
+
+  @override
+  String panelsNeeded(String count, String wp, String kw) {
+    return '$count panels × $wp Wp = $kw';
+  }
+
+  @override
+  String get priceSection => 'Price';
+
+  @override
+  String get grossPriceLabel => 'System price (₹)';
+
+  @override
+  String get languageForProposal => 'Proposal language';
+
+  @override
+  String get complianceTitle => 'Compliance checklist';
+
+  @override
+  String get checkPanelsDcr => 'Panels are DCR (made-in-India cells)';
+
+  @override
+  String get checkPanelsAlmm => 'Panels are ALMM-listed';
+
+  @override
+  String get checkInverterApproved => 'Inverter is on the approved list';
+
+  @override
+  String get checkOwnConnection =>
+      'Electricity connection is in the customer\'s own name';
+
+  @override
+  String get checkConsumerNumber =>
+      'Consumer number entered (customer registered on the national portal)';
+
+  @override
+  String checkRoofPhotos(String count) {
+    return 'At least 4 site photos ($count taken)';
+  }
+
+  @override
+  String get checkRoofType => 'Roof type recorded';
+
+  @override
+  String get checkSingleSubsidy => 'No other subsidy on this consumer number';
+
+  @override
+  String get ownerOverride => 'Owner override: allow sending anyway';
+
+  @override
+  String get complianceBlocked =>
+      'Finish the checklist before sending. Only the owner can override.';
+
+  @override
+  String get saveDraft => 'Save draft';
+
+  @override
+  String get proposalSaved => 'Proposal saved';
+
+  @override
+  String get actionsSection => 'Share, sign and collect advance';
+
+  @override
+  String get generatePdf => 'Create PDF';
+
+  @override
+  String get regeneratePdf => 'Update PDF';
+
+  @override
+  String get pdfReady => 'PDF ready';
+
+  @override
+  String get sharePdf => 'Share PDF file';
+
+  @override
+  String get shareWhatsapp => 'Send on WhatsApp';
+
+  @override
+  String get openPdf => 'Open PDF';
+
+  @override
+  String get needsOnline => 'This needs the internet. Connect and try again.';
+
+  @override
+  String get captureSignature => 'Take customer signature';
+
+  @override
+  String get signHereHint => 'Ask the customer to sign inside the box';
+
+  @override
+  String get clearSignature => 'Clear';
+
+  @override
+  String get saveSignature => 'Save signature';
+
+  @override
+  String signedOnDate(String date) {
+    return 'Signed on $date';
+  }
+
+  @override
+  String get paymentSection => 'Advance payment';
+
+  @override
+  String get advanceAmount => 'Advance amount (₹)';
+
+  @override
+  String get createPaymentLink => 'Create UPI payment link';
+
+  @override
+  String get sendPaymentLink => 'Send link on WhatsApp';
+
+  @override
+  String get paymentPaid => 'Paid';
+
+  @override
+  String get paymentWaiting => 'Waiting for payment';
+
+  @override
+  String get paymentExpired => 'Expired';
+
+  @override
+  String get newVersion => 'New version';
+
+  @override
+  String get proposalLocked =>
+      'This proposal has been sent, so it cannot be edited. Create a new version to change it.';
+
+  @override
+  String get copyLink => 'Copy link';
+
+  @override
+  String get linkCopied => 'Link copied';
+
+  @override
+  String get waitingToSync =>
+      'Saved on this phone. It will upload when online; then you can create the PDF.';
+
+  @override
+  String get netPriceShort => 'Customer pays';
+
+  @override
+  String get tagNoSubsidy => 'No subsidy';
+
+  @override
+  String get tagApproved => 'Approved';
+
+  @override
+  String get createProposal => 'Create proposal';
 }

@@ -2,7 +2,7 @@
 
 **For Indian rooftop solar installers: scan the bill, size the system, work out the PM Surya Ghar subsidy and EMI, send a Hindi or English proposal on WhatsApp, and track every customer until the subsidy is credited.**
 
-> Status: **Phase 3 of 7 done.** Done so far: login and roles in Hindi and English; leads with offline sync and site photos; AI bill scan; sizing with subsidy, EMI and payback. Proposals, survey, projects and the dashboard come next.
+> Status: **Phase 4 of 7 built.** Done so far: login and roles in Hindi and English; leads with offline sync and photos; AI bill scan; sizing with subsidy, EMI and payback; products, compliance checklist, Hindi/English PDF proposals, WhatsApp share, customer signature and Razorpay UPI payment links. Survey, projects and the dashboard come next.
 
 ## Repository layout
 
@@ -11,6 +11,7 @@ app/                 Flutter app (Android + web)
 packages/solar_core/ pure Dart solar maths (sizing, subsidy, tariff, EMI, payback)
 supabase/functions/  Edge Functions: bill-scan (Gemini), generation-estimate (PVGIS)
 powersync/           sync streams (paste into the PowerSync dashboard)
+pdf-service/         Vercel function: proposal HTML → PDF (Chromium, Noto fonts)
 supabase/            migrations, RLS policies, seed, pgTAP tests, local config
 .github/workflows/   ci.yml, deploy-web.yml, release-apk.yml
 DECISIONS.md         choices made where the spec was open

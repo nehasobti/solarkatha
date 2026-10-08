@@ -18,6 +18,9 @@ abstract final class Routes {
   static String editBill(String leadId, String billId) =>
       '/leads/$leadId/bill/$billId';
   static String sizing(String leadId) => '/leads/$leadId/sizing';
+  static String newProposal(String leadId) => '/leads/$leadId/proposals/new';
+  static String proposal(String leadId, String id) =>
+      '/leads/$leadId/proposals/$id';
   static const projects = '/projects';
   static const settings = '/settings';
 

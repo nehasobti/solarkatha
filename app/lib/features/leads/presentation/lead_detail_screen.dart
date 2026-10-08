@@ -6,6 +6,7 @@ import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../bills/presentation/bill_tab.dart';
+import '../../proposals/presentation/proposals_tab.dart';
 import '../application/leads_providers.dart';
 import '../data/leads_repository.dart';
 import '../domain/lead.dart';
@@ -122,7 +123,13 @@ class LeadDetailScreen extends ConsumerWidget {
             children: [
               _Overview(lead: lead),
               BillTab(lead: lead),
-              for (final (label, icon) in tabs.skip(2))
+              EmptyState(
+                icon: Icons.roofing_outlined,
+                title: l10n.tabSurvey,
+                body: l10n.comingSoon,
+              ),
+              ProposalsTab(lead: lead),
+              for (final (label, icon) in tabs.skip(4))
                 EmptyState(icon: icon, title: label, body: l10n.comingSoon),
             ],
           ),

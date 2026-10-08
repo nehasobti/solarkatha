@@ -3,6 +3,7 @@
 /// hard-coded here.
 library;
 
+export 'src/compliance.dart';
 export 'src/config.dart';
 export 'src/generation.dart';
 export 'src/loan.dart';

@@ -68,3 +68,8 @@ enabled = true
 account_sid = "ACplaceholder"
 message_service_sid = "MGplaceholder"
 auth_token = "placeholder"
+
+# Razorpay calls this webhook without a Supabase token; the function verifies
+# the Razorpay signature instead.
+[functions.razorpay-webhook]
+verify_jwt = false

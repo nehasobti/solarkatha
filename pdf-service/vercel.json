@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/render.ts": {
+      "memory": 1769,
+      "maxDuration": 60,
+      "includeFiles": "fonts/**"
+    }
+  },
+  "regions": ["bom1"]
+}

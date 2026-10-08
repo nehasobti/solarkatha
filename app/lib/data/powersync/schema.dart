@@ -7,6 +7,7 @@ import 'package:powersync_core/attachments/attachments.dart';
 const leadsTable = 'leads';
 const leadPhotosTable = 'lead_photos';
 const billsTable = 'bills';
+const proposalsTable = 'proposals';
 const actionQueueTable = 'action_queue';
 
 final appSchema = Schema([
@@ -134,6 +135,77 @@ final appSchema = Schema([
     Column.text('notes'),
     Column.integer('sort'),
   ]),
+  const Table('products', [
+    Column.text('company_id'),
+    Column.text('type'),
+    Column.text('brand'),
+    Column.text('model'),
+    Column.real('watt_peak'),
+    Column.integer('is_dcr'),
+    Column.integer('almm_listed'),
+    Column.integer('approved_list'),
+    Column.integer('warranty_years'),
+    Column.real('unit_price'),
+    Column.integer('active'),
+    Column.text('created_at'),
+    Column.text('updated_at'),
+    Column.text('deleted_at'),
+  ]),
+  const Table(
+    proposalsTable,
+    [
+      Column.text('company_id'),
+      Column.text('lead_id'),
+      Column.integer('version'),
+      Column.text('language'),
+      Column.real('system_kw'),
+      Column.text('panel_product_id'),
+      Column.integer('panel_count'),
+      Column.text('inverter_product_id'),
+      Column.real('gross_price'),
+      Column.real('central_subsidy'),
+      Column.real('state_subsidy'),
+      Column.real('net_price'),
+      Column.text('loan'), // JSON
+      Column.text('est_generation'), // JSON
+      Column.real('annual_savings'),
+      Column.real('payback_years'),
+      Column.real('lifetime_savings'),
+      Column.real('current_monthly_bill'),
+      Column.text('compliance'), // JSON
+      Column.text('status'),
+      Column.text('pdf_path'),
+      Column.text('pdf_generated_at'),
+      Column.text('signature_png'),
+      Column.text('signed_at'),
+      Column.text('sent_at'),
+      Column.text('share_token'),
+      Column.text('created_by'),
+      Column.text('created_at'),
+      Column.text('updated_at'),
+      Column.text('deleted_at'),
+    ],
+    indexes: [
+      Index('lead', [IndexedColumn('lead_id')]),
+    ],
+  ),
+  const Table(
+    'payments',
+    [
+      Column.text('company_id'),
+      Column.text('lead_id'),
+      Column.text('proposal_id'),
+      Column.text('kind'),
+      Column.real('amount'),
+      Column.text('short_url'),
+      Column.text('status'),
+      Column.text('paid_at'),
+      Column.text('created_at'),
+    ],
+    indexes: [
+      Index('proposal', [IndexedColumn('proposal_id')]),
+    ],
+  ),
   // Local-only queue of server calls made while offline (bill scans).
   const Table.localOnly(actionQueueTable, [
     Column.text('kind'),

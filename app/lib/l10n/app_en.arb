@@ -404,5 +404,119 @@
   "rowSubsidy": "Subsidy",
   "rowNet": "Customer pays",
   "rowEmi": "EMI",
-  "rowPayback": "Payback"
+  "rowPayback": "Payback",
+  "addProduct": "Add product",
+  "editProduct": "Edit product",
+  "productType": "Type",
+  "typePanel": "Panel",
+  "typeInverter": "Inverter",
+  "typeStructure": "Structure",
+  "typeOther": "Other",
+  "brandLabel": "Brand",
+  "modelLabel": "Model",
+  "wattPeakLabel": "Watt peak (Wp)",
+  "dcrLabel": "DCR (made-in-India cells)",
+  "almmLabel": "ALMM listed",
+  "approvedListLabel": "On the approved inverter list",
+  "warrantyLabel": "Warranty (years)",
+  "unitPriceLabel": "Price (₹)",
+  "activeLabel": "Available for proposals",
+  "noProducts": "No products yet",
+  "noProductsBody": "Add the panels and inverters you sell. Only DCR and ALMM-listed panels get the subsidy.",
+  "deleteProduct": "Delete product",
+  "productSaved": "Product saved",
+  "ownerOnly": "Only the owner can change products.",
+  "newProposal": "New proposal",
+  "proposalVersion": "Proposal v{version}",
+  "@proposalVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "statusDraft": "Draft",
+  "statusSent": "Sent",
+  "statusSigned": "Signed",
+  "statusExpired": "Expired",
+  "noProposalsTitle": "No proposals yet",
+  "noProposalsBody": "Create a proposal, share it on WhatsApp, take the signature and the advance.",
+  "systemSection": "System",
+  "systemKwLabel": "System size (kW)",
+  "panelLabel": "Panels",
+  "inverterLabel": "Inverter",
+  "selectProduct": "Select",
+  "panelsNeeded": "{count} panels × {wp} Wp = {kw}",
+  "@panelsNeeded": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "wp": {
+        "type": "String"
+      },
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "priceSection": "Price",
+  "grossPriceLabel": "System price (₹)",
+  "languageForProposal": "Proposal language",
+  "complianceTitle": "Compliance checklist",
+  "checkPanelsDcr": "Panels are DCR (made-in-India cells)",
+  "checkPanelsAlmm": "Panels are ALMM-listed",
+  "checkInverterApproved": "Inverter is on the approved list",
+  "checkOwnConnection": "Electricity connection is in the customer's own name",
+  "checkConsumerNumber": "Consumer number entered (customer registered on the national portal)",
+  "checkRoofPhotos": "At least 4 site photos ({count} taken)",
+  "@checkRoofPhotos": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "checkRoofType": "Roof type recorded",
+  "checkSingleSubsidy": "No other subsidy on this consumer number",
+  "ownerOverride": "Owner override: allow sending anyway",
+  "complianceBlocked": "Finish the checklist before sending. Only the owner can override.",
+  "saveDraft": "Save draft",
+  "proposalSaved": "Proposal saved",
+  "actionsSection": "Share, sign and collect advance",
+  "generatePdf": "Create PDF",
+  "regeneratePdf": "Update PDF",
+  "pdfReady": "PDF ready",
+  "sharePdf": "Share PDF file",
+  "shareWhatsapp": "Send on WhatsApp",
+  "openPdf": "Open PDF",
+  "needsOnline": "This needs the internet. Connect and try again.",
+  "captureSignature": "Take customer signature",
+  "signHereHint": "Ask the customer to sign inside the box",
+  "clearSignature": "Clear",
+  "saveSignature": "Save signature",
+  "signedOnDate": "Signed on {date}",
+  "@signedOnDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSection": "Advance payment",
+  "advanceAmount": "Advance amount (₹)",
+  "createPaymentLink": "Create UPI payment link",
+  "sendPaymentLink": "Send link on WhatsApp",
+  "paymentPaid": "Paid",
+  "paymentWaiting": "Waiting for payment",
+  "paymentExpired": "Expired",
+  "newVersion": "New version",
+  "proposalLocked": "This proposal has been sent, so it cannot be edited. Create a new version to change it.",
+  "copyLink": "Copy link",
+  "linkCopied": "Link copied",
+  "waitingToSync": "Saved on this phone. It will upload when online; then you can create the PDF.",
+  "netPriceShort": "Customer pays",
+  "tagNoSubsidy": "No subsidy",
+  "tagApproved": "Approved",
+  "createProposal": "Create proposal"
 }

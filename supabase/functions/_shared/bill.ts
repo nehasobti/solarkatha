@@ -74,7 +74,8 @@ export const billResponseSchema = {
   required: ["units_history", "confidence"],
 };
 
-export const billPrompt = `You read Indian electricity bills (Hindi or English, any DISCOM layout, photographed on a phone).
+export const billPrompt =
+  `You read Indian electricity bills (Hindi or English, any DISCOM layout, photographed on a phone).
 Extract the fields in the JSON schema. Rules:
 - Return null for anything you cannot read clearly. Never guess.
 - discom: the distribution company name or its short code as printed (e.g. PVVNL, MVVNL, BSES Rajdhani, MSEDCL).
@@ -96,7 +97,9 @@ const ranges: Partial<Record<BillField, [number, number]>> = {
 
 function num(v: unknown, field: BillField): number | null {
   if (v === null || v === undefined || v === "") return null;
-  const n = typeof v === "number" ? v : Number(String(v).replace(/[,₹\s]/g, ""));
+  const n = typeof v === "number"
+    ? v
+    : Number(String(v).replace(/[,₹\s]/g, ""));
   if (!Number.isFinite(n)) return null;
   const [min, max] = ranges[field] ?? [-Infinity, Infinity];
   return n < min || n > max ? null : n;
@@ -127,7 +130,9 @@ export function validateExtraction(raw: unknown): BillExtraction {
       const m = str((item as Record<string, unknown>).month, 7);
       const u = num((item as Record<string, unknown>).units, "units_this_bill");
       if (m && /^\d{4}-(0[1-9]|1[0-2])$/.test(m) && u !== null) {
-        if (!history.some((h) => h.month === m)) history.push({ month: m, units: u });
+        if (!history.some((h) => h.month === m)) {
+          history.push({ month: m, units: u });
+        }
       }
     }
   }
@@ -137,11 +142,14 @@ export function validateExtraction(raw: unknown): BillExtraction {
   if (r.confidence && typeof r.confidence === "object") {
     for (const f of BILL_FIELDS) {
       const c = (r.confidence as Record<string, unknown>)[f];
-      if (typeof c === "string" && confidences.has(c)) confidence[f] = c as Confidence;
+      if (typeof c === "string" && confidences.has(c)) {
+        confidence[f] = c as Confidence;
+      }
     }
   }
 
-  const consumer = str(r.consumer_number, 30)?.replace(/[^0-9A-Za-z]/g, "") ?? null;
+  const consumer = str(r.consumer_number, 30)?.replace(/[^0-9A-Za-z]/g, "") ??
+    null;
   const discom = str(r.discom, 80);
   return {
     discom: discom ? normalizeDiscom(discom) : null,

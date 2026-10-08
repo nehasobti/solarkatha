@@ -13,7 +13,13 @@ import {
   summarise,
   validateExtraction,
 } from "../_shared/bill.ts";
-import { handler, HttpError, json, readJson, requireEnv } from "../_shared/http.ts";
+import {
+  handler,
+  HttpError,
+  json,
+  readJson,
+  requireEnv,
+} from "../_shared/http.ts";
 
 const BUCKET = "site-photos";
 const MAX_BYTES = 10 * 1024 * 1024;
@@ -41,11 +47,20 @@ Deno.serve(handler(async (req) => {
 
   const path = typeof body.path === "string" ? body.path : "";
   if (!path.startsWith(`company/${companyId}/`) || path.includes("..")) {
-    throw new HttpError(403, "forbidden", "Photo is not in your company folder");
+    throw new HttpError(
+      403,
+      "forbidden",
+      "Photo is not in your company folder",
+    );
   }
 
   // Daily limit per company.
-  const limit = await configValue<number>(admin, companyId, "bill_scan_daily_limit", 50);
+  const limit = await configValue<number>(
+    admin,
+    companyId,
+    "bill_scan_daily_limit",
+    50,
+  );
   const { count } = await admin
     .from("ai_usage")
     .select("id", { count: "exact", head: true })
@@ -60,9 +75,14 @@ Deno.serve(handler(async (req) => {
     );
   }
 
-  const { data: file, error: dlError } = await admin.storage.from(BUCKET).download(path);
+  const { data: file, error: dlError } = await admin.storage.from(BUCKET)
+    .download(path);
   if (dlError || !file) {
-    throw new HttpError(404, "photo_not_found", "Bill photo is not uploaded yet");
+    throw new HttpError(
+      404,
+      "photo_not_found",
+      "Bill photo is not uploaded yet",
+    );
   }
   if (file.size > MAX_BYTES) {
     throw new HttpError(413, "too_large", "Bill photo is larger than 10 MB");
@@ -77,14 +97,22 @@ Deno.serve(handler(async (req) => {
       `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": apiKey,
+        },
         signal: AbortSignal.timeout(45_000),
         body: JSON.stringify({
           contents: [{
             role: "user",
             parts: [
               { text: billPrompt },
-              { inline_data: { mime_type: file.type || "image/jpeg", data: toBase64(bytes) } },
+              {
+                inline_data: {
+                  mime_type: file.type || "image/jpeg",
+                  data: toBase64(bytes),
+                },
+              },
             ],
           }],
           generationConfig: {
@@ -100,23 +128,32 @@ Deno.serve(handler(async (req) => {
       console.error("Gemini error", res.status, text);
       let reason = "";
       try {
-        reason = (JSON.parse(text) as { error?: { message?: string } }).error?.message ?? "";
+        reason = (JSON.parse(text) as { error?: { message?: string } }).error
+          ?.message ?? "";
       } catch {
         // not JSON
       }
       throw new HttpError(
         502,
         "ai_failed",
-        `Could not read the bill (AI error ${res.status}${reason ? `: ${reason.slice(0, 200)}` : ""}). Enter the values by hand.`,
+        `Could not read the bill (AI error ${res.status}${
+          reason ? `: ${reason.slice(0, 200)}` : ""
+        }). Enter the values by hand.`,
       );
     }
-    const extraction = validateExtraction(JSON.parse(geminiText(await res.json())));
+    const extraction = validateExtraction(
+      JSON.parse(geminiText(await res.json())),
+    );
     ok = true;
     return json(summarise(extraction));
   } catch (e) {
     if (e instanceof HttpError) throw e;
     console.error("bill-scan", e);
-    throw new HttpError(502, "ai_failed", "Could not read the bill. Enter the values by hand.");
+    throw new HttpError(
+      502,
+      "ai_failed",
+      "Could not read the bill. Enter the values by hand.",
+    );
   } finally {
     await admin.from("ai_usage").insert({
       company_id: companyId,

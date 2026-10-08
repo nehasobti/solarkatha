@@ -42,7 +42,11 @@ Deno.test("validates and cleans a typical response", () => {
   assertEquals(e.customer_name, "Ramesh Gupta");
   assertEquals(e.sanctioned_load_kw, 3);
   assertEquals(e.bill_amount, 2450);
-  assertEquals(e.units_history.map((h) => h.month), ["2026-07", "2026-06", "2026-05"]);
+  assertEquals(e.units_history.map((h) => h.month), [
+    "2026-07",
+    "2026-06",
+    "2026-05",
+  ]);
   assertEquals(e.units_history[1].units, 410);
   assertEquals(e.confidence.consumer_number, "medium");
   assertEquals(e.confidence.units_this_bill, undefined);
@@ -95,7 +99,10 @@ Deno.test("rejects non-object responses", () => {
 
 Deno.test("DISCOM names normalise to short codes", () => {
   assertEquals(normalizeDiscom("PVVNL"), "PVVNL");
-  assertEquals(normalizeDiscom("Purvanchal Vidyut Vitran Nigam Limited"), "PUVVNL");
+  assertEquals(
+    normalizeDiscom("Purvanchal Vidyut Vitran Nigam Limited"),
+    "PUVVNL",
+  );
   assertEquals(normalizeDiscom("पश्चिमांचल विद्युत वितरण निगम लि."), "PVVNL");
   assertEquals(normalizeDiscom("BSES Rajdhani Power Ltd"), "BRPL");
   assertEquals(normalizeDiscom("Tata Power-DDL"), "TPDDL");

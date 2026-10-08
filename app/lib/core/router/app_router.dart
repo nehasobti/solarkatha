@@ -16,7 +16,9 @@ import '../../features/home/presentation/home_screen.dart';
 import '../../features/leads/presentation/lead_detail_screen.dart';
 import '../../features/leads/presentation/lead_form_screen.dart';
 import '../../features/leads/presentation/leads_screen.dart';
+import '../../features/products/presentation/products_screen.dart';
 import '../../features/projects/presentation/projects_screen.dart';
+import '../../features/proposals/presentation/proposal_builder_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../features/tracking/presentation/tracking_screen.dart';
 import '../l10n/l10n.dart';
@@ -35,7 +37,6 @@ NoTransitionPage<void> _page(GoRouterState state, Widget child) =>
 final _ownerSections = <(String, String Function(AppLocalizations), IconData)>[
   (Routes.subsidy, (l) => l.navSubsidy, Icons.account_balance_outlined),
   (Routes.team, (l) => l.navTeam, Icons.groups_outlined),
-  (Routes.products, (l) => l.navProducts, Icons.inventory_2_outlined),
   (Routes.config, (l) => l.navConfig, Icons.tune_outlined),
   (Routes.branding, (l) => l.navBranding, Icons.palette_outlined),
 ];
@@ -108,6 +109,26 @@ GoRouter appRouter(Ref ref) {
             ),
           ),
           GoRoute(
+            path: 'proposals/new',
+            builder: (context, state) => OfflineAware(
+              child: ProposalBuilderScreen(
+                leadId: state.pathParameters['id']!,
+                initialKw: double.tryParse(
+                  state.uri.queryParameters['kw'] ?? '',
+                ),
+              ),
+            ),
+          ),
+          GoRoute(
+            path: 'proposals/:proposalId',
+            builder: (context, state) => OfflineAware(
+              child: ProposalBuilderScreen(
+                leadId: state.pathParameters['id']!,
+                proposalId: state.pathParameters['proposalId'],
+              ),
+            ),
+          ),
+          GoRoute(
             path: 'sizing',
             builder: (context, state) => OfflineAware(
               child: SizingScreen(leadId: state.pathParameters['id']!),
@@ -142,6 +163,11 @@ GoRouter appRouter(Ref ref) {
             path: Routes.settings,
             pageBuilder: (context, state) =>
                 _page(state, const SettingsScreen()),
+          ),
+          GoRoute(
+            path: Routes.products,
+            pageBuilder: (context, state) =>
+                _page(state, const ProductsScreen()),
           ),
           GoRoute(
             path: Routes.dashboard,

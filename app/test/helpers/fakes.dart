@@ -16,12 +16,15 @@ import 'package:solarkatha/features/auth/application/session_controller.dart';
 import 'package:solarkatha/features/bills/application/scan_processor.dart';
 import 'package:solarkatha/features/bills/data/bills_repository.dart';
 import 'package:solarkatha/features/leads/data/leads_repository.dart';
+import 'package:solarkatha/features/proposals/data/proposals_repository.dart';
 import 'package:solarkatha/features/sizing/data/sizing_repository.dart';
 
 import 'fake_bills.dart';
+import 'fake_proposals.dart';
 import 'fake_leads_repository.dart';
 
 export 'fake_bills.dart';
+export 'fake_proposals.dart';
 export 'fake_leads_repository.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
@@ -73,6 +76,7 @@ Future<void> pumpApp(
   AuthRepository? auth,
   FakeLeadsRepository? leads,
   FakeBillsRepository? bills,
+  FakeProposalsRepository? proposals,
 }) async {
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
@@ -103,6 +107,9 @@ Future<void> pumpApp(
           (ref) => Stream.value(seededSizingConfig()),
         ),
         generationServiceProvider.overrideWithValue(FakeGenerationService()),
+        proposalsRepositoryProvider.overrideWithValue(
+          proposals ?? FakeProposalsRepository(),
+        ),
       ],
       child: const SolarKathaApp(),
     ),

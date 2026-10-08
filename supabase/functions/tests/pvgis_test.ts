@@ -33,7 +33,10 @@ Deno.test("builds the PVcalc URL (aspect 0 = south)", () => {
   assertEquals(url.searchParams.get("angle"), "25");
   assertEquals(url.searchParams.get("loss"), "14");
   assertEquals(url.searchParams.get("peakpower"), "1");
-  assertEquals(new URL(pvgisUrl(1, 1, 10, 270, 14)).searchParams.get("aspect"), "90");
+  assertEquals(
+    new URL(pvgisUrl(1, 1, 10, 270, 14)).searchParams.get("aspect"),
+    "90",
+  );
 });
 
 Deno.test("parses PVGIS monthly output", () => {

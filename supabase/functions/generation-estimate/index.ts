@@ -38,10 +38,19 @@ Deno.serve(handler(async (req) => {
     .maybeSingle();
   if (cached) {
     const perKw = cached.monthly_kwh_per_kw as number[];
-    return json({ monthly_kwh_per_kw: perKw, monthly_kwh: scale(perKw, input.kw), source: "cache" });
+    return json({
+      monthly_kwh_per_kw: perKw,
+      monthly_kwh: scale(perKw, input.kw),
+      source: "cache",
+    });
   }
 
-  const loss = await configValue<number>(admin, companyId, "system_loss_pct", 14);
+  const loss = await configValue<number>(
+    admin,
+    companyId,
+    "system_loss_pct",
+    14,
+  );
   try {
     const res = await fetch(
       pvgisUrl(key.lat_key, key.lng_key, input.tilt, input.azimuth, loss),
@@ -49,8 +58,15 @@ Deno.serve(handler(async (req) => {
     );
     if (!res.ok) throw new Error(`PVGIS ${res.status}`);
     const perKw = parsePvgis(await res.json());
-    await admin.from("generation_cache").upsert({ ...key, monthly_kwh_per_kw: perKw });
-    return json({ monthly_kwh_per_kw: perKw, monthly_kwh: scale(perKw, input.kw), source: "pvgis" });
+    await admin.from("generation_cache").upsert({
+      ...key,
+      monthly_kwh_per_kw: perKw,
+    });
+    return json({
+      monthly_kwh_per_kw: perKw,
+      monthly_kwh: scale(perKw, input.kw),
+      source: "pvgis",
+    });
   } catch (e) {
     console.warn("PVGIS unavailable, using fallback:", (e as Error).message);
     const yieldPerDay = await configValue<number>(
@@ -60,6 +76,10 @@ Deno.serve(handler(async (req) => {
       4.2,
     );
     const perKw = fallbackMonthly(yieldPerDay);
-    return json({ monthly_kwh_per_kw: perKw, monthly_kwh: scale(perKw, input.kw), source: "fallback" });
+    return json({
+      monthly_kwh_per_kw: perKw,
+      monthly_kwh: scale(perKw, input.kw),
+      source: "fallback",
+    });
   }
 }));

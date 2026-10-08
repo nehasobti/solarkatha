@@ -80,3 +80,21 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 11. **Generation cache.** `generation-estimate` caches PVGIS results per 1 kW by location rounded to 0.05°, tilt and azimuth, in the server-only `generation_cache` table. The app also remembers the last result per location on the device, so sizing works offline. Without a location, or offline, it uses `default_yield_kwh_per_kw_day` × days in month.
 12. **Duplicate consumer number.** If the bill's consumer number is already on another lead, the bill form warns: only one central subsidy per household. This is a warning, not a block; the full compliance checklist is Phase 4.
 13. **Deno and the PowerSync role.** Deno was installed to `D:\tools\deno`, with `DENO_DIR` on D:. The migration grants `powersync_role` read access to the new tables.
+
+## Phase 4 – Proposals
+
+1. **PDF rendering.** HTML template → headless Chromium (`puppeteer-core` + `@sparticuz/chromium`) on a Vercel function (`pdf-service/`, Mumbai region `bom1`). The Noto fonts are embedded as data URLs and the page blocks all network requests, so Hindi shapes correctly and nothing external loads. All text is HTML-escaped. Images must be PNG/JPEG data URLs and the brand colour must be `#rrggbb`.
+2. **PDF service auth.** Requests are signed with HMAC-SHA256 over `"<timestamp>.<body>"` using `PDF_SERVICE_SECRET`. Requests older than 5 minutes are rejected (replay protection).
+3. **PDFs are stored privately.** They go in a private `documents` bucket at `company/<id>/proposals/<proposal>/v<n>.pdf`. The WhatsApp link is a signed URL valid for 7 days, so the customer can open it from the chat.
+4. **Signature stored inline.** The signature is a PNG data URL in `proposals.signature_png` (spec: `signature_path`). It's small, syncs offline with the row, and the PDF service embeds it directly.
+5. **Payments link to proposals.** `payments` references `proposal_id` and `lead_id`; `project_id` is set once projects exist (Phase 6). Only Edge Functions write payments; the app reads them.
+6. **Payment links.** These are standard Razorpay Payment Links (UPI, cards, netbanking). Razorpay doesn't support UPI-only links in test mode. The default advance is `app_config.advance_pct` (20%) of the net price, and the rep can change it. The amount can never exceed what is still due.
+7. **Webhook.** It's deployed with `--no-verify-jwt` because Razorpay sends no Supabase token. The `X-Razorpay-Signature` HMAC is checked before anything changes. It's idempotent: a paid payment is never changed again.
+8. **Compliance checklist** (`solar_core`):
+   - Items: panels DCR, ALMM-listed, inverter on the approved list, own connection (rep ticks), consumer number entered, at least 4 site photos (bill photos don't count), roof type (rep ticks until the Phase 5 survey records it), and no duplicate consumer number.
+   - It blocks PDF, WhatsApp, signature and payment until everything passes or an owner switches on the override. The override is stored with the owner's id.
+9. **Panel count.** The panel count is rounded up and the proposal stores the *installed* kW (for example 6 × 540 Wp = 3.24 kW), so subsidy and price match what's actually fitted.
+10. **Status flow.** Sharing marks the proposal `sent` and moves a new/surveyed lead to `proposal_sent`. Signing marks it `signed` and the lead `won`. Sent proposals are read-only; changes need a new version.
+11. **WhatsApp templates.** The message templates are in `app_config` per language (`wa_template_proposal_en/hi`, `wa_template_payment_en/hi`), with `{customer_name}`-style placeholders.
+12. **Demo catalogue.** It's seeded for the demo company: 2 DCR panels, 1 imported non-DCR panel, 2 inverters and a structure.
+13. **Local npm cache.** `npm` installs use `npm_config_cache=D:\npm-cache`, so nothing lands on C:.

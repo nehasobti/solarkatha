@@ -847,4 +847,260 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get rowPayback => 'पेबैक';
+
+  @override
+  String get addProduct => 'प्रोडक्ट जोड़ें';
+
+  @override
+  String get editProduct => 'प्रोडक्ट बदलें';
+
+  @override
+  String get productType => 'प्रकार';
+
+  @override
+  String get typePanel => 'पैनल';
+
+  @override
+  String get typeInverter => 'इन्वर्टर';
+
+  @override
+  String get typeStructure => 'स्ट्रक्चर';
+
+  @override
+  String get typeOther => 'अन्य';
+
+  @override
+  String get brandLabel => 'ब्रांड';
+
+  @override
+  String get modelLabel => 'मॉडल';
+
+  @override
+  String get wattPeakLabel => 'वॉट पीक (Wp)';
+
+  @override
+  String get dcrLabel => 'DCR (भारत में बने सेल)';
+
+  @override
+  String get almmLabel => 'ALMM सूची में';
+
+  @override
+  String get approvedListLabel => 'मंज़ूर इन्वर्टर सूची में';
+
+  @override
+  String get warrantyLabel => 'वारंटी (साल)';
+
+  @override
+  String get unitPriceLabel => 'कीमत (₹)';
+
+  @override
+  String get activeLabel => 'प्रस्तावों के लिए उपलब्ध';
+
+  @override
+  String get noProducts => 'अभी कोई प्रोडक्ट नहीं';
+
+  @override
+  String get noProductsBody =>
+      'आप जो पैनल और इन्वर्टर बेचते हैं, उन्हें जोड़ें। सब्सिडी केवल DCR और ALMM सूची वाले पैनल पर मिलती है।';
+
+  @override
+  String get deleteProduct => 'प्रोडक्ट हटाएँ';
+
+  @override
+  String get productSaved => 'प्रोडक्ट सेव हो गया';
+
+  @override
+  String get ownerOnly => 'केवल मालिक प्रोडक्ट बदल सकते हैं।';
+
+  @override
+  String get newProposal => 'नया प्रस्ताव';
+
+  @override
+  String proposalVersion(String version) {
+    return 'प्रस्ताव v$version';
+  }
+
+  @override
+  String get statusDraft => 'ड्राफ़्ट';
+
+  @override
+  String get statusSent => 'भेजा';
+
+  @override
+  String get statusSigned => 'हस्ताक्षरित';
+
+  @override
+  String get statusExpired => 'समय-सीमा खत्म';
+
+  @override
+  String get noProposalsTitle => 'अभी कोई प्रस्ताव नहीं';
+
+  @override
+  String get noProposalsBody =>
+      'प्रस्ताव बनाएँ, WhatsApp पर भेजें, हस्ताक्षर और एडवांस लें।';
+
+  @override
+  String get systemSection => 'सिस्टम';
+
+  @override
+  String get systemKwLabel => 'सिस्टम साइज़ (kW)';
+
+  @override
+  String get panelLabel => 'पैनल';
+
+  @override
+  String get inverterLabel => 'इन्वर्टर';
+
+  @override
+  String get selectProduct => 'चुनें';
+
+  @override
+  String panelsNeeded(String count, String wp, String kw) {
+    return '$count पैनल × $wp Wp = $kw';
+  }
+
+  @override
+  String get priceSection => 'कीमत';
+
+  @override
+  String get grossPriceLabel => 'सिस्टम की कीमत (₹)';
+
+  @override
+  String get languageForProposal => 'प्रस्ताव की भाषा';
+
+  @override
+  String get complianceTitle => 'अनुपालन चेकलिस्ट';
+
+  @override
+  String get checkPanelsDcr => 'पैनल DCR हैं (भारत में बने सेल)';
+
+  @override
+  String get checkPanelsAlmm => 'पैनल ALMM सूची में हैं';
+
+  @override
+  String get checkInverterApproved => 'इन्वर्टर मंज़ूर सूची में है';
+
+  @override
+  String get checkOwnConnection => 'बिजली कनेक्शन ग्राहक के अपने नाम पर है';
+
+  @override
+  String get checkConsumerNumber =>
+      'उपभोक्ता संख्या दर्ज है (ग्राहक राष्ट्रीय पोर्टल पर पंजीकृत)';
+
+  @override
+  String checkRoofPhotos(String count) {
+    return 'कम से कम 4 साइट फ़ोटो ($count ली गईं)';
+  }
+
+  @override
+  String get checkRoofType => 'छत का प्रकार दर्ज है';
+
+  @override
+  String get checkSingleSubsidy =>
+      'इस उपभोक्ता संख्या पर कोई दूसरी सब्सिडी नहीं';
+
+  @override
+  String get ownerOverride => 'मालिक की अनुमति: फिर भी भेजें';
+
+  @override
+  String get complianceBlocked =>
+      'भेजने से पहले चेकलिस्ट पूरी करें। केवल मालिक अनुमति दे सकते हैं।';
+
+  @override
+  String get saveDraft => 'ड्राफ़्ट सेव करें';
+
+  @override
+  String get proposalSaved => 'प्रस्ताव सेव हो गया';
+
+  @override
+  String get actionsSection => 'भेजें, हस्ताक्षर लें और एडवांस लें';
+
+  @override
+  String get generatePdf => 'PDF बनाएँ';
+
+  @override
+  String get regeneratePdf => 'PDF अपडेट करें';
+
+  @override
+  String get pdfReady => 'PDF तैयार';
+
+  @override
+  String get sharePdf => 'PDF फ़ाइल भेजें';
+
+  @override
+  String get shareWhatsapp => 'WhatsApp पर भेजें';
+
+  @override
+  String get openPdf => 'PDF खोलें';
+
+  @override
+  String get needsOnline =>
+      'इसके लिए इंटरनेट चाहिए। जुड़ें और फिर से कोशिश करें।';
+
+  @override
+  String get captureSignature => 'ग्राहक के हस्ताक्षर लें';
+
+  @override
+  String get signHereHint => 'ग्राहक से बॉक्स के अंदर हस्ताक्षर करवाएँ';
+
+  @override
+  String get clearSignature => 'मिटाएँ';
+
+  @override
+  String get saveSignature => 'हस्ताक्षर सेव करें';
+
+  @override
+  String signedOnDate(String date) {
+    return '$date को हस्ताक्षर किए';
+  }
+
+  @override
+  String get paymentSection => 'एडवांस भुगतान';
+
+  @override
+  String get advanceAmount => 'एडवांस राशि (₹)';
+
+  @override
+  String get createPaymentLink => 'UPI भुगतान लिंक बनाएँ';
+
+  @override
+  String get sendPaymentLink => 'लिंक WhatsApp पर भेजें';
+
+  @override
+  String get paymentPaid => 'भुगतान हो गया';
+
+  @override
+  String get paymentWaiting => 'भुगतान बाकी';
+
+  @override
+  String get paymentExpired => 'समय-सीमा खत्म';
+
+  @override
+  String get newVersion => 'नया वर्ज़न';
+
+  @override
+  String get proposalLocked =>
+      'यह प्रस्ताव भेजा जा चुका है, इसलिए बदला नहीं जा सकता। बदलने के लिए नया वर्ज़न बनाएँ।';
+
+  @override
+  String get copyLink => 'लिंक कॉपी करें';
+
+  @override
+  String get linkCopied => 'लिंक कॉपी हो गया';
+
+  @override
+  String get waitingToSync =>
+      'इस फ़ोन पर सेव है। ऑनलाइन होने पर अपलोड होगा; फिर PDF बना सकेंगे।';
+
+  @override
+  String get netPriceShort => 'ग्राहक देगा';
+
+  @override
+  String get tagNoSubsidy => 'सब्सिडी नहीं';
+
+  @override
+  String get tagApproved => 'मंज़ूर';
+
+  @override
+  String get createProposal => 'प्रस्ताव बनाएँ';
 }
