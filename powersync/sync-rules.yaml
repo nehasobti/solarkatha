@@ -1,0 +1,48 @@
+# PowerSync Sync Streams: what each signed-in user gets on their device.
+# Deploy in the PowerSync dashboard: instance > Sync Streams > paste >
+# Validate > Deploy.
+#
+# - Everyone: their company, its team, and pricing settings (platform
+#   defaults + their company's own rows).
+# - Owners: every lead, photo and bill in the company.
+# - Sales reps: only leads assigned to them, with their photos and bills.
+# Soft-deleted rows are left out, so they disappear from devices.
+
+config:
+  edition: 3
+
+streams:
+  company:
+    auto_subscribe: true
+    with:
+      my_company: SELECT company_id FROM profiles WHERE id = auth.user_id() AND active = true AND deleted_at IS NULL
+    queries:
+      - "SELECT companies.* FROM companies, my_company AS bucket WHERE companies.id = bucket.company_id"
+      - "SELECT profiles.* FROM profiles, my_company AS bucket WHERE profiles.company_id = bucket.company_id AND profiles.deleted_at IS NULL"
+      - "SELECT app_config.* FROM app_config, my_company AS bucket WHERE app_config.company_id = bucket.company_id"
+      - "SELECT subsidy_rules.* FROM subsidy_rules, my_company AS bucket WHERE subsidy_rules.company_id = bucket.company_id"
+      - "SELECT tariffs.* FROM tariffs, my_company AS bucket WHERE tariffs.company_id = bucket.company_id"
+      - "SELECT loan_presets.* FROM loan_presets, my_company AS bucket WHERE loan_presets.company_id = bucket.company_id"
+  defaults:
+    auto_subscribe: true
+    queries:
+      - "SELECT * FROM app_config WHERE company_id IS NULL"
+      - "SELECT * FROM subsidy_rules WHERE company_id IS NULL"
+      - "SELECT * FROM tariffs WHERE company_id IS NULL"
+      - "SELECT * FROM loan_presets WHERE company_id IS NULL"
+  owner_leads:
+    auto_subscribe: true
+    with:
+      owner_company: SELECT company_id FROM profiles WHERE id = auth.user_id() AND role = 'owner' AND active = true AND deleted_at IS NULL
+    queries:
+      - "SELECT leads.* FROM leads, owner_company AS bucket WHERE leads.company_id = bucket.company_id AND leads.deleted_at IS NULL"
+      - "SELECT lead_photos.* FROM lead_photos, owner_company AS bucket WHERE lead_photos.company_id = bucket.company_id AND lead_photos.deleted_at IS NULL"
+      - "SELECT bills.* FROM bills, owner_company AS bucket WHERE bills.company_id = bucket.company_id AND bills.deleted_at IS NULL"
+  assigned_leads:
+    auto_subscribe: true
+    with:
+      my_leads: SELECT id AS lead_id FROM leads WHERE assigned_to = auth.user_id() AND deleted_at IS NULL
+    queries:
+      - "SELECT leads.* FROM leads, my_leads AS bucket WHERE leads.id = bucket.lead_id"
+      - "SELECT lead_photos.* FROM lead_photos, my_leads AS bucket WHERE lead_photos.lead_id = bucket.lead_id AND lead_photos.deleted_at IS NULL"
+      - "SELECT bills.* FROM bills, my_leads AS bucket WHERE bills.lead_id = bucket.lead_id AND bills.deleted_at IS NULL"

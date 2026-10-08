@@ -1,0 +1,850 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Hindi (`hi`).
+class AppLocalizationsHi extends AppLocalizations {
+  AppLocalizationsHi([String locale = 'hi']) : super(locale);
+
+  @override
+  String get appTitle => 'SolarKatha';
+
+  @override
+  String get appTagline => 'छत पर सोलर, साइट विज़िट से सब्सिडी तक';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageHindi => 'हिंदी';
+
+  @override
+  String get languageLabel => 'भाषा';
+
+  @override
+  String get loginTitle => 'साइन इन करें';
+
+  @override
+  String get loginSubtitle => 'हम आपके मोबाइल नंबर पर एक बार का कोड भेजेंगे।';
+
+  @override
+  String get loginEmailSubtitle =>
+      'मालिक अपने ईमेल पर भेजे गए कोड से साइन इन कर सकते हैं।';
+
+  @override
+  String get phoneLabel => 'मोबाइल नंबर';
+
+  @override
+  String get phoneHint => '10 अंकों का मोबाइल नंबर';
+
+  @override
+  String get emailLabel => 'ईमेल';
+
+  @override
+  String get sendOtp => 'कोड भेजें';
+
+  @override
+  String get otpLabel => '6 अंकों का कोड';
+
+  @override
+  String get verifyOtp => 'पुष्टि करें और आगे बढ़ें';
+
+  @override
+  String otpSentTo(String destination) {
+    return 'कोड $destination पर भेजा गया';
+  }
+
+  @override
+  String get changeNumber => 'बदलें';
+
+  @override
+  String get resendOtp => 'कोड फिर से भेजें';
+
+  @override
+  String get useEmailInstead => 'मालिक हैं? ईमेल से साइन इन करें';
+
+  @override
+  String get usePhoneInstead => 'मोबाइल नंबर से साइन इन करें';
+
+  @override
+  String get invalidPhone => 'सही 10 अंकों का भारतीय मोबाइल नंबर डालें';
+
+  @override
+  String get invalidEmail => 'सही ईमेल पता डालें';
+
+  @override
+  String get invalidOtp => '6 अंकों का कोड डालें';
+
+  @override
+  String get otpIncorrect =>
+      'कोड गलत है या उसकी समय-सीमा खत्म हो गई है। फिर से कोशिश करें या नया कोड मँगाएँ।';
+
+  @override
+  String get onboardingTitle => 'अपनी कंपनी सेट करें';
+
+  @override
+  String get onboardingSubtitle =>
+      'इस खाते के लिए कोई टीम निमंत्रण नहीं मिला। मालिक के रूप में आगे बढ़ने के लिए अपनी कंपनी बनाएँ। अगर आपकी कंपनी SolarKatha इस्तेमाल करती है, तो उनसे इस नंबर को आमंत्रित करने को कहें।';
+
+  @override
+  String get yourNameLabel => 'आपका नाम';
+
+  @override
+  String get companyNameLabel => 'कंपनी का नाम';
+
+  @override
+  String get stateLabel => 'राज्य';
+
+  @override
+  String get createCompany => 'कंपनी बनाएँ';
+
+  @override
+  String get requiredField => 'ज़रूरी';
+
+  @override
+  String get deactivatedTitle => 'खाता निष्क्रिय है';
+
+  @override
+  String get deactivatedBody =>
+      'आपकी कंपनी के मालिक ने यह खाता निष्क्रिय कर दिया है। फिर से पहुँच के लिए उनसे संपर्क करें।';
+
+  @override
+  String get signOut => 'साइन आउट';
+
+  @override
+  String get loading => 'लोड हो रहा है…';
+
+  @override
+  String get retry => 'फिर से कोशिश करें';
+
+  @override
+  String get errorGeneric => 'कुछ गड़बड़ हो गई। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get errorNetwork =>
+      'इंटरनेट कनेक्शन नहीं है। नेटवर्क जाँचें और फिर से कोशिश करें।';
+
+  @override
+  String get comingSoon => 'अगले अपडेट में उपलब्ध होगा';
+
+  @override
+  String get roleOwner => 'मालिक';
+
+  @override
+  String get roleSales => 'सेल्स';
+
+  @override
+  String get roleInstaller => 'इंस्टॉलर';
+
+  @override
+  String get navHome => 'होम';
+
+  @override
+  String get navLeads => 'लीड';
+
+  @override
+  String get navProjects => 'प्रोजेक्ट';
+
+  @override
+  String get navSettings => 'सेटिंग्स';
+
+  @override
+  String get navOverview => 'सारांश';
+
+  @override
+  String get navSubsidy => 'सब्सिडी ट्रैकर';
+
+  @override
+  String get navTeam => 'टीम';
+
+  @override
+  String get navProducts => 'प्रोडक्ट';
+
+  @override
+  String get navConfig => 'कॉन्फ़िग';
+
+  @override
+  String get navBranding => 'ब्रांडिंग';
+
+  @override
+  String greeting(String name) {
+    return 'नमस्ते, $name';
+  }
+
+  @override
+  String get newLead => 'नई लीड';
+
+  @override
+  String get followUpsToday => 'आज के फ़ॉलो-अप';
+
+  @override
+  String get noFollowUps => 'आज कोई फ़ॉलो-अप नहीं';
+
+  @override
+  String get leadsByStatus => 'स्थिति के अनुसार लीड';
+
+  @override
+  String get statusNew => 'नई';
+
+  @override
+  String get statusSurveyed => 'सर्वे हो गया';
+
+  @override
+  String get statusProposalSent => 'प्रस्ताव भेजा';
+
+  @override
+  String get statusWon => 'जीती';
+
+  @override
+  String get statusLost => 'हारी';
+
+  @override
+  String get online => 'ऑनलाइन';
+
+  @override
+  String get offline => 'ऑफ़लाइन';
+
+  @override
+  String get searchLeads => 'नाम या फ़ोन से खोजें';
+
+  @override
+  String get leadsEmptyTitle => 'अभी कोई लीड नहीं';
+
+  @override
+  String get leadsEmptyBody =>
+      'आपकी जोड़ी गई लीड यहाँ दिखेंगी, इंटरनेट न होने पर भी।';
+
+  @override
+  String get projectsEmptyTitle => 'अभी कोई प्रोजेक्ट नहीं';
+
+  @override
+  String get projectsEmptyBody =>
+      'ग्राहक के प्रस्ताव पर हस्ताक्षर करने और आपको सौंपे जाने के बाद प्रोजेक्ट यहाँ दिखेंगे।';
+
+  @override
+  String get kpiLeadsThisMonth => 'इस महीने की लीड';
+
+  @override
+  String get kpiConversion => 'कन्वर्ज़न दर';
+
+  @override
+  String get kpiKwSold => 'बेचे गए kW';
+
+  @override
+  String get kpiRevenue => 'आय';
+
+  @override
+  String get kpiSubsidiesPending => 'बाकी सब्सिडी';
+
+  @override
+  String get pipelineTitle => 'पाइपलाइन';
+
+  @override
+  String get dashboardEmpty =>
+      'टीम के लीड जोड़ना शुरू करते ही आँकड़े यहाँ दिखेंगे।';
+
+  @override
+  String get settingsTitle => 'सेटिंग्स';
+
+  @override
+  String get profileSection => 'प्रोफ़ाइल';
+
+  @override
+  String get nameLabel => 'नाम';
+
+  @override
+  String get roleLabel => 'भूमिका';
+
+  @override
+  String get companyLabel => 'कंपनी';
+
+  @override
+  String get displaySection => 'डिस्प्ले';
+
+  @override
+  String get highContrast => 'हाई कॉन्ट्रास्ट';
+
+  @override
+  String get highContrastHint => 'तेज़ धूप के लिए गहरे रंग';
+
+  @override
+  String get largeText => 'बड़े अक्षर';
+
+  @override
+  String get largeTextHint => 'पूरे ऐप में बड़े अक्षर';
+
+  @override
+  String get syncSection => 'सिंक';
+
+  @override
+  String get syncStatusOnline => 'सर्वर से जुड़ा है';
+
+  @override
+  String get save => 'सेव करें';
+
+  @override
+  String get saved => 'सेव हो गया';
+
+  @override
+  String get trackingTitle => 'अपने सोलर प्रोजेक्ट को ट्रैक करें';
+
+  @override
+  String get trackingComingSoon =>
+      'आपके इंस्टॉलर प्रोजेक्ट की जानकारी इस पेज पर देंगे।';
+
+  @override
+  String get notFoundTitle => 'पेज नहीं मिला';
+
+  @override
+  String get goHome => 'होम पर जाएँ';
+
+  @override
+  String get configMissingTitle => 'ऐप कॉन्फ़िगर नहीं है';
+
+  @override
+  String get configMissingBody =>
+      'Supabase URL और key नहीं मिले। --dart-define-from-file=env/dev.json के साथ बिल्ड करें (README देखें)।';
+
+  @override
+  String get editLead => 'लीड बदलें';
+
+  @override
+  String get saveLead => 'लीड सेव करें';
+
+  @override
+  String get leadSaved => 'लीड सेव हो गई';
+
+  @override
+  String get leadDeleted => 'लीड हटा दी गई';
+
+  @override
+  String get deleteLead => 'लीड हटाएँ';
+
+  @override
+  String get deleteLeadConfirm => 'यह लीड हटाएँ? यह सभी डिवाइस से हट जाएगी।';
+
+  @override
+  String get cancel => 'रद्द करें';
+
+  @override
+  String get delete => 'हटाएँ';
+
+  @override
+  String get customerSection => 'ग्राहक';
+
+  @override
+  String get addressSection => 'पता और लोकेशन';
+
+  @override
+  String get followUpSection => 'फ़ॉलो-अप';
+
+  @override
+  String get leadNameLabel => 'ग्राहक का नाम';
+
+  @override
+  String get leadPhoneLabel => 'मोबाइल नंबर';
+
+  @override
+  String get leadAltPhoneLabel => 'दूसरा नंबर (वैकल्पिक)';
+
+  @override
+  String get leadAddressLabel => 'मकान / गली / इलाका';
+
+  @override
+  String get leadDistrictLabel => 'ज़िला';
+
+  @override
+  String get leadPincodeLabel => 'पिन कोड';
+
+  @override
+  String get invalidPincode => '6 अंकों का पिन कोड डालें';
+
+  @override
+  String get leadSourceLabel => 'स्रोत';
+
+  @override
+  String get sourceWalkIn => 'खुद आए';
+
+  @override
+  String get sourceReferral => 'रेफ़रल';
+
+  @override
+  String get sourceCall => 'फ़ोन कॉल';
+
+  @override
+  String get sourceCampaign => 'कैंपेन';
+
+  @override
+  String get leadNotesLabel => 'नोट्स';
+
+  @override
+  String get followUpLabel => 'अगला फ़ॉलो-अप';
+
+  @override
+  String get followUpNone => 'तय नहीं';
+
+  @override
+  String get clear => 'हटाएँ';
+
+  @override
+  String get assignedToLabel => 'किसे सौंपी';
+
+  @override
+  String get captureLocation => 'मेरी अभी की लोकेशन लें';
+
+  @override
+  String get locationCaptured => 'लोकेशन सेव हो गई';
+
+  @override
+  String get locationFailed =>
+      'लोकेशन नहीं मिली। GPS चालू करें और लोकेशन की अनुमति दें।';
+
+  @override
+  String get consentLabel =>
+      'ग्राहक अपना बिजली बिल और साइट की फ़ोटो हमारे साथ साझा करने के लिए सहमत है';
+
+  @override
+  String get consentRequiredForPhotos =>
+      'फ़ोटो जोड़ने से पहले ग्राहक की सहमति दर्ज करें (लीड बदलें)।';
+
+  @override
+  String get draftRestored => 'बिना सेव किया ड्राफ़्ट वापस लाया गया';
+
+  @override
+  String get discardDraft => 'हटाएँ';
+
+  @override
+  String get call => 'कॉल';
+
+  @override
+  String get whatsapp => 'WhatsApp';
+
+  @override
+  String get directions => 'रास्ता';
+
+  @override
+  String get notSynced => 'सिंक नहीं हुआ';
+
+  @override
+  String get allStatuses => 'सभी';
+
+  @override
+  String get allReps => 'सभी';
+
+  @override
+  String get leadNotFound => 'यह लीड अब मौजूद नहीं है।';
+
+  @override
+  String get changeStatus => 'स्थिति बदलें';
+
+  @override
+  String get lostReasonLabel => 'लीड क्यों हारी?';
+
+  @override
+  String get tabOverview => 'सारांश';
+
+  @override
+  String get tabBill => 'बिल';
+
+  @override
+  String get tabSurvey => 'सर्वे';
+
+  @override
+  String get tabProposals => 'प्रस्ताव';
+
+  @override
+  String get tabProject => 'प्रोजेक्ट';
+
+  @override
+  String get photosTitle => 'साइट की फ़ोटो';
+
+  @override
+  String photosChecklist(int done, int total) {
+    return 'चेकलिस्ट की $total में से $done फ़ोटो';
+  }
+
+  @override
+  String get takePhoto => 'फ़ोटो खींचें';
+
+  @override
+  String get chooseFromGallery => 'गैलरी से चुनें';
+
+  @override
+  String get photoKindRoof => 'छत';
+
+  @override
+  String get photoKindMeter => 'मीटर';
+
+  @override
+  String get photoKindDbBox => 'DB बॉक्स';
+
+  @override
+  String get photoKindWiring => 'वायरिंग का रास्ता';
+
+  @override
+  String get photoKindBill => 'बिजली बिल';
+
+  @override
+  String get photoKindOther => 'अन्य';
+
+  @override
+  String get photoWaiting => 'अपलोड बाकी';
+
+  @override
+  String get deletePhoto => 'फ़ोटो हटाएँ';
+
+  @override
+  String get noResults => 'आपकी खोज से कोई लीड नहीं मिली।';
+
+  @override
+  String addedOn(String date) {
+    return '$date को जोड़ी';
+  }
+
+  @override
+  String followUpOn(String date) {
+    return 'फ़ॉलो-अप $date';
+  }
+
+  @override
+  String get overdue => 'देर हो गई';
+
+  @override
+  String get totalLeads => 'कुल लीड';
+
+  @override
+  String get openLeads => 'चालू';
+
+  @override
+  String get wonLeads => 'जीती';
+
+  @override
+  String get offlineBanner =>
+      'आप ऑफ़लाइन हैं। आपका सारा काम इस फ़ोन पर सेव है और अपने-आप सिंक हो जाएगा।';
+
+  @override
+  String get syncing => 'सिंक हो रहा है…';
+
+  @override
+  String syncedAt(String time) {
+    return 'आख़िरी सिंक $time';
+  }
+
+  @override
+  String get neverSynced => 'अभी सिंक नहीं हुआ';
+
+  @override
+  String get syncNotConfigured =>
+      'इस बिल्ड में सिंक सेट नहीं है; डेटा इसी डिवाइस पर रहेगा।';
+
+  @override
+  String pendingChanges(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बदलाव अपलोड होने बाकी',
+      one: '1 बदलाव अपलोड होना बाकी',
+      zero: 'सारे बदलाव अपलोड हो गए',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get scanBill => 'बिल स्कैन करें';
+
+  @override
+  String get enterBillManually => 'खुद भरें';
+
+  @override
+  String get scanQueued =>
+      'बिल की फ़ोटो सेव हो गई। फ़ोन ऑनलाइन होते ही यह अपने-आप पढ़ा जाएगा।';
+
+  @override
+  String get scanReady =>
+      'बिल पढ़ लिया गया। जाँचने और पुष्टि करने के लिए टैप करें।';
+
+  @override
+  String scanFailed(String error) {
+    return 'बिल नहीं पढ़ा जा सका: $error';
+  }
+
+  @override
+  String get retry2 => 'फिर से कोशिश करें';
+
+  @override
+  String get reviewScan => 'जाँचें';
+
+  @override
+  String get discardScan => 'हटाएँ';
+
+  @override
+  String get noBillsTitle => 'अभी कोई बिल नहीं';
+
+  @override
+  String get noBillsBody =>
+      'ग्राहक का बिजली बिल स्कैन करें, या उसमें से आँकड़े भरें।';
+
+  @override
+  String get billFromScan => 'AI ने पढ़ा';
+
+  @override
+  String get billManual => 'खुद भरा';
+
+  @override
+  String avgUnitsShort(String units) {
+    return '$units यूनिट/महीना';
+  }
+
+  @override
+  String get sizeSystem => 'सिस्टम का साइज़ तय करें';
+
+  @override
+  String get sizingCta => 'सिस्टम साइज़, सब्सिडी, EMI और पेबैक देखें';
+
+  @override
+  String get billFormTitle => 'बिजली बिल';
+
+  @override
+  String get confirmBill => 'बिल की पुष्टि करें';
+
+  @override
+  String get billSaved => 'बिल सेव हो गया';
+
+  @override
+  String get deleteBill => 'बिल हटाएँ';
+
+  @override
+  String get discomLabel => 'DISCOM';
+
+  @override
+  String get consumerNumberLabel => 'उपभोक्ता संख्या';
+
+  @override
+  String get billCustomerNameLabel => 'बिल पर नाम';
+
+  @override
+  String get tariffCategoryLabel => 'टैरिफ़ श्रेणी';
+
+  @override
+  String get sanctionedLoadLabel => 'स्वीकृत लोड (kW)';
+
+  @override
+  String get billingPeriodLabel => 'बिलिंग अवधि';
+
+  @override
+  String get avgUnitsLabel => 'औसत मासिक यूनिट (kWh)';
+
+  @override
+  String get billAmountLabel => 'बिल राशि (₹)';
+
+  @override
+  String get unitsHistoryTitle => 'बिल पर छपी मासिक यूनिट';
+
+  @override
+  String get checkThisField => 'कृपया जाँचें: AI को पक्का नहीं था';
+
+  @override
+  String get duplicateConsumer =>
+      'यह उपभोक्ता संख्या किसी दूसरी लीड पर पहले से है। एक घर को केवल एक केंद्रीय सब्सिडी मिलती है।';
+
+  @override
+  String get invalidNumber => 'सही संख्या डालें';
+
+  @override
+  String get sizingTitle => 'सिस्टम साइज़';
+
+  @override
+  String get usageSection => 'ग्राहक की खपत';
+
+  @override
+  String get roofAreaLabel => 'छत का उपयोगी क्षेत्र (m², वैकल्पिक)';
+
+  @override
+  String get shadingLabel => 'छाया';
+
+  @override
+  String get shadingNone => 'कोई नहीं';
+
+  @override
+  String get shadingLow => 'कम';
+
+  @override
+  String get shadingMedium => 'मध्यम';
+
+  @override
+  String get shadingHigh => 'ज़्यादा';
+
+  @override
+  String get dcrPanels => 'DCR और ALMM सूची वाले पैनल';
+
+  @override
+  String get dcrHint => 'सब्सिडी के लिए ज़रूरी';
+
+  @override
+  String get recommendedLabel => 'सुझाया गया';
+
+  @override
+  String recommendedKw(String kw) {
+    return 'सुझाव: $kw';
+  }
+
+  @override
+  String requiredKwNote(String units) {
+    return 'लगभग $units यूनिट महीने की खपत पूरी करता है';
+  }
+
+  @override
+  String exceedsLoad(String load) {
+    return 'स्वीकृत लोड ($load kW) से ज़्यादा। ग्राहक को लोड बढ़वाना पड़ सकता है।';
+  }
+
+  @override
+  String limitedByRoof(String kw) {
+    return 'छत के क्षेत्र के कारण सीमित (अधिकतम $kw)।';
+  }
+
+  @override
+  String get compareTitle => 'साइज़ की तुलना';
+
+  @override
+  String get customSize => 'अपना साइज़';
+
+  @override
+  String get generationTitle => 'मासिक उत्पादन';
+
+  @override
+  String get generationPvgis => 'इस जगह के PVGIS सोलर डेटा पर आधारित';
+
+  @override
+  String generationFallback(String kwh) {
+    return 'अनुमान ($kwh यूनिट प्रति kW प्रति दिन)। जगह के हिसाब से आँकड़े के लिए साइट की लोकेशन जोड़ें और ऑनलाइन रहें।';
+  }
+
+  @override
+  String perYear(String kwh) {
+    return 'साल में $kwh यूनिट';
+  }
+
+  @override
+  String get subsidySection => 'सब्सिडी';
+
+  @override
+  String get centralSubsidy => 'केंद्रीय (पीएम सूर्य घर)';
+
+  @override
+  String get stateSubsidy => 'राज्य की अतिरिक्त सब्सिडी';
+
+  @override
+  String get totalSubsidy => 'कुल सब्सिडी';
+
+  @override
+  String subsidyPerKw(String amount) {
+    return 'लगभग $amount प्रति kW';
+  }
+
+  @override
+  String subsidyLine(String from, String to, String rate) {
+    return '$from–$to kW × $rate';
+  }
+
+  @override
+  String get noSubsidyNonDcr =>
+      'सब्सिडी नहीं: पैनल DCR और ALMM सूची वाले होने चाहिए।';
+
+  @override
+  String get costSection => 'लागत';
+
+  @override
+  String get grossPrice => 'सिस्टम की कीमत';
+
+  @override
+  String get pricePerKwLabel => 'प्रति kW कीमत (₹)';
+
+  @override
+  String get netPrice => 'सब्सिडी के बाद ग्राहक देगा';
+
+  @override
+  String get loanSection => 'लोन और EMI';
+
+  @override
+  String get loanBank => 'लोन विकल्प';
+
+  @override
+  String get interestRate => 'ब्याज % सालाना';
+
+  @override
+  String get tenureYears => 'साल';
+
+  @override
+  String get loanAmountLabel => 'लोन राशि (₹)';
+
+  @override
+  String get emiLabel => 'EMI';
+
+  @override
+  String get currentBillLabel => 'अभी का बिल';
+
+  @override
+  String get perMonth => 'महीना';
+
+  @override
+  String get emiVsBillGood => 'EMI आज के बिल से कम है';
+
+  @override
+  String get savingsSection => 'बचत';
+
+  @override
+  String get monthlySaving => 'महीने की बचत (पहला साल)';
+
+  @override
+  String get paybackLabel => 'पेबैक';
+
+  @override
+  String paybackYears(String years) {
+    return '$years साल';
+  }
+
+  @override
+  String noPayback(String years) {
+    return '$years साल से ज़्यादा';
+  }
+
+  @override
+  String lifetimeSavings(String years) {
+    return '$years साल की बचत';
+  }
+
+  @override
+  String get configMissing =>
+      'कीमतों की सेटिंग अभी इस डिवाइस पर नहीं आई है। इंटरनेट से जुड़ें और फिर से खोलें।';
+
+  @override
+  String get noTariffUsingBill =>
+      'इस राज्य का टैरिफ़ अभी नहीं है; बिल की औसत दर ली जा रही है।';
+
+  @override
+  String get noTariff =>
+      'बचत देखने के लिए बिल राशि (या इस राज्य का टैरिफ़) डालें।';
+
+  @override
+  String get needUsage =>
+      'सिस्टम का साइज़ तय करने के लिए औसत मासिक यूनिट डालें।';
+
+  @override
+  String get rowGeneration => 'यूनिट / महीना';
+
+  @override
+  String get rowSubsidy => 'सब्सिडी';
+
+  @override
+  String get rowNet => 'ग्राहक देगा';
+
+  @override
+  String get rowEmi => 'EMI';
+
+  @override
+  String get rowPayback => 'पेबैक';
+}

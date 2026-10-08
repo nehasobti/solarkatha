@@ -1,0 +1,408 @@
+{
+  "@@locale": "en",
+  "appTitle": "SolarKatha",
+  "appTagline": "Rooftop solar, from site visit to subsidy",
+  "languageEnglish": "English",
+  "languageHindi": "हिंदी",
+  "languageLabel": "Language",
+  "loginTitle": "Sign in",
+  "loginSubtitle": "We will send a one-time code to your mobile number.",
+  "loginEmailSubtitle": "Owners can sign in with a code sent to their email.",
+  "phoneLabel": "Mobile number",
+  "phoneHint": "10-digit mobile number",
+  "emailLabel": "Email",
+  "sendOtp": "Send code",
+  "otpLabel": "6-digit code",
+  "verifyOtp": "Verify and continue",
+  "otpSentTo": "Code sent to {destination}",
+  "@otpSentTo": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
+  "changeNumber": "Change",
+  "resendOtp": "Resend code",
+  "useEmailInstead": "Owner? Sign in with email",
+  "usePhoneInstead": "Sign in with mobile number",
+  "invalidPhone": "Enter a valid 10-digit Indian mobile number",
+  "invalidEmail": "Enter a valid email address",
+  "invalidOtp": "Enter the 6-digit code",
+  "otpIncorrect": "The code is wrong or has expired. Try again or resend.",
+  "onboardingTitle": "Set up your company",
+  "onboardingSubtitle": "No team invite was found for this account. Create your company to continue as its owner. If your employer uses SolarKatha, ask them to invite this number.",
+  "yourNameLabel": "Your name",
+  "companyNameLabel": "Company name",
+  "stateLabel": "State",
+  "createCompany": "Create company",
+  "requiredField": "Required",
+  "deactivatedTitle": "Account deactivated",
+  "deactivatedBody": "Your company owner has deactivated this account. Contact them to get access again.",
+  "signOut": "Sign out",
+  "loading": "Loading…",
+  "retry": "Retry",
+  "errorGeneric": "Something went wrong. Please try again.",
+  "errorNetwork": "No internet connection. Check your network and try again.",
+  "comingSoon": "Coming in a later update",
+  "roleOwner": "Owner",
+  "roleSales": "Sales",
+  "roleInstaller": "Installer",
+  "navHome": "Home",
+  "navLeads": "Leads",
+  "navProjects": "Projects",
+  "navSettings": "Settings",
+  "navOverview": "Overview",
+  "navSubsidy": "Subsidy tracker",
+  "navTeam": "Team",
+  "navProducts": "Products",
+  "navConfig": "Config",
+  "navBranding": "Branding",
+  "greeting": "Namaste, {name}",
+  "@greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "newLead": "New lead",
+  "followUpsToday": "Today's follow-ups",
+  "noFollowUps": "No follow-ups today",
+  "leadsByStatus": "Leads by status",
+  "statusNew": "New",
+  "statusSurveyed": "Surveyed",
+  "statusProposalSent": "Proposal sent",
+  "statusWon": "Won",
+  "statusLost": "Lost",
+  "online": "Online",
+  "offline": "Offline",
+  "searchLeads": "Search by name or phone",
+  "leadsEmptyTitle": "No leads yet",
+  "leadsEmptyBody": "Leads you add will appear here, even when you are offline.",
+  "projectsEmptyTitle": "No projects yet",
+  "projectsEmptyBody": "Projects appear here once a customer signs a proposal and you are assigned to it.",
+  "kpiLeadsThisMonth": "Leads this month",
+  "kpiConversion": "Conversion rate",
+  "kpiKwSold": "kW sold",
+  "kpiRevenue": "Revenue",
+  "kpiSubsidiesPending": "Subsidies pending",
+  "pipelineTitle": "Pipeline",
+  "dashboardEmpty": "Numbers appear here once your team starts adding leads.",
+  "settingsTitle": "Settings",
+  "profileSection": "Profile",
+  "nameLabel": "Name",
+  "roleLabel": "Role",
+  "companyLabel": "Company",
+  "displaySection": "Display",
+  "highContrast": "High contrast",
+  "highContrastHint": "Stronger colours for bright sunlight",
+  "largeText": "Large text",
+  "largeTextHint": "Bigger letters across the app",
+  "syncSection": "Sync",
+  "syncStatusOnline": "Connected to server",
+  "save": "Save",
+  "saved": "Saved",
+  "trackingTitle": "Track your solar project",
+  "trackingComingSoon": "Your installer will share project updates on this page.",
+  "notFoundTitle": "Page not found",
+  "goHome": "Go to home",
+  "configMissingTitle": "App not configured",
+  "configMissingBody": "Supabase URL and key are missing. Build with --dart-define-from-file=env/dev.json (see README).",
+  "editLead": "Edit lead",
+  "saveLead": "Save lead",
+  "leadSaved": "Lead saved",
+  "leadDeleted": "Lead deleted",
+  "deleteLead": "Delete lead",
+  "deleteLeadConfirm": "Delete this lead? It will be removed from all devices.",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "customerSection": "Customer",
+  "addressSection": "Address & location",
+  "followUpSection": "Follow-up",
+  "leadNameLabel": "Customer name",
+  "leadPhoneLabel": "Mobile number",
+  "leadAltPhoneLabel": "Alternate number (optional)",
+  "leadAddressLabel": "House / street / area",
+  "leadDistrictLabel": "District",
+  "leadPincodeLabel": "PIN code",
+  "invalidPincode": "Enter a 6-digit PIN code",
+  "leadSourceLabel": "Source",
+  "sourceWalkIn": "Walk-in",
+  "sourceReferral": "Referral",
+  "sourceCall": "Phone call",
+  "sourceCampaign": "Campaign",
+  "leadNotesLabel": "Notes",
+  "followUpLabel": "Next follow-up",
+  "followUpNone": "Not set",
+  "clear": "Clear",
+  "assignedToLabel": "Assigned to",
+  "captureLocation": "Use my current location",
+  "locationCaptured": "Location saved",
+  "locationFailed": "Couldn't get location. Turn on GPS and allow location access.",
+  "consentLabel": "Customer agrees to share their electricity bill and site photos with us",
+  "consentRequiredForPhotos": "Record the customer's consent (Edit lead) before adding photos.",
+  "draftRestored": "Unsaved draft restored",
+  "discardDraft": "Discard",
+  "call": "Call",
+  "whatsapp": "WhatsApp",
+  "directions": "Directions",
+  "notSynced": "Not synced",
+  "allStatuses": "All",
+  "allReps": "Everyone",
+  "leadNotFound": "This lead no longer exists.",
+  "changeStatus": "Change status",
+  "lostReasonLabel": "Why was it lost?",
+  "tabOverview": "Overview",
+  "tabBill": "Bill",
+  "tabSurvey": "Survey",
+  "tabProposals": "Proposals",
+  "tabProject": "Project",
+  "photosTitle": "Site photos",
+  "photosChecklist": "{done} of {total} checklist photos",
+  "@photosChecklist": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "takePhoto": "Take photo",
+  "chooseFromGallery": "Choose from gallery",
+  "photoKindRoof": "Roof",
+  "photoKindMeter": "Meter",
+  "photoKindDbBox": "DB box",
+  "photoKindWiring": "Wiring path",
+  "photoKindBill": "Electricity bill",
+  "photoKindOther": "Other",
+  "photoWaiting": "Waiting to upload",
+  "deletePhoto": "Delete photo",
+  "noResults": "No leads match your search.",
+  "addedOn": "Added {date}",
+  "@addedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "followUpOn": "Follow up {date}",
+  "@followUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "overdue": "Overdue",
+  "totalLeads": "Total leads",
+  "openLeads": "Open",
+  "wonLeads": "Won",
+  "offlineBanner": "You're offline. Everything you do is saved on this phone and will sync automatically.",
+  "syncing": "Syncing…",
+  "syncedAt": "Last synced {time}",
+  "@syncedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "neverSynced": "Not synced yet",
+  "syncNotConfigured": "Sync is not set up in this build; data stays on this device.",
+  "pendingChanges": "{count, plural, =0{All changes uploaded} =1{1 change waiting to upload} other{{count} changes waiting to upload}}",
+  "@pendingChanges": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scanBill": "Scan bill",
+  "enterBillManually": "Enter manually",
+  "scanQueued": "Bill photo saved. It will be read automatically when the phone is online.",
+  "scanReady": "Bill read. Tap to check and confirm.",
+  "scanFailed": "Couldn't read the bill: {error}",
+  "@scanFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "retry2": "Try again",
+  "reviewScan": "Review",
+  "discardScan": "Discard",
+  "noBillsTitle": "No bill yet",
+  "noBillsBody": "Scan the customer's electricity bill, or type the values from it.",
+  "billFromScan": "Read by AI",
+  "billManual": "Typed in",
+  "avgUnitsShort": "{units} units/month",
+  "@avgUnitsShort": {
+    "placeholders": {
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "sizeSystem": "Size the system",
+  "sizingCta": "See system size, subsidy, EMI and payback",
+  "billFormTitle": "Electricity bill",
+  "confirmBill": "Confirm bill",
+  "billSaved": "Bill saved",
+  "deleteBill": "Delete bill",
+  "discomLabel": "DISCOM",
+  "consumerNumberLabel": "Consumer number",
+  "billCustomerNameLabel": "Name on bill",
+  "tariffCategoryLabel": "Tariff category",
+  "sanctionedLoadLabel": "Sanctioned load (kW)",
+  "billingPeriodLabel": "Billing period",
+  "avgUnitsLabel": "Average monthly units (kWh)",
+  "billAmountLabel": "Bill amount (₹)",
+  "unitsHistoryTitle": "Monthly units printed on the bill",
+  "checkThisField": "Please check: the AI was not sure",
+  "duplicateConsumer": "This consumer number is already on another lead. Only one central subsidy is allowed per household.",
+  "invalidNumber": "Enter a valid number",
+  "sizingTitle": "System sizing",
+  "usageSection": "Customer usage",
+  "roofAreaLabel": "Usable roof area (m², optional)",
+  "shadingLabel": "Shading",
+  "shadingNone": "None",
+  "shadingLow": "Low",
+  "shadingMedium": "Medium",
+  "shadingHigh": "High",
+  "dcrPanels": "DCR & ALMM-listed panels",
+  "dcrHint": "Required for the subsidy",
+  "recommendedLabel": "Recommended",
+  "recommendedKw": "Recommended: {kw}",
+  "@recommendedKw": {
+    "placeholders": {
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "requiredKwNote": "Covers about {units} units a month",
+  "@requiredKwNote": {
+    "placeholders": {
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "exceedsLoad": "Above the sanctioned load ({load} kW). The customer may need a load increase.",
+  "@exceedsLoad": {
+    "placeholders": {
+      "load": {
+        "type": "String"
+      }
+    }
+  },
+  "limitedByRoof": "Limited by roof area (max {kw}).",
+  "@limitedByRoof": {
+    "placeholders": {
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "compareTitle": "Compare sizes",
+  "customSize": "Custom",
+  "generationTitle": "Monthly generation",
+  "generationPvgis": "Based on PVGIS solar data for this location",
+  "generationFallback": "Estimate ({kwh} units per kW per day). Add the site location and go online for a location-based figure.",
+  "@generationFallback": {
+    "placeholders": {
+      "kwh": {
+        "type": "String"
+      }
+    }
+  },
+  "perYear": "{kwh} units a year",
+  "@perYear": {
+    "placeholders": {
+      "kwh": {
+        "type": "String"
+      }
+    }
+  },
+  "subsidySection": "Subsidy",
+  "centralSubsidy": "Central (PM Surya Ghar)",
+  "stateSubsidy": "State top-up",
+  "totalSubsidy": "Total subsidy",
+  "subsidyPerKw": "About {amount} per kW",
+  "@subsidyPerKw": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "subsidyLine": "{from}–{to} kW × {rate}",
+  "@subsidyLine": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "noSubsidyNonDcr": "No subsidy: panels must be DCR and ALMM-listed.",
+  "costSection": "Cost",
+  "grossPrice": "System price",
+  "pricePerKwLabel": "Price per kW (₹)",
+  "netPrice": "Customer pays after subsidy",
+  "loanSection": "Loan & EMI",
+  "loanBank": "Loan option",
+  "interestRate": "Interest % a year",
+  "tenureYears": "Years",
+  "loanAmountLabel": "Loan amount (₹)",
+  "emiLabel": "EMI",
+  "currentBillLabel": "Current bill",
+  "perMonth": "a month",
+  "emiVsBillGood": "EMI is lower than today's bill",
+  "savingsSection": "Savings",
+  "monthlySaving": "Saving a month (year 1)",
+  "paybackLabel": "Payback",
+  "paybackYears": "{years} years",
+  "@paybackYears": {
+    "placeholders": {
+      "years": {
+        "type": "String"
+      }
+    }
+  },
+  "noPayback": "More than {years} years",
+  "@noPayback": {
+    "placeholders": {
+      "years": {
+        "type": "String"
+      }
+    }
+  },
+  "lifetimeSavings": "{years}-year savings",
+  "@lifetimeSavings": {
+    "placeholders": {
+      "years": {
+        "type": "String"
+      }
+    }
+  },
+  "configMissing": "Pricing settings haven't reached this device yet. Connect to the internet and open this again.",
+  "noTariffUsingBill": "No tariff for this state yet; using the average rate from the bill.",
+  "noTariff": "Add the bill amount (or a tariff for this state) to see savings.",
+  "needUsage": "Enter the average monthly units to size the system.",
+  "rowGeneration": "Units / month",
+  "rowSubsidy": "Subsidy",
+  "rowNet": "Customer pays",
+  "rowEmi": "EMI",
+  "rowPayback": "Payback"
+}

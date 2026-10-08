@@ -1,0 +1,48 @@
+name: Deploy web
+
+# Builds the Flutter web app (owner dashboard + customer tracking page) and
+# deploys it to Vercel as a prebuilt static site with an SPA rewrite.
+#
+# Secrets: APP_ENV_JSON (contents of env/prod.json), VERCEL_TOKEN,
+# VERCEL_ORG_ID, VERCEL_PROJECT_ID.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-web
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    defaults:
+      run:
+        working-directory: app
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Write build config
+        env:
+          APP_ENV_JSON: ${{ secrets.APP_ENV_JSON }}
+        run: echo "$APP_ENV_JSON" > env/build.json
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web --release --dart-define-from-file=env/build.json
+      - name: Assemble Vercel build output
+        run: |
+          rm -rf .vercel/output
+          mkdir -p .vercel/output
+          cp -r build/web .vercel/output/static
+          cp vercel/config.json .vercel/output/config.json
+      - name: Deploy
+        run: npx --yes vercel@latest deploy --prebuilt --prod --token "${{ secrets.VERCEL_TOKEN }}"

@@ -1,0 +1,7 @@
+{
+  "APP_ENV": "dev",
+  "SUPABASE_URL": "https://YOUR-PROJECT-REF.supabase.co",
+  "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_xxx (or the legacy anon key)",
+  "POWERSYNC_URL": "",
+  "MAPS_API_KEY": ""
+}

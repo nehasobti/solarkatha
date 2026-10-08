@@ -1,0 +1,12 @@
+name: solar_core
+description: Pure Dart solar maths for SolarKatha - sizing, generation, subsidy, tariff savings, EMI and payback. No Flutter, no network.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.13.5
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.26.0
+  coverage: ^1.15.0

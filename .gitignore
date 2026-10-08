@@ -1,0 +1,21 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+app/env/*.json
+!app/env/*.example.json
+supabase/.env
+supabase/.temp/
+supabase/.branches/
+
+# Editors / OS
+.idea/
+.DS_Store
+Thumbs.db
+
+# Node / Vercel
+node_modules/
+.vercel/
+
+# PowerSync DB role password (local only)
+powersync/powersync_role_password.txt

@@ -1,0 +1,70 @@
+# Local Supabase stack (`supabase start`). Hosted projects are configured in
+# the Supabase dashboard; keep the auth settings there in line with this file.
+project_id = "solarkatha"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+file_size_limit = "10MiB"
+
+[auth]
+enabled = true
+# Flutter web dev server: flutter run -d chrome --web-port 3000
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false
+otp_length = 6
+otp_expiry = 3600
+
+[auth.email.template.magic_link]
+subject = "Your SolarKatha login code"
+content_path = "./supabase/templates/magic_link.html"
+
+[auth.sms]
+enable_signup = true
+enable_confirmations = false
+template = "Your SolarKatha code is {{ .Code }}"
+max_frequency = "5s"
+
+# Test numbers never send a real SMS. Digits include the country code.
+[auth.sms.test_otp]
+919999900001 = "123456"
+919999900002 = "123456"
+919999900003 = "123456"
+
+# Phone sign-in needs an SMS provider to be enabled even when only test numbers
+# are used. These are placeholders; real SMS is a later phase.
+[auth.sms.twilio]
+enabled = true
+account_sid = "ACplaceholder"
+message_service_sid = "MGplaceholder"
+auth_token = "placeholder"
