@@ -71,4 +71,25 @@ void main() {
     verify(() => auth.verifyPhoneOtp(phone: '+919999900002', token: '123456'))
         .called(1);
   });
+
+  testWidgets('demo button signs in as the owner test number', (tester) async {
+    await pumpApp(tester, session: const SignedOut(), auth: auth);
+    await tester.ensureVisible(find.byKey(const Key('login.demo.owner')));
+    await tester.tap(find.byKey(const Key('login.demo.owner')));
+    await tester.pumpAndSettle();
+    verify(() => auth.sendPhoneOtp('+919999900001')).called(1);
+    verify(() => auth.verifyPhoneOtp(phone: '+919999900001', token: '123456'))
+        .called(1);
+  });
+
+  testWidgets('web landing shows the pitch next to the login', (tester) async {
+    await pumpApp(
+      tester,
+      session: const SignedOut(),
+      auth: auth,
+      size: const Size(1280, 900),
+    );
+    expect(find.textContaining('Sell rooftop solar faster'), findsOneWidget);
+    expect(find.text('Try the demo'), findsOneWidget);
+  });
 }

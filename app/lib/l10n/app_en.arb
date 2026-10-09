@@ -759,5 +759,18 @@
   "invalidJson": "Not valid. Use the same format as before, e.g. [ ... ]",
   "panelLengthLabel": "Panel length (m)",
   "panelWidthLabel": "Panel width (m)",
-  "panelSizeHint": "From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey."
+  "panelSizeHint": "From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.",
+  "demoTitle": "Try the demo",
+  "demoBody": "No SMS needed. Pick a role; it signs in with a test number (code 123456). Demo data resets every Monday.",
+  "demoAsOwner": "Owner",
+  "demoAsSales": "Sales rep",
+  "demoAsInstaller": "Installer",
+  "landingHeadline": "Sell rooftop solar faster, from first visit to subsidy credit.",
+  "landingF1": "Scan an electricity bill with AI and size the system in seconds",
+  "landingF2": "Draw the roof on satellite imagery; panels fit automatically",
+  "landingF3": "Hindi and English proposals as PDF, shared on WhatsApp, signed on the phone",
+  "landingF4": "UPI advance payment links that mark themselves paid",
+  "landingF5": "Track all 10 PM Surya Ghar subsidy stages; customers get a live link",
+  "landingF6": "Works offline at the site and syncs when back online",
+  "downloadApk": "Download Android app"
 }

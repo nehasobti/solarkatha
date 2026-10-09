@@ -1559,4 +1559,49 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get panelSizeHint =>
       'डेटाशीट से, जैसे 710 W के लिए 2.384 × 1.303। छत सर्वे में काम आता है।';
+
+  @override
+  String get demoTitle => 'डेमो आज़माएँ';
+
+  @override
+  String get demoBody =>
+      'SMS की ज़रूरत नहीं। कोई भूमिका चुनें; टेस्ट नंबर से लॉगिन होगा (कोड 123456)। डेमो डेटा हर सोमवार रीसेट होता है।';
+
+  @override
+  String get demoAsOwner => 'मालिक';
+
+  @override
+  String get demoAsSales => 'सेल्स';
+
+  @override
+  String get demoAsInstaller => 'इंस्टॉलर';
+
+  @override
+  String get landingHeadline =>
+      'रूफटॉप सोलर तेज़ी से बेचें, पहली मुलाक़ात से सब्सिडी मिलने तक।';
+
+  @override
+  String get landingF1 =>
+      'AI से बिजली बिल स्कैन करें और सेकंडों में सिस्टम साइज़ तय करें';
+
+  @override
+  String get landingF2 =>
+      'सैटेलाइट तस्वीर पर छत बनाएँ; पैनल अपने आप फ़िट होते हैं';
+
+  @override
+  String get landingF3 =>
+      'हिंदी और अंग्रेज़ी प्रस्ताव PDF, WhatsApp पर भेजें, फ़ोन पर साइन';
+
+  @override
+  String get landingF4 => 'UPI एडवांस पेमेंट लिंक, भुगतान अपने आप दर्ज';
+
+  @override
+  String get landingF5 =>
+      'PM सूर्य घर सब्सिडी के सभी 10 चरण ट्रैक करें; ग्राहक को लाइव लिंक';
+
+  @override
+  String get landingF6 => 'साइट पर ऑफ़लाइन काम करता है, नेटवर्क आने पर सिंक';
+
+  @override
+  String get downloadApk => 'Android ऐप डाउनलोड करें';
 }

@@ -90,12 +90,18 @@ Future<void> pumpApp(
   FakeProjectsRepository? projects,
   FakeAdminRepository? admin,
   FakeTrackingApi? tracking,
+  bool highContrast = false,
+  bool largeText = false,
 }) async {
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
 
-  SharedPreferences.setMockInitialValues({'pref.language': language});
+  SharedPreferences.setMockInitialValues({
+    'pref.language': language,
+    'pref.highContrast': highContrast,
+    'pref.largeText': largeText,
+  });
   final prefs = await SharedPreferences.getInstance();
 
   await tester.pumpWidget(

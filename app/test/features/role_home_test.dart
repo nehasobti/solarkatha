@@ -116,4 +116,26 @@ void main() {
     );
     expect(find.text('नई लीड'), findsOneWidget);
   });
+
+  group('accessibility', () {
+    Future<void> outdoor(WidgetTester tester, UserRole role) async {
+      await pumpApp(
+        tester,
+        session: readyAs(role),
+        size: const Size(360, 640),
+        highContrast: true,
+        largeText: true,
+      );
+      expect(tester.takeException(), isNull);
+    }
+
+    testWidgets(
+      'owner dashboard: 360 dp, high contrast, large text',
+      (tester) => outdoor(tester, UserRole.owner),
+    );
+    testWidgets(
+      'sales home: 360 dp, high contrast, large text',
+      (tester) => outdoor(tester, UserRole.sales),
+    );
+  });
 }

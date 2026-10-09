@@ -2953,6 +2953,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.'**
   String get panelSizeHint;
+
+  /// No description provided for @demoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Try the demo'**
+  String get demoTitle;
+
+  /// No description provided for @demoBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No SMS needed. Pick a role; it signs in with a test number (code 123456). Demo data resets every Monday.'**
+  String get demoBody;
+
+  /// No description provided for @demoAsOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get demoAsOwner;
+
+  /// No description provided for @demoAsSales.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales rep'**
+  String get demoAsSales;
+
+  /// No description provided for @demoAsInstaller.
+  ///
+  /// In en, this message translates to:
+  /// **'Installer'**
+  String get demoAsInstaller;
+
+  /// No description provided for @landingHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell rooftop solar faster, from first visit to subsidy credit.'**
+  String get landingHeadline;
+
+  /// No description provided for @landingF1.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan an electricity bill with AI and size the system in seconds'**
+  String get landingF1;
+
+  /// No description provided for @landingF2.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw the roof on satellite imagery; panels fit automatically'**
+  String get landingF2;
+
+  /// No description provided for @landingF3.
+  ///
+  /// In en, this message translates to:
+  /// **'Hindi and English proposals as PDF, shared on WhatsApp, signed on the phone'**
+  String get landingF3;
+
+  /// No description provided for @landingF4.
+  ///
+  /// In en, this message translates to:
+  /// **'UPI advance payment links that mark themselves paid'**
+  String get landingF4;
+
+  /// No description provided for @landingF5.
+  ///
+  /// In en, this message translates to:
+  /// **'Track all 10 PM Surya Ghar subsidy stages; customers get a live link'**
+  String get landingF5;
+
+  /// No description provided for @landingF6.
+  ///
+  /// In en, this message translates to:
+  /// **'Works offline at the site and syncs when back online'**
+  String get landingF6;
+
+  /// No description provided for @downloadApk.
+  ///
+  /// In en, this message translates to:
+  /// **'Download Android app'**
+  String get downloadApk;
 }
 
 class _AppLocalizationsDelegate

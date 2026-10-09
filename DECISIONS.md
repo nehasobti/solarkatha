@@ -140,3 +140,18 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 12. **Panel size per product.** Panels have `length_m`/`width_m`. The survey uses the size of the chosen panel, falling back to the `app_config` default. For example, 710 W panels (≈ 2.38 × 1.30 m) fit correctly.
 13. **CSV export** (leads, projects) is UTF-8 with BOM so Excel shows Hindi names, shared through the system share sheet or downloaded on web.
 14. **Deferred:** FCM push (needs a Firebase project). In-app notifications (bell) cover the same events for now.
+
+## Phase 7 – Polish and launch
+
+1. **Demo reset is a database function** (`private.reset_demo()`), not an Edge Function. `pg_cron` calls it every Monday at 03:00 IST.
+   - It only touches the demo company.
+   - It deletes in foreign-key order, then signs the demo proposals through the normal triggers, so projects, stages and notifications are created exactly as in real use.
+   - Demo prices follow the seeded subsidy rules: central plus the UP top-up.
+2. **Landing page = login page.** On web screens 900 px and wider, the pitch and feature list sit next to the login. The "Try the demo" card signs in with one tap using the Supabase test numbers and their fixed OTP, so no SMS is sent.
+3. **APK download** is served by the web deploy (`/solarkatha.apk`, signed release build). There is no GitHub remote yet, so GitHub Releases (`release-apk.yml`) isn't used.
+4. **Signing key** is generated locally and kept out of git (`app/android/app/solarkatha-release.jks` + `key.properties`). Losing it means existing installs can't be updated.
+5. **High contrast and large text** were already settings (Phase 1). Phase 7 adds tests at 360 dp with both turned on, for the owner and sales screens.
+6. **Screenshots** were taken from the live demo with headless Chrome (`docs/screenshots/`).
+7. **Not done by me:**
+   - **Demo video:** needs a screen recording.
+   - **Performance on a real low-end phone:** I can't run one. The APK is split per ABI (23–27 MB), and the universal APK is 71 MB.

@@ -1557,4 +1557,50 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get panelSizeHint =>
       'From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.';
+
+  @override
+  String get demoTitle => 'Try the demo';
+
+  @override
+  String get demoBody =>
+      'No SMS needed. Pick a role; it signs in with a test number (code 123456). Demo data resets every Monday.';
+
+  @override
+  String get demoAsOwner => 'Owner';
+
+  @override
+  String get demoAsSales => 'Sales rep';
+
+  @override
+  String get demoAsInstaller => 'Installer';
+
+  @override
+  String get landingHeadline =>
+      'Sell rooftop solar faster, from first visit to subsidy credit.';
+
+  @override
+  String get landingF1 =>
+      'Scan an electricity bill with AI and size the system in seconds';
+
+  @override
+  String get landingF2 =>
+      'Draw the roof on satellite imagery; panels fit automatically';
+
+  @override
+  String get landingF3 =>
+      'Hindi and English proposals as PDF, shared on WhatsApp, signed on the phone';
+
+  @override
+  String get landingF4 => 'UPI advance payment links that mark themselves paid';
+
+  @override
+  String get landingF5 =>
+      'Track all 10 PM Surya Ghar subsidy stages; customers get a live link';
+
+  @override
+  String get landingF6 =>
+      'Works offline at the site and syncs when back online';
+
+  @override
+  String get downloadApk => 'Download Android app';
 }

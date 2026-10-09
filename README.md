@@ -2,7 +2,87 @@
 
 **For Indian rooftop solar installers: scan the bill, size the system, work out the PM Surya Ghar subsidy and EMI, send a Hindi or English proposal on WhatsApp, and track every customer until the subsidy is credited.**
 
-> Status: **Phase 6 of 7 built.** Done so far: login and roles in Hindi and English; leads with offline sync and photos; AI bill scan; sizing with subsidy, EMI and payback; proposals with PDF, WhatsApp, signature and UPI payment; roof survey on satellite imagery with automatic panel layout; projects with the 10 subsidy stages, a public customer tracking page, notifications, and the owner dashboard with team, config and branding. Web: https://solarkatha.vercel.app
+| | |
+| --- | --- |
+| **Web demo** | https://solarkatha.vercel.app |
+| **Android app** | https://solarkatha.vercel.app/solarkatha.apk (signed release APK) |
+| **Demo login** | On the login page, tap **Owner**, **Sales rep** or **Installer** under "Try the demo". No SMS needed (test numbers 99999 00001 / 00002 / 00003, code `123456`). Demo data resets every Monday 03:00 IST. |
+
+## Screenshots
+
+| Landing and demo login | Owner dashboard |
+| --- | --- |
+| ![Landing](docs/screenshots/web-login.png) | ![Dashboard](docs/screenshots/web-dashboard.png) |
+| **Roof survey on satellite imagery** | **Customer tracking page (Hindi)** |
+| ![Survey](docs/screenshots/web-survey.png) | ![Tracking](docs/screenshots/web-tracking.png) |
+
+| Leads (Hindi) | Sizing (Hindi) | Project stages (installer) | Subsidy tracker |
+| --- | --- | --- | --- |
+| ![Leads](docs/screenshots/phone-hi-leads.png) | ![Sizing](docs/screenshots/phone-hi-sizing.png) | ![Project](docs/screenshots/phone-en-project.png) | ![Subsidy](docs/screenshots/web-subsidy.png) |
+
+## Features
+
+- **Leads, offline first.** Create leads, photos and surveys with no network at the site. Everything syncs when the phone is back online (PowerSync).
+- **AI bill scan.** Photograph an electricity bill and Gemini reads the units, sanctioned load and DISCOM. The rep confirms the values.
+- **Sizing.**
+  - Recommends a kW size from usage, roof area and sanctioned load.
+  - Works out the central + state subsidy, EMI, payback and 25-year savings.
+  - Shows monthly generation from PVGIS.
+- **Roof survey.** The rep taps the roof corners on satellite imagery. Panels are laid out automatically using each product's own size, and the roof limits the system size.
+- **Proposals.**
+  - Compliance checklist (DCR, ALMM, approved inverter).
+  - Hindi/English PDF shared on WhatsApp, signed on the phone.
+  - Razorpay UPI link for the advance, marked paid automatically by the webhook.
+- **Projects.** The 10 PM Surya Ghar stages with due dates, overdue flags, documents, installer assignment and one-tap WhatsApp updates.
+- **Customer tracking page.** A public link with no login, where the customer signs, pays and follows progress. It works in Hindi or English and uses the company's colours.
+- **Owner dashboard.** kW sold, revenue, conversion, subsidies pending, projects by stage, team performance, CSV export and notifications.
+- **Business numbers in config.** Subsidy slabs, tariffs, loan presets, stage deadlines and WhatsApp templates can be edited per company. None are hard-coded.
+- **Field-friendly.** Hindi and English everywhere, a high-contrast theme and large text for outdoor use, and layouts that work on 360 dp phones.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  subgraph Devices
+    A["Android app (Flutter)"]
+    W["Web app (Flutter on Vercel)"]
+    C["Customer browser /t/token"]
+  end
+  subgraph Supabase["Supabase (Mumbai)"]
+    DB[("Postgres: RLS, triggers")]
+    AU["Auth: phone OTP"]
+    ST["Storage: photos, PDFs"]
+    EF["Edge Functions: bill-scan, generation-estimate, proposal-pdf-request, payment-link, razorpay-webhook, track"]
+    CR["pg_cron: weekly demo reset"]
+  end
+  PS["PowerSync Cloud"]
+  PDF["PDF service (Vercel + Chromium)"]
+  G["Gemini"]
+  PV["PVGIS"]
+  RZ["Razorpay"]
+
+  A <-->|local SQLite| PS
+  W <--> PS
+  PS <-->|replication| DB
+  A -->|uploads| DB
+  A --> AU
+  W --> AU
+  A --> EF
+  W --> EF
+  C --> EF
+  EF --> DB
+  EF --> ST
+  EF --> G
+  EF --> PV
+  EF --> PDF
+  EF --> RZ
+  RZ -->|webhook| EF
+  CR --> DB
+```
+
+- **On the device:** the app works on a local SQLite copy kept in sync by PowerSync. Writes are queued locally and uploaded to Supabase, where row-level security applies.
+- **Secrets stay on the server:** anything that needs a secret (Gemini, Razorpay, PDF signing) runs in an Edge Function.
+- **Rules live in the database:** stage rules, creating the project when a proposal is signed, and notifications are database triggers. So the app, the tracking page and the payment webhook all behave the same way.
 
 ## Repository layout
 
@@ -17,11 +97,10 @@ supabase/            migrations, RLS policies, seed, pgTAP tests, local config
 DECISIONS.md         choices made where the spec was open
 ```
 
-Later phases add `packages/solar_core/`, `supabase/functions/`, `pdf-service/` and `powersync/`.
 
 ## Tech stack
 
-Flutter (Material 3) · Riverpod 3 + riverpod_generator · go_router · freezed / json_serializable · Supabase (Postgres, Auth, Storage, Edge Functions) in Mumbai · PowerSync (Phase 2) · Gemini via an Edge Function (Phase 3) · Vercel · GitHub Actions.
+Flutter (Material 3) · Riverpod 3 + riverpod_generator · go_router · freezed / json_serializable · Supabase (Postgres, Auth, Storage, Edge Functions) in Mumbai · PowerSync · Gemini (via an Edge Function) · PVGIS · Razorpay · flutter_map + Esri imagery · Vercel · GitHub Actions.
 
 ## Local setup (Windows PowerShell)
 
@@ -129,3 +208,24 @@ To create the release keystore once:
 keytool -genkey -v -keystore solarkatha-release.jks -keyalg RSA -keysize 2048 -validity 10000 -alias solarkatha
 [Convert]::ToBase64String([IO.File]::ReadAllBytes("solarkatha-release.jks")) | Set-Clipboard
 ```
+
+### Demo data
+
+The demo company (`Demo Solar Solutions`) is rebuilt by `private.reset_demo()`. `pg_cron` runs it every Monday at 03:00 IST, and it can be run by hand from the SQL editor: `select private.reset_demo();`.
+
+The demo has:
+- 8 leads across the funnel
+- bills, and proposals in Hindi and English
+- two signed projects, one at stage 6 and one at stage 3
+- paid advances
+
+### Manual release (without CI)
+
+```powershell
+cd app
+flutter build apk --release --dart-define-from-file=env/dev.json
+flutter build web --release --dart-define-from-file=env/dev.json
+```
+
+- **Signing:** release APKs are signed with `app/android/app/solarkatha-release.jks`, using the passwords in `app/android/key.properties`. Both files are gitignored, so **back them up**: a new key cannot update an installed app.
+- **Hosting:** the APK is served from the web app at `/solarkatha.apk`. Copy it into `.vercel/output/static/` before running `vercel deploy --prebuilt --prod`.
