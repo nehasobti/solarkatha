@@ -73,3 +73,6 @@ auth_token = "placeholder"
 # the Razorpay signature instead.
 [functions.razorpay-webhook]
 verify_jwt = false
+
+[functions.track]
+verify_jwt = false

@@ -72,11 +72,11 @@ void main() {
     // Lands on the lead detail page.
     expect(find.text('Sunita Devi'), findsWidgets);
     expect(find.text('Not synced'), findsOneWidget);
-    await tester.scrollUntilVisible(
-      find.text('Site photos'),
-      300,
-      scrollable: find.byType(Scrollable).last,
-    );
+    expect(find.text('Change status'), findsOneWidget);
+
+    // Site photos live in the Survey tab.
+    await tester.tap(find.text('Survey'));
+    await tester.pumpAndSettle();
     expect(find.text('Site photos'), findsOneWidget);
   });
 

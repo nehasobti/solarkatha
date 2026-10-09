@@ -211,7 +211,8 @@ class LeadsRepository {
       .watch(
         'SELECT p.id, p.kind, a.state, a.local_uri FROM $leadPhotosTable p '
         'LEFT JOIN ${AttachmentsQueueTable.defaultTableName} a ON a.id = p.id '
-        'WHERE p.lead_id = ? AND p.deleted_at IS NULL ORDER BY p.created_at',
+        "WHERE p.lead_id = ? AND p.deleted_at IS NULL AND p.kind != 'roof_layout' "
+        'ORDER BY p.created_at',
         parameters: [leadId],
       )
       .map(

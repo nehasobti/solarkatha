@@ -36,6 +36,7 @@ dependencies:
     path: ../packages/solar_core
   share_plus: ^13.3.1
   signature: ^6.4.0
+  flutter_map: ^8.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

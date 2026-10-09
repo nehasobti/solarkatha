@@ -150,6 +150,12 @@ class _ProductFormState extends ConsumerState<_ProductForm> {
   late final _wp = TextEditingController(
     text: widget.product?.wattPeak?.round().toString(),
   );
+  late final _length = TextEditingController(
+    text: widget.product?.lengthM?.toString(),
+  );
+  late final _width = TextEditingController(
+    text: widget.product?.widthM?.toString(),
+  );
   late final _warranty = TextEditingController(
     text: widget.product?.warrantyYears?.toString(),
   );
@@ -163,7 +169,7 @@ class _ProductFormState extends ConsumerState<_ProductForm> {
 
   @override
   void dispose() {
-    for (final c in [_brand, _model, _wp, _warranty, _price]) {
+    for (final c in [_brand, _model, _wp, _length, _width, _warranty, _price]) {
       c.dispose();
     }
     super.dispose();
@@ -184,6 +190,12 @@ class _ProductFormState extends ConsumerState<_ProductForm> {
             brand: _brand.text,
             model: _model.text,
             wattPeak: double.tryParse(_wp.text),
+            lengthM: _type == ProductType.panel
+                ? double.tryParse(_length.text)
+                : null,
+            widthM: _type == ProductType.panel
+                ? double.tryParse(_width.text)
+                : null,
             isDcr: _dcr,
             almmListed: _almm,
             approvedList: _approved,
@@ -196,6 +208,20 @@ class _ProductFormState extends ConsumerState<_ProductForm> {
     nav.pop();
     messenger.showSnackBar(SnackBar(content: Text(l10n.productSaved)));
   }
+
+  Widget _metres(TextEditingController c, String label) => TextFormField(
+    controller: c,
+    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9.]'))],
+    decoration: InputDecoration(labelText: label),
+    validator: (v) {
+      if ((v ?? '').isEmpty) return null;
+      final m = double.tryParse(v!);
+      return m != null && m > 0.3 && m < 3.5
+          ? null
+          : context.l10n.requiredField;
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -280,6 +306,21 @@ class _ProductFormState extends ConsumerState<_ProductForm> {
               validator: required,
             ),
             if (_type == ProductType.panel) ...[
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(child: _metres(_length, l10n.panelLengthLabel)),
+                  const SizedBox(width: 12),
+                  Expanded(child: _metres(_width, l10n.panelWidthLabel)),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  l10n.panelSizeHint,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
               SwitchListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(l10n.dcrLabel),

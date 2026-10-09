@@ -2,22 +2,16 @@ import 'dart:math' as math;
 
 import 'package:latlong2/latlong.dart';
 
-/// Survey settings. Seeded here; moves to `app_config` / the products table
-/// once those exist (see DECISIONS.md).
+/// Panel fitting settings, from `app_config` (panel size, gap, edge setback,
+/// m² per kW) and the chosen panel's watt peak.
 class SurveyConfig {
   const SurveyConfig({
-    this.panelLengthM = 2.278,
-    this.panelWidthM = 1.134,
-    this.panelWattPeak = 550,
-    this.panelGapM = 0.05,
-    this.edgeSetbackM = 0.6,
-    this.sqmPerKw = 10,
-    this.shadingLossPct = const {
-      ShadingLevel.none: 0,
-      ShadingLevel.low: 3,
-      ShadingLevel.medium: 8,
-      ShadingLevel.high: 15,
-    },
+    required this.panelLengthM,
+    required this.panelWidthM,
+    required this.panelWattPeak,
+    required this.panelGapM,
+    required this.edgeSetbackM,
+    required this.sqmPerKw,
   });
 
   final double panelLengthM;
@@ -26,10 +20,29 @@ class SurveyConfig {
   final double panelGapM;
   final double edgeSetbackM;
   final double sqmPerKw;
-  final Map<ShadingLevel, double> shadingLossPct;
-}
 
-enum ShadingLevel { none, low, medium, high }
+  /// From decoded `app_config` values. Throws [FormatException] naming the
+  /// first missing key.
+  factory SurveyConfig.fromMap(
+    Map<String, Object?> values, {
+    required double panelWattPeak,
+  }) {
+    double n(String key) {
+      final v = values[key];
+      if (v is num) return v.toDouble();
+      throw FormatException('app_config "$key" is missing or not a number');
+    }
+
+    return SurveyConfig(
+      panelLengthM: n('panel_length_m'),
+      panelWidthM: n('panel_width_m'),
+      panelGapM: n('panel_gap_m'),
+      edgeSetbackM: n('roof_setback_m'),
+      sqmPerKw: n('sqm_per_kw'),
+      panelWattPeak: panelWattPeak,
+    );
+  }
+}
 
 /// A point in metres on a local flat plane around the roof.
 typedef Xy = ({double x, double y});
@@ -133,10 +146,7 @@ class PanelLayout {
 /// Fits panels in a grid aligned to the roof's longest edge, keeping
 /// [SurveyConfig.edgeSetbackM] clear of every edge. Tries portrait and
 /// landscape and several grid offsets, and keeps the best.
-PanelLayout fitPanels(
-  List<LatLng> roof, {
-  SurveyConfig config = const SurveyConfig(),
-}) {
+PanelLayout fitPanels(List<LatLng> roof, {required SurveyConfig config}) {
   if (roof.length < 3) {
     return PanelLayout(
       areaSqm: 0,

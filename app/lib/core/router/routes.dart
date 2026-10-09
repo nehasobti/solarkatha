@@ -18,10 +18,13 @@ abstract final class Routes {
   static String editBill(String leadId, String billId) =>
       '/leads/$leadId/bill/$billId';
   static String sizing(String leadId) => '/leads/$leadId/sizing';
+  static String survey(String leadId) => '/leads/$leadId/survey';
   static String newProposal(String leadId) => '/leads/$leadId/proposals/new';
   static String proposal(String leadId, String id) =>
       '/leads/$leadId/proposals/$id';
   static const projects = '/projects';
+  static String project(String id) => '/projects/$id';
+  static const notifications = '/notifications';
   static const settings = '/settings';
 
   static const dashboard = '/dashboard';
@@ -48,9 +51,10 @@ abstract final class Routes {
       config,
       branding,
       settings,
+      notifications,
     },
-    UserRole.sales: {home, leads, settings},
-    UserRole.installer: {projects, settings},
+    UserRole.sales: {home, leads, settings, notifications},
+    UserRole.installer: {projects, settings, notifications},
   };
 
   static String homeFor(UserRole role) => switch (role) {

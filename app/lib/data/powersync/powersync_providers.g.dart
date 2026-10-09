@@ -137,7 +137,7 @@ final class PhotoQueueProvider
   }
 }
 
-String _$photoQueueHash() => r'8b89bbf0aef65a5c7f163691b3a05d80d1a4b491';
+String _$photoQueueHash() => r'fd36f40de642ee487a726e2e2cae72fbaa405b6c';
 
 /// Connects sync and the photo queue while someone is signed in; clears the
 /// device when they sign out.

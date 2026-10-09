@@ -5,6 +5,7 @@ import 'package:solarkatha/core/router/routes.dart';
 import 'package:solarkatha/data/models/user_role.dart';
 import 'package:solarkatha/features/bills/domain/bill.dart';
 import 'package:solarkatha/features/proposals/domain/proposal.dart';
+import 'package:solarkatha/features/survey/domain/site.dart';
 
 import '../../helpers/fakes.dart';
 import '../sizing/sizing_screen_test.dart' show upLead;
@@ -35,6 +36,15 @@ Future<FakeProposalsRepository> openBuilder(
     ),
     bills: FakeBillsRepository(bills: [billWithConsumer]),
     proposals: repo,
+    // Surveyed roof: roof type recorded (compliance), roof allows 5 kW.
+    survey: FakeSurveyRepository(
+      site: const Site(
+        id: 's1',
+        leadId: 'l1',
+        roofType: RoofType.rcc,
+        maxKw: 5,
+      ),
+    ),
   );
   GoRouter.of(tester.element(find.byType(Scaffold).first))
       .go(route ?? Routes.newProposal('l1'));
@@ -102,7 +112,6 @@ void main() {
       expect(whatsapp.onPressed, isNull);
 
       await tester.tap(find.byKey(const Key('compliance.ownConnection')));
-      await tester.tap(find.byKey(const Key('compliance.roofType')));
       await tester.pumpAndSettle();
       expect(
         find.text(

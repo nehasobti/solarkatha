@@ -46,6 +46,8 @@ export function buildPdfPayload(input: {
   inverter?: Row | null;
   validDays: number;
   lifetimeYears: number;
+  /** PNG data URL of the surveyed roof layout, if any. */
+  roofLayoutPng?: string | null;
 }): Record<string, unknown> {
   const { proposal: p, lead, company, panel, inverter } = input;
   const gen = (p.est_generation as { monthly?: unknown[] } | null)?.monthly;
@@ -129,6 +131,7 @@ export function buildPdfPayload(input: {
     },
     signature_png: s(p.signature_png),
     signed_at: s(p.signed_at),
+    roof_layout_png: input.roofLayoutPng ?? null,
   };
 }
 
@@ -274,4 +277,14 @@ export function parseWebhook(event: unknown): WebhookUpdate | null {
     default:
       return null;
   }
+}
+
+/** Base64 for large byte arrays (chunked to avoid call-stack limits). */
+export function bytesToBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  }
+  return btoa(binary);
 }

@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../features/admin/presentation/branding_screen.dart';
+import '../../features/admin/presentation/config_screen.dart';
+import '../../features/admin/presentation/notifications_screen.dart';
+import '../../features/admin/presentation/subsidy_screen.dart';
+import '../../features/admin/presentation/team_screen.dart';
 import '../../features/auth/application/app_session.dart';
 import '../../features/auth/application/session_controller.dart';
 import '../../features/auth/presentation/deactivated_screen.dart';
@@ -11,17 +16,17 @@ import '../../features/auth/presentation/splash_screen.dart';
 import '../../features/bills/presentation/bill_form_screen.dart';
 import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/sizing/presentation/sizing_screen.dart';
-import '../../features/dashboard/presentation/section_placeholder_screen.dart';
+import '../../features/survey/presentation/survey_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/leads/presentation/lead_detail_screen.dart';
 import '../../features/leads/presentation/lead_form_screen.dart';
 import '../../features/leads/presentation/leads_screen.dart';
 import '../../features/products/presentation/products_screen.dart';
+import '../../features/projects/presentation/project_detail_screen.dart';
 import '../../features/projects/presentation/projects_screen.dart';
 import '../../features/proposals/presentation/proposal_builder_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../features/tracking/presentation/tracking_screen.dart';
-import '../l10n/l10n.dart';
 import '../widgets/app_shell.dart';
 import '../widgets/not_found_screen.dart';
 import '../widgets/offline_banner.dart';
@@ -33,12 +38,12 @@ part 'app_router.g.dart';
 NoTransitionPage<void> _page(GoRouterState state, Widget child) =>
     NoTransitionPage(key: state.pageKey, child: child);
 
-/// Owner sections built in later phases.
-final _ownerSections = <(String, String Function(AppLocalizations), IconData)>[
-  (Routes.subsidy, (l) => l.navSubsidy, Icons.account_balance_outlined),
-  (Routes.team, (l) => l.navTeam, Icons.groups_outlined),
-  (Routes.config, (l) => l.navConfig, Icons.tune_outlined),
-  (Routes.branding, (l) => l.navBranding, Icons.palette_outlined),
+/// Owner sections in the shell.
+final _ownerSections = <(String, Widget)>[
+  (Routes.subsidy, const SubsidyScreen()),
+  (Routes.team, const TeamScreen()),
+  (Routes.config, const ConfigScreen()),
+  (Routes.branding, const BrandingScreen()),
 ];
 
 @Riverpod(keepAlive: true)
@@ -129,6 +134,12 @@ GoRouter appRouter(Ref ref) {
             ),
           ),
           GoRoute(
+            path: 'survey',
+            builder: (context, state) => OfflineAware(
+              child: SurveyScreen(leadId: state.pathParameters['id']!),
+            ),
+          ),
+          GoRoute(
             path: 'sizing',
             builder: (context, state) => OfflineAware(
               child: SizingScreen(leadId: state.pathParameters['id']!),
@@ -141,6 +152,16 @@ GoRouter appRouter(Ref ref) {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: '${Routes.projects}/:id',
+        builder: (context, state) => OfflineAware(
+          child: ProjectDetailScreen(projectId: state.pathParameters['id']!),
+        ),
+      ),
+      GoRoute(
+        path: Routes.notifications,
+        builder: (context, state) => const NotificationsScreen(),
       ),
       ShellRoute(
         builder: (context, state, child) =>
@@ -174,13 +195,10 @@ GoRouter appRouter(Ref ref) {
             pageBuilder: (context, state) =>
                 _page(state, const DashboardScreen()),
           ),
-          for (final (path, title, icon) in _ownerSections)
+          for (final (path, screen) in _ownerSections)
             GoRoute(
               path: path,
-              pageBuilder: (context, state) => _page(
-                state,
-                SectionPlaceholderScreen(title: title, icon: icon),
-              ),
+              pageBuilder: (context, state) => _page(state, screen),
             ),
         ],
       ),

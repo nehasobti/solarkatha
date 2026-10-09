@@ -2113,6 +2113,846 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create proposal'**
   String get createProposal;
+
+  /// No description provided for @surveyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof survey'**
+  String get surveyTitle;
+
+  /// No description provided for @startSurvey.
+  ///
+  /// In en, this message translates to:
+  /// **'Start roof survey'**
+  String get startSurvey;
+
+  /// No description provided for @editSurvey.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit roof survey'**
+  String get editSurvey;
+
+  /// No description provided for @drawRoofHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap each corner of the roof on the map'**
+  String get drawRoofHint;
+
+  /// No description provided for @undoPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undoPoint;
+
+  /// No description provided for @clearRoof.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clearRoof;
+
+  /// No description provided for @myLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'My location'**
+  String get myLocation;
+
+  /// No description provided for @needThreePoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap at least 3 corners to draw the roof'**
+  String get needThreePoints;
+
+  /// No description provided for @roofAreaResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof area'**
+  String get roofAreaResult;
+
+  /// No description provided for @panelsFit.
+  ///
+  /// In en, this message translates to:
+  /// **'Panels that fit'**
+  String get panelsFit;
+
+  /// No description provided for @fittedKwLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panels fit'**
+  String get fittedKwLabel;
+
+  /// No description provided for @maxKwRoof.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof allows up to {kw}'**
+  String maxKwRoof(String kw);
+
+  /// No description provided for @roofTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof type'**
+  String get roofTypeLabel;
+
+  /// No description provided for @roofRcc.
+  ///
+  /// In en, this message translates to:
+  /// **'RCC (concrete)'**
+  String get roofRcc;
+
+  /// No description provided for @roofTin.
+  ///
+  /// In en, this message translates to:
+  /// **'Tin sheet'**
+  String get roofTin;
+
+  /// No description provided for @roofOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get roofOther;
+
+  /// No description provided for @floorsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Floors'**
+  String get floorsLabel;
+
+  /// No description provided for @orientationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panels face'**
+  String get orientationLabel;
+
+  /// No description provided for @tiltLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tilt'**
+  String get tiltLabel;
+
+  /// No description provided for @degreesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{deg}°'**
+  String degreesValue(String deg);
+
+  /// No description provided for @dirN.
+  ///
+  /// In en, this message translates to:
+  /// **'North'**
+  String get dirN;
+
+  /// No description provided for @dirNE.
+  ///
+  /// In en, this message translates to:
+  /// **'North-east'**
+  String get dirNE;
+
+  /// No description provided for @dirE.
+  ///
+  /// In en, this message translates to:
+  /// **'East'**
+  String get dirE;
+
+  /// No description provided for @dirSE.
+  ///
+  /// In en, this message translates to:
+  /// **'South-east'**
+  String get dirSE;
+
+  /// No description provided for @dirS.
+  ///
+  /// In en, this message translates to:
+  /// **'South'**
+  String get dirS;
+
+  /// No description provided for @dirSW.
+  ///
+  /// In en, this message translates to:
+  /// **'South-west'**
+  String get dirSW;
+
+  /// No description provided for @dirW.
+  ///
+  /// In en, this message translates to:
+  /// **'West'**
+  String get dirW;
+
+  /// No description provided for @dirNW.
+  ///
+  /// In en, this message translates to:
+  /// **'North-west'**
+  String get dirNW;
+
+  /// No description provided for @saveSurvey.
+  ///
+  /// In en, this message translates to:
+  /// **'Save survey'**
+  String get saveSurvey;
+
+  /// No description provided for @surveySaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Survey saved'**
+  String get surveySaved;
+
+  /// No description provided for @noSurveyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No roof survey yet'**
+  String get noSurveyTitle;
+
+  /// No description provided for @noSurveyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw the roof on the satellite map to see how many panels fit.'**
+  String get noSurveyBody;
+
+  /// No description provided for @roofLimitWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'More than the roof allows ({kw}).'**
+  String roofLimitWarning(String kw);
+
+  /// No description provided for @photoKindRoofLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof layout'**
+  String get photoKindRoofLayout;
+
+  /// No description provided for @surveyConfigMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Panel settings haven\'t reached this device yet. Connect to the internet and open this again.'**
+  String get surveyConfigMissing;
+
+  /// No description provided for @noLocationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This lead has no saved location. Use \"My location\" at the site, or move the map to the house.'**
+  String get noLocationHint;
+
+  /// No description provided for @stagePortalRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration on the national portal'**
+  String get stagePortalRegistration;
+
+  /// No description provided for @stageDiscomFeasibility.
+  ///
+  /// In en, this message translates to:
+  /// **'DISCOM feasibility approval'**
+  String get stageDiscomFeasibility;
+
+  /// No description provided for @stageVendorSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor selected'**
+  String get stageVendorSelected;
+
+  /// No description provided for @stageInstallation.
+  ///
+  /// In en, this message translates to:
+  /// **'Installation'**
+  String get stageInstallation;
+
+  /// No description provided for @stageNetMeterApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Net meter applied'**
+  String get stageNetMeterApplied;
+
+  /// No description provided for @stageNetMeterInstalled.
+  ///
+  /// In en, this message translates to:
+  /// **'Net meter installed'**
+  String get stageNetMeterInstalled;
+
+  /// No description provided for @stageInspection.
+  ///
+  /// In en, this message translates to:
+  /// **'Inspection'**
+  String get stageInspection;
+
+  /// No description provided for @stageCommissioning.
+  ///
+  /// In en, this message translates to:
+  /// **'Commissioning certificate'**
+  String get stageCommissioning;
+
+  /// No description provided for @stageSubsidyClaimed.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy claimed'**
+  String get stageSubsidyClaimed;
+
+  /// No description provided for @stageSubsidyCredited.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy credited'**
+  String get stageSubsidyCredited;
+
+  /// No description provided for @stagePending.
+  ///
+  /// In en, this message translates to:
+  /// **'Not started'**
+  String get stagePending;
+
+  /// No description provided for @stageInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get stageInProgress;
+
+  /// No description provided for @stageDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get stageDone;
+
+  /// No description provided for @stageBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get stageBlocked;
+
+  /// No description provided for @projectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Project'**
+  String get projectTitle;
+
+  /// No description provided for @stageProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of 10 stages done'**
+  String stageProgress(String done);
+
+  /// No description provided for @dueOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String dueOn(String date);
+
+  /// No description provided for @doneOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Done {date}'**
+  String doneOn(String date);
+
+  /// No description provided for @markDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark done'**
+  String get markDone;
+
+  /// No description provided for @markBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark blocked'**
+  String get markBlocked;
+
+  /// No description provided for @resumeStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get resumeStage;
+
+  /// No description provided for @reopenStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen'**
+  String get reopenStage;
+
+  /// No description provided for @blockedReason.
+  ///
+  /// In en, this message translates to:
+  /// **'What is blocking this stage?'**
+  String get blockedReason;
+
+  /// No description provided for @stageNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get stageNote;
+
+  /// No description provided for @addDocument.
+  ///
+  /// In en, this message translates to:
+  /// **'Add document'**
+  String get addDocument;
+
+  /// No description provided for @sendStageUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Send update on WhatsApp'**
+  String get sendStageUpdate;
+
+  /// No description provided for @stageMarkedDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage marked done'**
+  String get stageMarkedDone;
+
+  /// No description provided for @trackingLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer tracking link'**
+  String get trackingLink;
+
+  /// No description provided for @shareTrackingLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Share link on WhatsApp'**
+  String get shareTrackingLink;
+
+  /// No description provided for @revokeLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off link'**
+  String get revokeLink;
+
+  /// No description provided for @linkRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Link turned off'**
+  String get linkRevoked;
+
+  /// No description provided for @netMeterNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Net meter number'**
+  String get netMeterNumberLabel;
+
+  /// No description provided for @commissioningDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Commissioning date'**
+  String get commissioningDateLabel;
+
+  /// No description provided for @subsidyReceivedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy received (₹)'**
+  String get subsidyReceivedLabel;
+
+  /// No description provided for @installersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Installers'**
+  String get installersLabel;
+
+  /// No description provided for @noProjectYet.
+  ///
+  /// In en, this message translates to:
+  /// **'The project starts when the customer signs the proposal.'**
+  String get noProjectYet;
+
+  /// No description provided for @openProject.
+  ///
+  /// In en, this message translates to:
+  /// **'Open project'**
+  String get openProject;
+
+  /// No description provided for @projectComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Project complete'**
+  String get projectComplete;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @noNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet'**
+  String get noNotifications;
+
+  /// No description provided for @markAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get markAllRead;
+
+  /// No description provided for @notifProjectCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Proposal signed. Project started ({kw}).'**
+  String notifProjectCreated(String kw);
+
+  /// No description provided for @notifStageDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage done: {stage}'**
+  String notifStageDone(String stage);
+
+  /// No description provided for @kpiActiveProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Active projects'**
+  String get kpiActiveProjects;
+
+  /// No description provided for @projectsByStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects by stage'**
+  String get projectsByStage;
+
+  /// No description provided for @daysInStage.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days in this stage'**
+  String daysInStage(String days);
+
+  /// No description provided for @overdueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue'**
+  String get overdueTitle;
+
+  /// No description provided for @allOnTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything is on track.'**
+  String get allOnTrack;
+
+  /// No description provided for @expectedSubsidyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected subsidy'**
+  String get expectedSubsidyLabel;
+
+  /// No description provided for @inviteMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite member'**
+  String get inviteMember;
+
+  /// No description provided for @inviteSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite saved. Ask them to log in with this number.'**
+  String get inviteSent;
+
+  /// No description provided for @pendingInvites.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending invites'**
+  String get pendingInvites;
+
+  /// No description provided for @cancelInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel invite'**
+  String get cancelInvite;
+
+  /// No description provided for @deactivate.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate'**
+  String get deactivate;
+
+  /// No description provided for @activate.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate'**
+  String get activate;
+
+  /// No description provided for @performanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get performanceTitle;
+
+  /// No description provided for @leadsCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Leads'**
+  String get leadsCountLabel;
+
+  /// No description provided for @wonCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Won'**
+  String get wonCountLabel;
+
+  /// No description provided for @inactiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get inactiveLabel;
+
+  /// No description provided for @youLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get youLabel;
+
+  /// No description provided for @ownerOnlyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can change this.'**
+  String get ownerOnlyHint;
+
+  /// No description provided for @appSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'App settings'**
+  String get appSettingsTitle;
+
+  /// No description provided for @loanPresetsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan options'**
+  String get loanPresetsTitle;
+
+  /// No description provided for @subsidyRulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy rules'**
+  String get subsidyRulesTitle;
+
+  /// No description provided for @tariffsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tariffs'**
+  String get tariffsTitle;
+
+  /// No description provided for @configCompanyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes apply to your company only. The defaults stay as they are.'**
+  String get configCompanyNote;
+
+  /// No description provided for @validFromLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid from'**
+  String get validFromLabel;
+
+  /// No description provided for @slabsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Slabs'**
+  String get slabsLabel;
+
+  /// No description provided for @capLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cap (₹)'**
+  String get capLabel;
+
+  /// No description provided for @uptoKwLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to kW'**
+  String get uptoKwLabel;
+
+  /// No description provided for @perKwLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'₹ per kW'**
+  String get perKwLabel;
+
+  /// No description provided for @uptoUnitsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to units'**
+  String get uptoUnitsLabel;
+
+  /// No description provided for @rateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'₹ per unit'**
+  String get rateLabel;
+
+  /// No description provided for @fixedChargeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed charge (₹/month)'**
+  String get fixedChargeLabel;
+
+  /// No description provided for @bankNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank / lender'**
+  String get bankNameLabel;
+
+  /// No description provided for @maxYearsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Max years'**
+  String get maxYearsLabel;
+
+  /// No description provided for @addRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Add row'**
+  String get addRow;
+
+  /// No description provided for @addItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get addItem;
+
+  /// No description provided for @remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// No description provided for @overridden.
+  ///
+  /// In en, this message translates to:
+  /// **'Your value'**
+  String get overridden;
+
+  /// No description provided for @addressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get addressLabel;
+
+  /// No description provided for @gstinLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN'**
+  String get gstinLabel;
+
+  /// No description provided for @brandColorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand colour'**
+  String get brandColorLabel;
+
+  /// No description provided for @mnreVendorIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'MNRE vendor ID'**
+  String get mnreVendorIdLabel;
+
+  /// No description provided for @companyPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Company phone'**
+  String get companyPhoneLabel;
+
+  /// No description provided for @exportCsv.
+  ///
+  /// In en, this message translates to:
+  /// **'Export CSV'**
+  String get exportCsv;
+
+  /// No description provided for @trackHello.
+  ///
+  /// In en, this message translates to:
+  /// **'Namaste {name}'**
+  String trackHello(String name);
+
+  /// No description provided for @trackSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'Your {kw} rooftop solar system'**
+  String trackSystem(String kw);
+
+  /// No description provided for @trackDownloadPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Download proposal (PDF)'**
+  String get trackDownloadPdf;
+
+  /// No description provided for @trackSign.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign the proposal'**
+  String get trackSign;
+
+  /// No description provided for @trackSigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed. Thank you!'**
+  String get trackSigned;
+
+  /// No description provided for @trackPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay advance {amount}'**
+  String trackPay(String amount);
+
+  /// No description provided for @trackPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance paid'**
+  String get trackPaid;
+
+  /// No description provided for @trackStagesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get trackStagesTitle;
+
+  /// No description provided for @trackNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This link is not valid or has been turned off.'**
+  String get trackNotFound;
+
+  /// No description provided for @trackSignHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign inside the box with your finger'**
+  String get trackSignHint;
+
+  /// No description provided for @trackSubmitSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit signature'**
+  String get trackSubmitSignature;
+
+  /// No description provided for @trackCallCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Call {company}'**
+  String trackCallCompany(String company);
+
+  /// No description provided for @trackSubsidyLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy {subsidy} · You pay {net}'**
+  String trackSubsidyLine(String subsidy, String net);
+
+  /// No description provided for @trackNotStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Work starts after you sign the proposal.'**
+  String get trackNotStarted;
+
+  /// No description provided for @invalidJson.
+  ///
+  /// In en, this message translates to:
+  /// **'Not valid. Use the same format as before, e.g. [ ... ]'**
+  String get invalidJson;
+
+  /// No description provided for @panelLengthLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panel length (m)'**
+  String get panelLengthLabel;
+
+  /// No description provided for @panelWidthLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panel width (m)'**
+  String get panelWidthLabel;
+
+  /// No description provided for @panelSizeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.'**
+  String get panelSizeHint;
 }
 
 class _AppLocalizationsDelegate

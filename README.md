@@ -2,7 +2,7 @@
 
 **For Indian rooftop solar installers: scan the bill, size the system, work out the PM Surya Ghar subsidy and EMI, send a Hindi or English proposal on WhatsApp, and track every customer until the subsidy is credited.**
 
-> Status: **Phase 4 of 7 built.** Done so far: login and roles in Hindi and English; leads with offline sync and photos; AI bill scan; sizing with subsidy, EMI and payback; products, compliance checklist, Hindi/English PDF proposals, WhatsApp share, customer signature and Razorpay UPI payment links. Survey, projects and the dashboard come next.
+> Status: **Phase 6 of 7 built.** Done so far: login and roles in Hindi and English; leads with offline sync and photos; AI bill scan; sizing with subsidy, EMI and payback; proposals with PDF, WhatsApp, signature and UPI payment; roof survey on satellite imagery with automatic panel layout; projects with the 10 subsidy stages, a public customer tracking page, notifications, and the owner dashboard with team, config and branding. Web: https://solarkatha.vercel.app
 
 ## Repository layout
 

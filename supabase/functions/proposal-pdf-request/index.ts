@@ -13,7 +13,11 @@ import {
   readJson,
   requireEnv,
 } from "../_shared/http.ts";
-import { buildPdfPayload, pdfServiceHeaders } from "../_shared/proposal.ts";
+import {
+  buildPdfPayload,
+  bytesToBase64,
+  pdfServiceHeaders,
+} from "../_shared/proposal.ts";
 
 const BUCKET = "documents";
 /** Signed link lifetime: long enough for the customer to open it from WhatsApp. */
@@ -42,6 +46,29 @@ Deno.serve(handler(async (req) => {
       ).maybeSingle()
       : Promise.resolve({ data: null }),
   ]);
+  // Roof layout image from the survey (stored as a lead photo).
+  let roofLayoutPng: string | null = null;
+  const { data: site } = await admin
+    .from("sites")
+    .select("layout_photo_id")
+    .eq("lead_id", lead.id)
+    .is("deleted_at", null)
+    .order("updated_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (site?.layout_photo_id) {
+    const { data: img } = await admin.storage
+      .from("site-photos")
+      .download(
+        `company/${companyId}/lead-photos/${site.layout_photo_id}.png`,
+      );
+    if (img && img.size < 4_000_000) {
+      roofLayoutPng = `data:image/png;base64,${
+        bytesToBase64(new Uint8Array(await img.arrayBuffer()))
+      }`;
+    }
+  }
+
   const payload = buildPdfPayload({
     proposal,
     lead,
@@ -60,6 +87,7 @@ Deno.serve(handler(async (req) => {
       "lifetime_years",
       25,
     ),
+    roofLayoutPng,
   });
 
   const text = JSON.stringify(payload);

@@ -1102,4 +1102,459 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get createProposal => 'Create proposal';
+
+  @override
+  String get surveyTitle => 'Roof survey';
+
+  @override
+  String get startSurvey => 'Start roof survey';
+
+  @override
+  String get editSurvey => 'Edit roof survey';
+
+  @override
+  String get drawRoofHint => 'Tap each corner of the roof on the map';
+
+  @override
+  String get undoPoint => 'Undo';
+
+  @override
+  String get clearRoof => 'Clear';
+
+  @override
+  String get myLocation => 'My location';
+
+  @override
+  String get needThreePoints => 'Tap at least 3 corners to draw the roof';
+
+  @override
+  String get roofAreaResult => 'Roof area';
+
+  @override
+  String get panelsFit => 'Panels that fit';
+
+  @override
+  String get fittedKwLabel => 'Panels fit';
+
+  @override
+  String maxKwRoof(String kw) {
+    return 'Roof allows up to $kw';
+  }
+
+  @override
+  String get roofTypeLabel => 'Roof type';
+
+  @override
+  String get roofRcc => 'RCC (concrete)';
+
+  @override
+  String get roofTin => 'Tin sheet';
+
+  @override
+  String get roofOther => 'Other';
+
+  @override
+  String get floorsLabel => 'Floors';
+
+  @override
+  String get orientationLabel => 'Panels face';
+
+  @override
+  String get tiltLabel => 'Tilt';
+
+  @override
+  String degreesValue(String deg) {
+    return '$deg°';
+  }
+
+  @override
+  String get dirN => 'North';
+
+  @override
+  String get dirNE => 'North-east';
+
+  @override
+  String get dirE => 'East';
+
+  @override
+  String get dirSE => 'South-east';
+
+  @override
+  String get dirS => 'South';
+
+  @override
+  String get dirSW => 'South-west';
+
+  @override
+  String get dirW => 'West';
+
+  @override
+  String get dirNW => 'North-west';
+
+  @override
+  String get saveSurvey => 'Save survey';
+
+  @override
+  String get surveySaved => 'Survey saved';
+
+  @override
+  String get noSurveyTitle => 'No roof survey yet';
+
+  @override
+  String get noSurveyBody =>
+      'Draw the roof on the satellite map to see how many panels fit.';
+
+  @override
+  String roofLimitWarning(String kw) {
+    return 'More than the roof allows ($kw).';
+  }
+
+  @override
+  String get photoKindRoofLayout => 'Roof layout';
+
+  @override
+  String get surveyConfigMissing =>
+      'Panel settings haven\'t reached this device yet. Connect to the internet and open this again.';
+
+  @override
+  String get noLocationHint =>
+      'This lead has no saved location. Use \"My location\" at the site, or move the map to the house.';
+
+  @override
+  String get stagePortalRegistration => 'Registration on the national portal';
+
+  @override
+  String get stageDiscomFeasibility => 'DISCOM feasibility approval';
+
+  @override
+  String get stageVendorSelected => 'Vendor selected';
+
+  @override
+  String get stageInstallation => 'Installation';
+
+  @override
+  String get stageNetMeterApplied => 'Net meter applied';
+
+  @override
+  String get stageNetMeterInstalled => 'Net meter installed';
+
+  @override
+  String get stageInspection => 'Inspection';
+
+  @override
+  String get stageCommissioning => 'Commissioning certificate';
+
+  @override
+  String get stageSubsidyClaimed => 'Subsidy claimed';
+
+  @override
+  String get stageSubsidyCredited => 'Subsidy credited';
+
+  @override
+  String get stagePending => 'Not started';
+
+  @override
+  String get stageInProgress => 'In progress';
+
+  @override
+  String get stageDone => 'Done';
+
+  @override
+  String get stageBlocked => 'Blocked';
+
+  @override
+  String get projectTitle => 'Project';
+
+  @override
+  String stageProgress(String done) {
+    return '$done of 10 stages done';
+  }
+
+  @override
+  String dueOn(String date) {
+    return 'Due $date';
+  }
+
+  @override
+  String doneOn(String date) {
+    return 'Done $date';
+  }
+
+  @override
+  String get markDone => 'Mark done';
+
+  @override
+  String get markBlocked => 'Mark blocked';
+
+  @override
+  String get resumeStage => 'Resume';
+
+  @override
+  String get reopenStage => 'Reopen';
+
+  @override
+  String get blockedReason => 'What is blocking this stage?';
+
+  @override
+  String get stageNote => 'Note';
+
+  @override
+  String get addDocument => 'Add document';
+
+  @override
+  String get sendStageUpdate => 'Send update on WhatsApp';
+
+  @override
+  String get stageMarkedDone => 'Stage marked done';
+
+  @override
+  String get trackingLink => 'Customer tracking link';
+
+  @override
+  String get shareTrackingLink => 'Share link on WhatsApp';
+
+  @override
+  String get revokeLink => 'Turn off link';
+
+  @override
+  String get linkRevoked => 'Link turned off';
+
+  @override
+  String get netMeterNumberLabel => 'Net meter number';
+
+  @override
+  String get commissioningDateLabel => 'Commissioning date';
+
+  @override
+  String get subsidyReceivedLabel => 'Subsidy received (₹)';
+
+  @override
+  String get installersLabel => 'Installers';
+
+  @override
+  String get noProjectYet =>
+      'The project starts when the customer signs the proposal.';
+
+  @override
+  String get openProject => 'Open project';
+
+  @override
+  String get projectComplete => 'Project complete';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get noNotifications => 'No notifications yet';
+
+  @override
+  String get markAllRead => 'Mark all read';
+
+  @override
+  String notifProjectCreated(String kw) {
+    return 'Proposal signed. Project started ($kw).';
+  }
+
+  @override
+  String notifStageDone(String stage) {
+    return 'Stage done: $stage';
+  }
+
+  @override
+  String get kpiActiveProjects => 'Active projects';
+
+  @override
+  String get projectsByStage => 'Projects by stage';
+
+  @override
+  String daysInStage(String days) {
+    return '$days days in this stage';
+  }
+
+  @override
+  String get overdueTitle => 'Overdue';
+
+  @override
+  String get allOnTrack => 'Everything is on track.';
+
+  @override
+  String get expectedSubsidyLabel => 'Expected subsidy';
+
+  @override
+  String get inviteMember => 'Invite member';
+
+  @override
+  String get inviteSent => 'Invite saved. Ask them to log in with this number.';
+
+  @override
+  String get pendingInvites => 'Pending invites';
+
+  @override
+  String get cancelInvite => 'Cancel invite';
+
+  @override
+  String get deactivate => 'Deactivate';
+
+  @override
+  String get activate => 'Activate';
+
+  @override
+  String get performanceTitle => 'Performance';
+
+  @override
+  String get leadsCountLabel => 'Leads';
+
+  @override
+  String get wonCountLabel => 'Won';
+
+  @override
+  String get inactiveLabel => 'Inactive';
+
+  @override
+  String get youLabel => 'You';
+
+  @override
+  String get ownerOnlyHint => 'Only the owner can change this.';
+
+  @override
+  String get appSettingsTitle => 'App settings';
+
+  @override
+  String get loanPresetsTitle => 'Loan options';
+
+  @override
+  String get subsidyRulesTitle => 'Subsidy rules';
+
+  @override
+  String get tariffsTitle => 'Tariffs';
+
+  @override
+  String get configCompanyNote =>
+      'Changes apply to your company only. The defaults stay as they are.';
+
+  @override
+  String get validFromLabel => 'Valid from';
+
+  @override
+  String get slabsLabel => 'Slabs';
+
+  @override
+  String get capLabel => 'Cap (₹)';
+
+  @override
+  String get uptoKwLabel => 'Up to kW';
+
+  @override
+  String get perKwLabel => '₹ per kW';
+
+  @override
+  String get uptoUnitsLabel => 'Up to units';
+
+  @override
+  String get rateLabel => '₹ per unit';
+
+  @override
+  String get fixedChargeLabel => 'Fixed charge (₹/month)';
+
+  @override
+  String get bankNameLabel => 'Bank / lender';
+
+  @override
+  String get maxYearsLabel => 'Max years';
+
+  @override
+  String get addRow => 'Add row';
+
+  @override
+  String get addItem => 'Add';
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get overridden => 'Your value';
+
+  @override
+  String get addressLabel => 'Address';
+
+  @override
+  String get gstinLabel => 'GSTIN';
+
+  @override
+  String get brandColorLabel => 'Brand colour';
+
+  @override
+  String get mnreVendorIdLabel => 'MNRE vendor ID';
+
+  @override
+  String get companyPhoneLabel => 'Company phone';
+
+  @override
+  String get exportCsv => 'Export CSV';
+
+  @override
+  String trackHello(String name) {
+    return 'Namaste $name';
+  }
+
+  @override
+  String trackSystem(String kw) {
+    return 'Your $kw rooftop solar system';
+  }
+
+  @override
+  String get trackDownloadPdf => 'Download proposal (PDF)';
+
+  @override
+  String get trackSign => 'Sign the proposal';
+
+  @override
+  String get trackSigned => 'Signed. Thank you!';
+
+  @override
+  String trackPay(String amount) {
+    return 'Pay advance $amount';
+  }
+
+  @override
+  String get trackPaid => 'Advance paid';
+
+  @override
+  String get trackStagesTitle => 'Progress';
+
+  @override
+  String get trackNotFound => 'This link is not valid or has been turned off.';
+
+  @override
+  String get trackSignHint => 'Sign inside the box with your finger';
+
+  @override
+  String get trackSubmitSignature => 'Submit signature';
+
+  @override
+  String trackCallCompany(String company) {
+    return 'Call $company';
+  }
+
+  @override
+  String trackSubsidyLine(String subsidy, String net) {
+    return 'Subsidy $subsidy · You pay $net';
+  }
+
+  @override
+  String get trackNotStarted => 'Work starts after you sign the proposal.';
+
+  @override
+  String get invalidJson =>
+      'Not valid. Use the same format as before, e.g. [ ... ]';
+
+  @override
+  String get panelLengthLabel => 'Panel length (m)';
+
+  @override
+  String get panelWidthLabel => 'Panel width (m)';
+
+  @override
+  String get panelSizeHint =>
+      'From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.';
 }

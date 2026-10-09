@@ -24,7 +24,8 @@ void main() {
         'Config',
         'Branding',
       ]) {
-        expect(find.text(label), findsOneWidget, reason: label);
+        // In the rail and in the dashboard shortcuts.
+        expect(find.text(label), findsWidgets, reason: label);
       }
       expect(find.text('₹0'), findsOneWidget);
     });
@@ -81,7 +82,7 @@ void main() {
         size: wide,
       );
       expect(find.text('इस महीने की लीड'), findsOneWidget);
-      expect(find.text('सब्सिडी ट्रैकर'), findsOneWidget);
+      expect(find.text('सब्सिडी ट्रैकर'), findsWidgets);
     });
 
     testWidgets('sales home', (tester) async {

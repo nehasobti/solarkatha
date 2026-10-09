@@ -2,6 +2,7 @@ import { assertEquals, assertThrows } from "jsr:@std/assert@1";
 
 import {
   buildPdfPayload,
+  bytesToBase64,
   parseWebhook,
   paymentAmount,
   paymentLinkBody,
@@ -200,4 +201,25 @@ Deno.test("missing generation becomes 12 zeros", () => {
     (payload.proposal as Record<string, unknown>).monthly_generation,
     new Array(12).fill(0),
   );
+});
+
+Deno.test("bytesToBase64 matches btoa and handles large arrays", () => {
+  assertEquals(
+    bytesToBase64(new TextEncoder().encode("SolarKatha")),
+    btoa("SolarKatha"),
+  );
+  const big = new Uint8Array(200_000).fill(65);
+  assertEquals(bytesToBase64(big).length, Math.ceil(200_000 / 3) * 4);
+});
+
+Deno.test("roof layout is passed to the PDF payload", () => {
+  const payload = buildPdfPayload({
+    proposal: { id: "x", created_at: "2026-10-08T00:00:00Z" },
+    lead: { name: "A" },
+    company: { name: "B" },
+    validDays: 15,
+    lifetimeYears: 25,
+    roofLayoutPng: "data:image/png;base64,AAAA",
+  });
+  assertEquals(payload.roof_layout_png, "data:image/png;base64,AAAA");
 });

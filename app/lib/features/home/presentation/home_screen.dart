@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../admin/presentation/notifications_screen.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/widgets/empty_state.dart';
@@ -28,7 +29,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.greeting(member?.profile.name ?? '')),
-        actions: const [SyncChip(), SizedBox(width: 12)],
+        actions: const [NotificationBell(), SyncChip(), SizedBox(width: 12)],
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),

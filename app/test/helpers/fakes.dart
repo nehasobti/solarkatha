@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:solarkatha/features/admin/data/admin_repository.dart';
+import 'package:solarkatha/features/projects/data/projects_repository.dart';
+import 'package:solarkatha/features/tracking/presentation/tracking_screen.dart';
 import 'package:solarkatha/app.dart';
 import 'package:solarkatha/core/preferences/app_preferences.dart';
 import 'package:solarkatha/data/models/company.dart';
@@ -18,13 +21,19 @@ import 'package:solarkatha/features/bills/data/bills_repository.dart';
 import 'package:solarkatha/features/leads/data/leads_repository.dart';
 import 'package:solarkatha/features/proposals/data/proposals_repository.dart';
 import 'package:solarkatha/features/sizing/data/sizing_repository.dart';
+import 'package:solarkatha/features/survey/data/survey_repository.dart';
+import 'package:solarkatha/features/survey/presentation/survey_screen.dart';
 
+import 'fake_projects.dart';
 import 'fake_bills.dart';
 import 'fake_proposals.dart';
+import 'fake_survey.dart';
 import 'fake_leads_repository.dart';
 
 export 'fake_bills.dart';
+export 'fake_projects.dart';
 export 'fake_proposals.dart';
+export 'fake_survey.dart';
 export 'fake_leads_repository.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
@@ -77,6 +86,10 @@ Future<void> pumpApp(
   FakeLeadsRepository? leads,
   FakeBillsRepository? bills,
   FakeProposalsRepository? proposals,
+  FakeSurveyRepository? survey,
+  FakeProjectsRepository? projects,
+  FakeAdminRepository? admin,
+  FakeTrackingApi? tracking,
 }) async {
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
@@ -109,6 +122,19 @@ Future<void> pumpApp(
         generationServiceProvider.overrideWithValue(FakeGenerationService()),
         proposalsRepositoryProvider.overrideWithValue(
           proposals ?? FakeProposalsRepository(),
+        ),
+        surveyRepositoryProvider.overrideWithValue(
+          survey ?? FakeSurveyRepository(),
+        ),
+        satelliteTilesProvider.overrideWithValue(false),
+        projectsRepositoryProvider.overrideWithValue(
+          projects ?? FakeProjectsRepository(),
+        ),
+        adminRepositoryProvider.overrideWithValue(
+          admin ?? FakeAdminRepository(),
+        ),
+        trackingApiProvider.overrideWithValue(
+          tracking ?? FakeTrackingApi(null),
         ),
       ],
       child: const SolarKathaApp(),

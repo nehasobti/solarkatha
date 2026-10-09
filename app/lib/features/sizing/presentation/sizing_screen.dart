@@ -14,6 +14,8 @@ import '../../bills/application/bills_providers.dart';
 import '../../bills/domain/bill.dart';
 import '../../leads/application/leads_providers.dart';
 import '../../leads/domain/lead.dart';
+import '../../survey/data/survey_repository.dart';
+import '../../survey/domain/site.dart';
 import '../data/sizing_repository.dart';
 import '../domain/sizing_calculator.dart';
 import '../domain/sizing_config.dart';
@@ -31,9 +33,10 @@ class SizingScreen extends ConsumerWidget {
     final lead = ref.watch(leadProvider(leadId)).value;
     final bills = ref.watch(leadBillsProvider(leadId));
     final config = ref.watch(sizingConfigProvider);
+    final site = ref.watch(leadSiteProvider(leadId));
 
     Widget body;
-    if (lead == null || !bills.hasValue || config.isLoading) {
+    if (lead == null || !bills.hasValue || !site.hasValue || config.isLoading) {
       body = const Center(child: CircularProgressIndicator());
     } else if (config.value == null) {
       body = EmptyState(
@@ -44,6 +47,7 @@ class SizingScreen extends ConsumerWidget {
       body = _SizingBody(
         lead: lead,
         bill: bills.value!.firstOrNull,
+        site: site.value,
         config: config.value!,
       );
     }
@@ -64,11 +68,15 @@ class _SizingBody extends ConsumerStatefulWidget {
   const _SizingBody({
     required this.lead,
     required this.bill,
+    required this.site,
     required this.config,
   });
 
   final Lead lead;
   final Bill? bill;
+
+  /// Roof survey: its roof limit and shading prefill the inputs.
+  final Site? site;
   final SizingConfig config;
 
   @override
@@ -82,7 +90,14 @@ class _SizingBodyState extends ConsumerState<_SizingBody> {
   late final _load = TextEditingController(
     text: _n(widget.bill?.sanctionedLoadKw),
   );
-  final _roof = TextEditingController();
+  // Usable area that reproduces the surveyed roof limit (max kW × m²/kW).
+  late final _roof = TextEditingController(
+    text: widget.site?.maxKw == null
+        ? ''
+        : (widget.site!.maxKw! * widget.config.solar.sqmPerKw).toStringAsFixed(
+            1,
+          ),
+  );
   late final _price = TextEditingController(
     text: _n(widget.config.solar.pricePerKw),
   );
@@ -90,7 +105,7 @@ class _SizingBodyState extends ConsumerState<_SizingBody> {
     text: _n(widget.config.loans.firstOrNull?.ratePct),
   );
 
-  ShadingLevel _shading = ShadingLevel.none;
+  late ShadingLevel _shading = widget.site?.shading ?? ShadingLevel.none;
   bool _eligible = true;
   double? _selectedKw;
   bool _custom = false;

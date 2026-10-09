@@ -48,6 +48,7 @@ extension PhotoKindUi on PhotoKind {
     PhotoKind.wiringPath => l10n.photoKindWiring,
     PhotoKind.bill => l10n.photoKindBill,
     PhotoKind.other => l10n.photoKindOther,
+    PhotoKind.roofLayout => l10n.photoKindRoofLayout,
   };
 
   IconData get icon => switch (this) {
@@ -57,6 +58,7 @@ extension PhotoKindUi on PhotoKind {
     PhotoKind.wiringPath => Icons.cable,
     PhotoKind.bill => Icons.receipt_long,
     PhotoKind.other => Icons.photo_camera_outlined,
+    PhotoKind.roofLayout => Icons.grid_on,
   };
 }
 

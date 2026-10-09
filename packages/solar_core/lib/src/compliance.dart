@@ -32,6 +32,8 @@ class ComplianceInput {
   final bool ownConnectionConfirmed;
   final String? consumerNumber;
   final int photoCount;
+
+  /// Roof type saved in the survey.
   final bool roofTypeRecorded;
 
   /// Other leads in the company with the same consumer number.
@@ -90,7 +92,6 @@ ComplianceResult evaluateCompliance(
     ComplianceItem(
       ComplianceCheck.roofType,
       passed: input.roofTypeRecorded,
-      manual: true,
     ),
     ComplianceItem(
       ComplianceCheck.singleSubsidy,

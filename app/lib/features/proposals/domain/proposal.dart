@@ -31,6 +31,8 @@ class Product {
     required this.brand,
     required this.model,
     this.wattPeak,
+    this.lengthM,
+    this.widthM,
     this.isDcr = false,
     this.almmListed = false,
     this.approvedList = false,
@@ -45,6 +47,10 @@ class Product {
   final String brand;
   final String model;
   final double? wattPeak;
+
+  /// Panel size in metres (for the roof layout).
+  final double? lengthM;
+  final double? widthM;
   final bool isDcr;
   final bool almmListed;
   final bool approvedList;
@@ -67,6 +73,8 @@ class Product {
     brand: (r['brand'] as String?) ?? '',
     model: (r['model'] as String?) ?? '',
     wattPeak: _dn(r['watt_peak']),
+    lengthM: _dn(r['length_m']),
+    widthM: _dn(r['width_m']),
     isDcr: r['is_dcr'] == 1 || r['is_dcr'] == true,
     almmListed: r['almm_listed'] == 1 || r['almm_listed'] == true,
     approvedList: r['approved_list'] == 1 || r['approved_list'] == true,
@@ -80,6 +88,8 @@ class Product {
     'brand': brand.trim(),
     'model': model.trim(),
     'watt_peak': wattPeak,
+    'length_m': lengthM,
+    'width_m': widthM,
     'is_dcr': isDcr ? 1 : 0,
     'almm_listed': almmListed ? 1 : 0,
     'approved_list': approvedList ? 1 : 0,

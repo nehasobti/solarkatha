@@ -59,7 +59,9 @@ enum PhotoKind {
   @JsonValue('bill')
   bill,
   @JsonValue('other')
-  other;
+  other,
+  @JsonValue('roof_layout')
+  roofLayout;
 
   String get dbValue => switch (this) {
     roof => 'roof',
@@ -68,6 +70,7 @@ enum PhotoKind {
     wiringPath => 'wiring_path',
     bill => 'bill',
     other => 'other',
+    roofLayout => 'roof_layout',
   };
 
   static PhotoKind fromDb(String? v) =>

@@ -20,6 +20,8 @@ import '../../leads/domain/lead.dart';
 import '../../sizing/data/sizing_repository.dart';
 import '../../sizing/domain/sizing_calculator.dart';
 import '../../sizing/domain/sizing_config.dart';
+import '../../survey/data/survey_repository.dart';
+import '../../survey/domain/site.dart';
 import '../data/proposals_repository.dart';
 import '../domain/proposal.dart';
 import 'proposal_actions.dart';
@@ -45,6 +47,7 @@ class ProposalBuilderScreen extends ConsumerWidget {
     final bills = ref.watch(leadBillsProvider(leadId));
     final config = ref.watch(sizingConfigProvider);
     final products = ref.watch(productsProvider(activeOnly: true));
+    final site = ref.watch(leadSiteProvider(leadId));
     final proposal = proposalId == null
         ? null
         : ref.watch(proposalProvider(proposalId!));
@@ -54,6 +57,7 @@ class ProposalBuilderScreen extends ConsumerWidget {
         !bills.hasValue ||
         config.isLoading ||
         !products.hasValue ||
+        !site.hasValue ||
         (proposal != null && !proposal.hasValue)) {
       body = const Center(child: CircularProgressIndicator());
     } else if (config.value == null) {
@@ -68,6 +72,7 @@ class ProposalBuilderScreen extends ConsumerWidget {
         bill: bills.value!.firstOrNull,
         config: config.value!,
         products: products.value!,
+        site: site.value,
         existing: proposal?.value,
         initialKw: initialKw,
       );
@@ -91,6 +96,7 @@ class _Builder extends ConsumerStatefulWidget {
     required this.bill,
     required this.config,
     required this.products,
+    required this.site,
     required this.existing,
     required this.initialKw,
   });
@@ -99,6 +105,9 @@ class _Builder extends ConsumerStatefulWidget {
   final Bill? bill;
   final SizingConfig config;
   final List<Product> products;
+
+  /// Roof survey: roof type (compliance) and the roof's kW limit.
+  final Site? site;
   final Proposal? existing;
   final double? initialKw;
 
@@ -263,7 +272,7 @@ class _BuilderState extends ConsumerState<_Builder> {
       ownConnectionConfirmed: _compliance.ownConnection,
       consumerNumber: widget.bill?.consumerNumber,
       photoCount: _photos,
-      roofTypeRecorded: _compliance.roofType,
+      roofTypeRecorded: widget.site?.roofType != null,
       duplicateConsumerLeads: _duplicates,
     ),
     ownerOverride: _compliance.overrideBy != null,
@@ -442,6 +451,15 @@ class _BuilderState extends ConsumerState<_Builder> {
                     IndianFormat.kw(_systemKw, languageCode: lang),
                   ),
                   style: theme.textTheme.bodySmall,
+                ),
+              if (widget.site?.maxKw != null &&
+                  _systemKw > widget.site!.maxKw! + 1e-9)
+                Text(
+                  l10n.roofLimitWarning(
+                    IndianFormat.kw(widget.site!.maxKw!, languageCode: lang),
+                  ),
+                  key: const Key('proposal.roofLimit'),
+                  style: TextStyle(color: theme.colorScheme.error),
                 ),
               DropdownButtonFormField<String>(
                 initialValue: inverters.any((p) => p.id == _inverterId)

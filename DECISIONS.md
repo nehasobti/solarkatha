@@ -98,3 +98,45 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 11. **WhatsApp templates.** The message templates are in `app_config` per language (`wa_template_proposal_en/hi`, `wa_template_payment_en/hi`), with `{customer_name}`-style placeholders.
 12. **Demo catalogue.** It's seeded for the demo company: 2 DCR panels, 1 imported non-DCR panel, 2 inverters and a structure.
 13. **Local npm cache.** `npm` installs use `npm_config_cache=D:\npm-cache`, so nothing lands on C:.
+
+## Phase 5 – Roof survey
+
+1. **Map imagery is Esri World Imagery through `flutter_map`, not Google Maps.** It needs no API key or billing account. Attribution is shown on the map. Esri's terms allow development and demo use; a commercial launch needs an ArcGIS account (or switch back to `google_maps_flutter`, which needs only the tile layer changed). Places autocomplete is not used: the map centres on the lead's saved GPS location, and the "My location" button works at the site.
+2. **Drawing.** The rep taps the roof corners; undo and clear are available. Area uses a local metre projection (shoelace formula), accurate to centimetres on a rooftop.
+3. **Panel auto-fit.** Panels are laid in a grid aligned to the roof's longest edge, keeping `roof_setback_m` (0.6 m) clear of every edge. Both portrait and landscape and several grid offsets are tried, and the best kept. Concave roofs are handled: no panel overlaps a cut-out.
+4. **Panel-fitting settings are in `app_config`:** `panel_length_m`, `panel_width_m`, `panel_gap_m`, `roof_setback_m`, `default_panel_wp`. The watt peak comes from the first active DCR panel in the catalogue.
+5. **Roof limit.** `sites.max_kw` is the smaller of the kW that physically fits and area ÷ `sqm_per_kw`.
+   - **Sizing** pre-fills the roof area as `max_kw × sqm_per_kw`, so its recommendation is capped at the surveyed limit and says "Limited by roof area".
+   - **Proposal builder** warns when the chosen size exceeds the roof.
+6. **Roof layout image.** The map with the roof and panels is captured (RepaintBoundary → PNG). It's saved as a `lead_photos` row of kind `roof_layout` and uploaded by the same offline photo queue. The PDF function embeds it on the "Roof layout" page. Capture is skipped when no imagery is shown (tests).
+7. **One survey per lead** (unique `sites.lead_id` among non-deleted rows). The polygon is stored as GeoJSON (`[lng, lat]`). Saving a survey moves a "new" lead to "surveyed".
+8. **Roof type check.** The compliance "roof type recorded" check is now automatic: it passes when the survey has a roof type, instead of a manual tick.
+9. **Site photos moved.** The photo checklist (roof, meter, DB box, wiring path) is now on the Survey tab, as the spec places it. Layout images don't count toward the 4-photo compliance rule.
+
+## Phase 6 – Projects, tracking and owner dashboard
+
+1. **A signed proposal starts the project automatically.** A database trigger (`proposals_signed_create_project`) creates the project and its 10 subsidy stages, sets due dates from `stage_sla_days` in `app_config`, marks the lead "won" and notifies the owners and the rep. It fires the same way whether the rep or the customer signs.
+2. **Stage rules are in the database.**
+   - Marking a stage done starts the next one and moves `projects.current_stage`.
+   - Only an owner can reopen a done stage (`stage_guard`).
+   - Every stage change and the subsidy-received amount go to `activity_log`.
+3. **Installers** see only projects they're assigned to (`project_assignees`, one row per installer; the spec's `installer_ids` array). They get the lead, survey, photos and proposal of those projects (read-only, via RLS and their own sync stream), and can add stage documents. They don't get the lead page in the app.
+4. **Stage documents** are `lead_photos` rows of kind `document` with `project_stage_id`. They use the same offline photo queue.
+5. **WhatsApp stage updates** use the `wa_template_stage_en/hi` templates in `app_config`, in the proposal's language, with the tracking link. They're sent with one tap from a done stage (wa.me, like Phase 4).
+6. **Customer tracking page** (`/t/<share_token>`, no login) is served by the public `track` Edge Function.
+   - It returns only what the customer needs: first name, kW, price, subsidy, PDF link, stages and the pay link. No phone numbers or internal notes are returned.
+   - Customers can sign there. Requests are rate-limited per IP hash (`track_rate_limit_per_minute`). Turning a link off sets `proposals.share_revoked_at`.
+   - The page uses the company's brand colour and has its own Hindi/English switch.
+7. **The web app is on Vercel** at `https://solarkatha.vercel.app`; `public_web_url` in `app_config` builds the tracking links. Change it there if a custom domain is added.
+8. **Owner dashboard** figures are computed on the device from synced rows, so they work offline:
+   - kW sold: projects
+   - revenue: paid payments
+   - subsidies pending: projects without a received amount
+   - active projects, and projects by stage
+   On phones, the owner sections (subsidy, team, products, config, branding) are reached from shortcuts on the dashboard.
+9. **Team invites stay server-only** (not synced) and need a connection. Members are activated or deactivated by the owner. Per-rep numbers (leads, won, kW) come from synced data.
+10. **Config editing** writes company override rows. Defaults stay untouched, and removing an override brings the default back. Subsidy rules and tariffs are edited as JSON slabs (same format as the seeds), validated as a list.
+11. **jsonb upload fix.** JSON columns are kept as text in the local SQLite. The connector now sends them as JSON values, so Postgres stores real JSON instead of a quoted string. Migration `20261010000100` repaired older rows. This also fixes the generation chart and loan block in PDFs for proposals saved from the app.
+12. **Panel size per product.** Panels have `length_m`/`width_m`. The survey uses the size of the chosen panel, falling back to the `app_config` default. For example, 710 W panels (≈ 2.38 × 1.30 m) fit correctly.
+13. **CSV export** (leads, projects) is UTF-8 with BOM so Excel shows Hindi names, shared through the system share sheet or downloaded on web.
+14. **Deferred:** FCM push (needs a Firebase project). In-app notifications (bell) cover the same events for now.

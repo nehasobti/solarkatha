@@ -1103,4 +1103,460 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get createProposal => 'प्रस्ताव बनाएँ';
+
+  @override
+  String get surveyTitle => 'छत का सर्वे';
+
+  @override
+  String get startSurvey => 'छत का सर्वे शुरू करें';
+
+  @override
+  String get editSurvey => 'छत का सर्वे बदलें';
+
+  @override
+  String get drawRoofHint => 'मैप पर छत के हर कोने पर टैप करें';
+
+  @override
+  String get undoPoint => 'पीछे';
+
+  @override
+  String get clearRoof => 'मिटाएँ';
+
+  @override
+  String get myLocation => 'मेरी लोकेशन';
+
+  @override
+  String get needThreePoints => 'छत बनाने के लिए कम से कम 3 कोनों पर टैप करें';
+
+  @override
+  String get roofAreaResult => 'छत का क्षेत्र';
+
+  @override
+  String get panelsFit => 'कितने पैनल आएँगे';
+
+  @override
+  String get fittedKwLabel => 'पैनल आएँगे';
+
+  @override
+  String maxKwRoof(String kw) {
+    return 'छत पर अधिकतम $kw';
+  }
+
+  @override
+  String get roofTypeLabel => 'छत का प्रकार';
+
+  @override
+  String get roofRcc => 'RCC (कंक्रीट)';
+
+  @override
+  String get roofTin => 'टिन शेड';
+
+  @override
+  String get roofOther => 'अन्य';
+
+  @override
+  String get floorsLabel => 'मंज़िलें';
+
+  @override
+  String get orientationLabel => 'पैनल की दिशा';
+
+  @override
+  String get tiltLabel => 'झुकाव';
+
+  @override
+  String degreesValue(String deg) {
+    return '$deg°';
+  }
+
+  @override
+  String get dirN => 'उत्तर';
+
+  @override
+  String get dirNE => 'उत्तर-पूर्व';
+
+  @override
+  String get dirE => 'पूर्व';
+
+  @override
+  String get dirSE => 'दक्षिण-पूर्व';
+
+  @override
+  String get dirS => 'दक्षिण';
+
+  @override
+  String get dirSW => 'दक्षिण-पश्चिम';
+
+  @override
+  String get dirW => 'पश्चिम';
+
+  @override
+  String get dirNW => 'उत्तर-पश्चिम';
+
+  @override
+  String get saveSurvey => 'सर्वे सेव करें';
+
+  @override
+  String get surveySaved => 'सर्वे सेव हो गया';
+
+  @override
+  String get noSurveyTitle => 'अभी छत का सर्वे नहीं हुआ';
+
+  @override
+  String get noSurveyBody =>
+      'कितने पैनल आएँगे, यह देखने के लिए सैटेलाइट मैप पर छत बनाएँ।';
+
+  @override
+  String roofLimitWarning(String kw) {
+    return 'छत की सीमा ($kw) से ज़्यादा।';
+  }
+
+  @override
+  String get photoKindRoofLayout => 'छत का लेआउट';
+
+  @override
+  String get surveyConfigMissing =>
+      'पैनल की सेटिंग अभी इस डिवाइस पर नहीं आई है। इंटरनेट से जुड़ें और फिर से खोलें।';
+
+  @override
+  String get noLocationHint =>
+      'इस लीड की लोकेशन सेव नहीं है। साइट पर \"मेरी लोकेशन\" दबाएँ, या मैप को घर तक ले जाएँ।';
+
+  @override
+  String get stagePortalRegistration => 'राष्ट्रीय पोर्टल पर पंजीकरण';
+
+  @override
+  String get stageDiscomFeasibility => 'DISCOM से व्यवहार्यता मंज़ूरी';
+
+  @override
+  String get stageVendorSelected => 'वेंडर चुना गया';
+
+  @override
+  String get stageInstallation => 'इंस्टॉलेशन';
+
+  @override
+  String get stageNetMeterApplied => 'नेट मीटर के लिए आवेदन';
+
+  @override
+  String get stageNetMeterInstalled => 'नेट मीटर लगा';
+
+  @override
+  String get stageInspection => 'जाँच';
+
+  @override
+  String get stageCommissioning => 'कमीशनिंग प्रमाणपत्र';
+
+  @override
+  String get stageSubsidyClaimed => 'सब्सिडी का दावा किया';
+
+  @override
+  String get stageSubsidyCredited => 'सब्सिडी खाते में जमा';
+
+  @override
+  String get stagePending => 'शुरू नहीं';
+
+  @override
+  String get stageInProgress => 'चल रहा है';
+
+  @override
+  String get stageDone => 'पूरा';
+
+  @override
+  String get stageBlocked => 'रुका हुआ';
+
+  @override
+  String get projectTitle => 'प्रोजेक्ट';
+
+  @override
+  String stageProgress(String done) {
+    return '10 में से $done चरण पूरे';
+  }
+
+  @override
+  String dueOn(String date) {
+    return 'अंतिम तारीख $date';
+  }
+
+  @override
+  String doneOn(String date) {
+    return '$date को पूरा';
+  }
+
+  @override
+  String get markDone => 'पूरा करें';
+
+  @override
+  String get markBlocked => 'रुका हुआ बताएँ';
+
+  @override
+  String get resumeStage => 'फिर शुरू करें';
+
+  @override
+  String get reopenStage => 'फिर खोलें';
+
+  @override
+  String get blockedReason => 'यह चरण क्यों रुका है?';
+
+  @override
+  String get stageNote => 'नोट';
+
+  @override
+  String get addDocument => 'दस्तावेज़ जोड़ें';
+
+  @override
+  String get sendStageUpdate => 'WhatsApp पर अपडेट भेजें';
+
+  @override
+  String get stageMarkedDone => 'चरण पूरा हुआ';
+
+  @override
+  String get trackingLink => 'ग्राहक का ट्रैकिंग लिंक';
+
+  @override
+  String get shareTrackingLink => 'लिंक WhatsApp पर भेजें';
+
+  @override
+  String get revokeLink => 'लिंक बंद करें';
+
+  @override
+  String get linkRevoked => 'लिंक बंद कर दिया गया';
+
+  @override
+  String get netMeterNumberLabel => 'नेट मीटर नंबर';
+
+  @override
+  String get commissioningDateLabel => 'कमीशनिंग की तारीख';
+
+  @override
+  String get subsidyReceivedLabel => 'मिली सब्सिडी (₹)';
+
+  @override
+  String get installersLabel => 'इंस्टॉलर';
+
+  @override
+  String get noProjectYet =>
+      'ग्राहक के प्रस्ताव पर हस्ताक्षर करते ही प्रोजेक्ट शुरू होगा।';
+
+  @override
+  String get openProject => 'प्रोजेक्ट खोलें';
+
+  @override
+  String get projectComplete => 'प्रोजेक्ट पूरा';
+
+  @override
+  String get notificationsTitle => 'सूचनाएँ';
+
+  @override
+  String get noNotifications => 'अभी कोई सूचना नहीं';
+
+  @override
+  String get markAllRead => 'सब पढ़ा हुआ करें';
+
+  @override
+  String notifProjectCreated(String kw) {
+    return 'प्रस्ताव पर हस्ताक्षर हुए। प्रोजेक्ट शुरू ($kw)।';
+  }
+
+  @override
+  String notifStageDone(String stage) {
+    return 'चरण पूरा: $stage';
+  }
+
+  @override
+  String get kpiActiveProjects => 'चालू प्रोजेक्ट';
+
+  @override
+  String get projectsByStage => 'चरण के अनुसार प्रोजेक्ट';
+
+  @override
+  String daysInStage(String days) {
+    return 'इस चरण में $days दिन';
+  }
+
+  @override
+  String get overdueTitle => 'देर से चल रहे';
+
+  @override
+  String get allOnTrack => 'सब समय पर है।';
+
+  @override
+  String get expectedSubsidyLabel => 'अपेक्षित सब्सिडी';
+
+  @override
+  String get inviteMember => 'सदस्य जोड़ें';
+
+  @override
+  String get inviteSent =>
+      'निमंत्रण सेव हुआ। उन्हें इसी नंबर से लॉग इन करने को कहें।';
+
+  @override
+  String get pendingInvites => 'बाकी निमंत्रण';
+
+  @override
+  String get cancelInvite => 'निमंत्रण रद्द करें';
+
+  @override
+  String get deactivate => 'निष्क्रिय करें';
+
+  @override
+  String get activate => 'सक्रिय करें';
+
+  @override
+  String get performanceTitle => 'प्रदर्शन';
+
+  @override
+  String get leadsCountLabel => 'लीड';
+
+  @override
+  String get wonCountLabel => 'जीती';
+
+  @override
+  String get inactiveLabel => 'निष्क्रिय';
+
+  @override
+  String get youLabel => 'आप';
+
+  @override
+  String get ownerOnlyHint => 'केवल मालिक इसे बदल सकते हैं।';
+
+  @override
+  String get appSettingsTitle => 'ऐप सेटिंग्स';
+
+  @override
+  String get loanPresetsTitle => 'लोन विकल्प';
+
+  @override
+  String get subsidyRulesTitle => 'सब्सिडी नियम';
+
+  @override
+  String get tariffsTitle => 'टैरिफ़';
+
+  @override
+  String get configCompanyNote =>
+      'बदलाव केवल आपकी कंपनी पर लागू होंगे। डिफ़ॉल्ट वैसे ही रहेंगे।';
+
+  @override
+  String get validFromLabel => 'से लागू';
+
+  @override
+  String get slabsLabel => 'स्लैब';
+
+  @override
+  String get capLabel => 'अधिकतम (₹)';
+
+  @override
+  String get uptoKwLabel => 'kW तक';
+
+  @override
+  String get perKwLabel => '₹ प्रति kW';
+
+  @override
+  String get uptoUnitsLabel => 'यूनिट तक';
+
+  @override
+  String get rateLabel => '₹ प्रति यूनिट';
+
+  @override
+  String get fixedChargeLabel => 'फ़िक्स्ड चार्ज (₹/महीना)';
+
+  @override
+  String get bankNameLabel => 'बैंक / लोन देने वाला';
+
+  @override
+  String get maxYearsLabel => 'अधिकतम साल';
+
+  @override
+  String get addRow => 'पंक्ति जोड़ें';
+
+  @override
+  String get addItem => 'जोड़ें';
+
+  @override
+  String get remove => 'हटाएँ';
+
+  @override
+  String get overridden => 'आपका मान';
+
+  @override
+  String get addressLabel => 'पता';
+
+  @override
+  String get gstinLabel => 'GSTIN';
+
+  @override
+  String get brandColorLabel => 'ब्रांड रंग';
+
+  @override
+  String get mnreVendorIdLabel => 'MNRE वेंडर ID';
+
+  @override
+  String get companyPhoneLabel => 'कंपनी का फ़ोन';
+
+  @override
+  String get exportCsv => 'CSV डाउनलोड करें';
+
+  @override
+  String trackHello(String name) {
+    return 'नमस्ते $name';
+  }
+
+  @override
+  String trackSystem(String kw) {
+    return 'आपका $kw रूफ़टॉप सोलर सिस्टम';
+  }
+
+  @override
+  String get trackDownloadPdf => 'प्रस्ताव डाउनलोड करें (PDF)';
+
+  @override
+  String get trackSign => 'प्रस्ताव पर हस्ताक्षर करें';
+
+  @override
+  String get trackSigned => 'हस्ताक्षर हो गए। धन्यवाद!';
+
+  @override
+  String trackPay(String amount) {
+    return '$amount एडवांस भरें';
+  }
+
+  @override
+  String get trackPaid => 'एडवांस भर दिया गया';
+
+  @override
+  String get trackStagesTitle => 'प्रगति';
+
+  @override
+  String get trackNotFound => 'यह लिंक सही नहीं है या बंद कर दिया गया है।';
+
+  @override
+  String get trackSignHint => 'बॉक्स के अंदर उंगली से हस्ताक्षर करें';
+
+  @override
+  String get trackSubmitSignature => 'हस्ताक्षर भेजें';
+
+  @override
+  String trackCallCompany(String company) {
+    return '$company को कॉल करें';
+  }
+
+  @override
+  String trackSubsidyLine(String subsidy, String net) {
+    return 'सब्सिडी $subsidy · आप देंगे $net';
+  }
+
+  @override
+  String get trackNotStarted => 'प्रस्ताव पर हस्ताक्षर के बाद काम शुरू होगा।';
+
+  @override
+  String get invalidJson =>
+      'सही नहीं है। पहले जैसा ही फ़ॉर्मैट रखें, जैसे [ ... ]';
+
+  @override
+  String get panelLengthLabel => 'पैनल की लंबाई (मीटर)';
+
+  @override
+  String get panelWidthLabel => 'पैनल की चौड़ाई (मीटर)';
+
+  @override
+  String get panelSizeHint =>
+      'डेटाशीट से, जैसे 710 W के लिए 2.384 × 1.303। छत सर्वे में काम आता है।';
 }

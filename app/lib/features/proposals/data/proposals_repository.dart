@@ -100,7 +100,8 @@ class ProposalsRepository {
   /// Photos taken for the lead (compliance: at least 4 site photos).
   Future<int> photoCount(String leadId) async {
     final r = await _db.get(
-      "SELECT COUNT(*) AS n FROM lead_photos WHERE lead_id = ? AND kind != 'bill' "
+      'SELECT COUNT(*) AS n FROM lead_photos WHERE lead_id = ? '
+      "AND kind NOT IN ('bill', 'roof_layout') "
       'AND deleted_at IS NULL',
       [leadId],
     );

@@ -4,9 +4,13 @@
 #
 # - Everyone: their company, its team, products, and pricing settings
 #   (platform defaults + their company's own rows).
-# - Owners: every lead, photo, bill, proposal and payment in the company.
+# - Owners: every lead, photo, bill, survey, proposal and payment in the
+#   company.
 # - Sales reps: only leads assigned to them, with their photos, bills,
-#   proposals and payments.
+#   surveys, proposals and payments.
+# - Installers: projects they are assigned to, with the lead, survey,
+#   photos/documents and proposal (for the tracking link).
+# - Everyone: their own notifications.
 # Soft-deleted rows are left out, so they disappear from devices.
 
 config:
@@ -42,6 +46,10 @@ streams:
       - "SELECT bills.* FROM bills, owner_company AS bucket WHERE bills.company_id = bucket.company_id AND bills.deleted_at IS NULL"
       - "SELECT proposals.* FROM proposals, owner_company AS bucket WHERE proposals.company_id = bucket.company_id AND proposals.deleted_at IS NULL"
       - "SELECT payments.* FROM payments, owner_company AS bucket WHERE payments.company_id = bucket.company_id"
+      - "SELECT sites.* FROM sites, owner_company AS bucket WHERE sites.company_id = bucket.company_id AND sites.deleted_at IS NULL"
+      - "SELECT projects.* FROM projects, owner_company AS bucket WHERE projects.company_id = bucket.company_id AND projects.deleted_at IS NULL"
+      - "SELECT project_stages.* FROM project_stages, owner_company AS bucket WHERE project_stages.company_id = bucket.company_id"
+      - "SELECT project_assignees.* FROM project_assignees, owner_company AS bucket WHERE project_assignees.company_id = bucket.company_id"
   assigned_leads:
     auto_subscribe: true
     with:
@@ -52,3 +60,22 @@ streams:
       - "SELECT bills.* FROM bills, my_leads AS bucket WHERE bills.lead_id = bucket.lead_id AND bills.deleted_at IS NULL"
       - "SELECT proposals.* FROM proposals, my_leads AS bucket WHERE proposals.lead_id = bucket.lead_id AND proposals.deleted_at IS NULL"
       - "SELECT payments.* FROM payments, my_leads AS bucket WHERE payments.lead_id = bucket.lead_id"
+      - "SELECT sites.* FROM sites, my_leads AS bucket WHERE sites.lead_id = bucket.lead_id AND sites.deleted_at IS NULL"
+      - "SELECT projects.* FROM projects, my_leads AS bucket WHERE projects.lead_id = bucket.lead_id AND projects.deleted_at IS NULL"
+      - "SELECT project_stages.* FROM project_stages, my_leads AS bucket WHERE project_stages.lead_id = bucket.lead_id"
+  installer_projects:
+    auto_subscribe: true
+    with:
+      my_jobs: SELECT lead_id FROM project_assignees WHERE profile_id = auth.user_id()
+    queries:
+      - "SELECT leads.* FROM leads, my_jobs AS bucket WHERE leads.id = bucket.lead_id AND leads.deleted_at IS NULL"
+      - "SELECT projects.* FROM projects, my_jobs AS bucket WHERE projects.lead_id = bucket.lead_id AND projects.deleted_at IS NULL"
+      - "SELECT project_stages.* FROM project_stages, my_jobs AS bucket WHERE project_stages.lead_id = bucket.lead_id"
+      - "SELECT project_assignees.* FROM project_assignees, my_jobs AS bucket WHERE project_assignees.lead_id = bucket.lead_id"
+      - "SELECT lead_photos.* FROM lead_photos, my_jobs AS bucket WHERE lead_photos.lead_id = bucket.lead_id AND lead_photos.deleted_at IS NULL"
+      - "SELECT sites.* FROM sites, my_jobs AS bucket WHERE sites.lead_id = bucket.lead_id AND sites.deleted_at IS NULL"
+      - "SELECT proposals.* FROM proposals, my_jobs AS bucket WHERE proposals.lead_id = bucket.lead_id AND proposals.deleted_at IS NULL"
+  my_notifications:
+    auto_subscribe: true
+    queries:
+      - "SELECT * FROM notifications WHERE profile_id = auth.user_id()"

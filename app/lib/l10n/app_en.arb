@@ -518,5 +518,246 @@
   "netPriceShort": "Customer pays",
   "tagNoSubsidy": "No subsidy",
   "tagApproved": "Approved",
-  "createProposal": "Create proposal"
+  "createProposal": "Create proposal",
+  "surveyTitle": "Roof survey",
+  "startSurvey": "Start roof survey",
+  "editSurvey": "Edit roof survey",
+  "drawRoofHint": "Tap each corner of the roof on the map",
+  "undoPoint": "Undo",
+  "clearRoof": "Clear",
+  "myLocation": "My location",
+  "needThreePoints": "Tap at least 3 corners to draw the roof",
+  "roofAreaResult": "Roof area",
+  "panelsFit": "Panels that fit",
+  "fittedKwLabel": "Panels fit",
+  "maxKwRoof": "Roof allows up to {kw}",
+  "@maxKwRoof": {
+    "placeholders": {
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "roofTypeLabel": "Roof type",
+  "roofRcc": "RCC (concrete)",
+  "roofTin": "Tin sheet",
+  "roofOther": "Other",
+  "floorsLabel": "Floors",
+  "orientationLabel": "Panels face",
+  "tiltLabel": "Tilt",
+  "degreesValue": "{deg}°",
+  "@degreesValue": {
+    "placeholders": {
+      "deg": {
+        "type": "String"
+      }
+    }
+  },
+  "dirN": "North",
+  "dirNE": "North-east",
+  "dirE": "East",
+  "dirSE": "South-east",
+  "dirS": "South",
+  "dirSW": "South-west",
+  "dirW": "West",
+  "dirNW": "North-west",
+  "saveSurvey": "Save survey",
+  "surveySaved": "Survey saved",
+  "noSurveyTitle": "No roof survey yet",
+  "noSurveyBody": "Draw the roof on the satellite map to see how many panels fit.",
+  "roofLimitWarning": "More than the roof allows ({kw}).",
+  "@roofLimitWarning": {
+    "placeholders": {
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "photoKindRoofLayout": "Roof layout",
+  "surveyConfigMissing": "Panel settings haven't reached this device yet. Connect to the internet and open this again.",
+  "noLocationHint": "This lead has no saved location. Use \"My location\" at the site, or move the map to the house.",
+  "stagePortalRegistration": "Registration on the national portal",
+  "stageDiscomFeasibility": "DISCOM feasibility approval",
+  "stageVendorSelected": "Vendor selected",
+  "stageInstallation": "Installation",
+  "stageNetMeterApplied": "Net meter applied",
+  "stageNetMeterInstalled": "Net meter installed",
+  "stageInspection": "Inspection",
+  "stageCommissioning": "Commissioning certificate",
+  "stageSubsidyClaimed": "Subsidy claimed",
+  "stageSubsidyCredited": "Subsidy credited",
+  "stagePending": "Not started",
+  "stageInProgress": "In progress",
+  "stageDone": "Done",
+  "stageBlocked": "Blocked",
+  "projectTitle": "Project",
+  "stageProgress": "{done} of 10 stages done",
+  "@stageProgress": {
+    "placeholders": {
+      "done": {
+        "type": "String"
+      }
+    }
+  },
+  "dueOn": "Due {date}",
+  "@dueOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "doneOn": "Done {date}",
+  "@doneOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "markDone": "Mark done",
+  "markBlocked": "Mark blocked",
+  "resumeStage": "Resume",
+  "reopenStage": "Reopen",
+  "blockedReason": "What is blocking this stage?",
+  "stageNote": "Note",
+  "addDocument": "Add document",
+  "sendStageUpdate": "Send update on WhatsApp",
+  "stageMarkedDone": "Stage marked done",
+  "trackingLink": "Customer tracking link",
+  "shareTrackingLink": "Share link on WhatsApp",
+  "revokeLink": "Turn off link",
+  "linkRevoked": "Link turned off",
+  "netMeterNumberLabel": "Net meter number",
+  "commissioningDateLabel": "Commissioning date",
+  "subsidyReceivedLabel": "Subsidy received (₹)",
+  "installersLabel": "Installers",
+  "noProjectYet": "The project starts when the customer signs the proposal.",
+  "openProject": "Open project",
+  "projectComplete": "Project complete",
+  "notificationsTitle": "Notifications",
+  "noNotifications": "No notifications yet",
+  "markAllRead": "Mark all read",
+  "notifProjectCreated": "Proposal signed. Project started ({kw}).",
+  "@notifProjectCreated": {
+    "placeholders": {
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "notifStageDone": "Stage done: {stage}",
+  "@notifStageDone": {
+    "placeholders": {
+      "stage": {
+        "type": "String"
+      }
+    }
+  },
+  "kpiActiveProjects": "Active projects",
+  "projectsByStage": "Projects by stage",
+  "daysInStage": "{days} days in this stage",
+  "@daysInStage": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "overdueTitle": "Overdue",
+  "allOnTrack": "Everything is on track.",
+  "expectedSubsidyLabel": "Expected subsidy",
+  "inviteMember": "Invite member",
+  "inviteSent": "Invite saved. Ask them to log in with this number.",
+  "pendingInvites": "Pending invites",
+  "cancelInvite": "Cancel invite",
+  "deactivate": "Deactivate",
+  "activate": "Activate",
+  "performanceTitle": "Performance",
+  "leadsCountLabel": "Leads",
+  "wonCountLabel": "Won",
+  "inactiveLabel": "Inactive",
+  "youLabel": "You",
+  "ownerOnlyHint": "Only the owner can change this.",
+  "appSettingsTitle": "App settings",
+  "loanPresetsTitle": "Loan options",
+  "subsidyRulesTitle": "Subsidy rules",
+  "tariffsTitle": "Tariffs",
+  "configCompanyNote": "Changes apply to your company only. The defaults stay as they are.",
+  "validFromLabel": "Valid from",
+  "slabsLabel": "Slabs",
+  "capLabel": "Cap (₹)",
+  "uptoKwLabel": "Up to kW",
+  "perKwLabel": "₹ per kW",
+  "uptoUnitsLabel": "Up to units",
+  "rateLabel": "₹ per unit",
+  "fixedChargeLabel": "Fixed charge (₹/month)",
+  "bankNameLabel": "Bank / lender",
+  "maxYearsLabel": "Max years",
+  "addRow": "Add row",
+  "addItem": "Add",
+  "remove": "Remove",
+  "overridden": "Your value",
+  "addressLabel": "Address",
+  "gstinLabel": "GSTIN",
+  "brandColorLabel": "Brand colour",
+  "mnreVendorIdLabel": "MNRE vendor ID",
+  "companyPhoneLabel": "Company phone",
+  "exportCsv": "Export CSV",
+  "trackHello": "Namaste {name}",
+  "@trackHello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "trackSystem": "Your {kw} rooftop solar system",
+  "@trackSystem": {
+    "placeholders": {
+      "kw": {
+        "type": "String"
+      }
+    }
+  },
+  "trackDownloadPdf": "Download proposal (PDF)",
+  "trackSign": "Sign the proposal",
+  "trackSigned": "Signed. Thank you!",
+  "trackPay": "Pay advance {amount}",
+  "@trackPay": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "trackPaid": "Advance paid",
+  "trackStagesTitle": "Progress",
+  "trackNotFound": "This link is not valid or has been turned off.",
+  "trackSignHint": "Sign inside the box with your finger",
+  "trackSubmitSignature": "Submit signature",
+  "trackCallCompany": "Call {company}",
+  "@trackCallCompany": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "trackSubsidyLine": "Subsidy {subsidy} · You pay {net}",
+  "@trackSubsidyLine": {
+    "placeholders": {
+      "subsidy": {
+        "type": "String"
+      },
+      "net": {
+        "type": "String"
+      }
+    }
+  },
+  "trackNotStarted": "Work starts after you sign the proposal.",
+  "invalidJson": "Not valid. Use the same format as before, e.g. [ ... ]",
+  "panelLengthLabel": "Panel length (m)",
+  "panelWidthLabel": "Panel width (m)",
+  "panelSizeHint": "From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey."
 }

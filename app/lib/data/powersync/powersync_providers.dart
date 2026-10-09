@@ -50,14 +50,15 @@ AttachmentQueue photoQueue(Ref ref) {
     localStorage: local.photoStorage,
     watchAttachments: () => db
         .watch(
-          'SELECT id, company_id FROM $leadPhotosTable WHERE deleted_at IS NULL',
+          "SELECT id, company_id, CASE kind WHEN 'roof_layout' THEN 'png' ELSE 'jpg' END AS ext "
+          'FROM $leadPhotosTable WHERE deleted_at IS NULL',
         )
         .map(
           (rows) => [
             for (final r in rows)
               WatchedAttachmentItem(
                 id: r['id'] as String,
-                fileExtension: 'jpg',
+                fileExtension: r['ext'] as String,
                 metaData: r['company_id'] as String?,
               ),
           ],

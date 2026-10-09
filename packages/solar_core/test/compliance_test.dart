@@ -58,10 +58,7 @@ void main() {
 
   test('manual items are marked', () {
     final manual = evaluateCompliance(input()).items.where((i) => i.manual);
-    expect(manual.map((i) => i.check), [
-      ComplianceCheck.ownConnection,
-      ComplianceCheck.roofType,
-    ]);
+    expect(manual.map((i) => i.check), [ComplianceCheck.ownConnection]);
   });
 
   test('panel count rounds up; installed kW', () {

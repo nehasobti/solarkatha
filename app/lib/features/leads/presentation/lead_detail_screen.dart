@@ -6,11 +6,12 @@ import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../bills/presentation/bill_tab.dart';
+import '../../projects/presentation/project_detail_screen.dart';
 import '../../proposals/presentation/proposals_tab.dart';
+import '../../survey/presentation/survey_tab.dart';
 import '../application/leads_providers.dart';
 import '../data/leads_repository.dart';
 import '../domain/lead.dart';
-import 'lead_photos_section.dart';
 import 'lead_ui.dart';
 
 /// Lead detail: header with quick actions, then tabs (Overview, Bill, Survey,
@@ -123,14 +124,9 @@ class LeadDetailScreen extends ConsumerWidget {
             children: [
               _Overview(lead: lead),
               BillTab(lead: lead),
-              EmptyState(
-                icon: Icons.roofing_outlined,
-                title: l10n.tabSurvey,
-                body: l10n.comingSoon,
-              ),
+              SurveyTab(lead: lead),
               ProposalsTab(lead: lead),
-              for (final (label, icon) in tabs.skip(4))
-                EmptyState(icon: icon, title: label, body: l10n.comingSoon),
+              ProjectTab(leadId: lead.id),
             ],
           ),
         ),
@@ -386,8 +382,6 @@ class _Overview extends ConsumerWidget {
             ),
           ),
         ),
-        const SizedBox(height: 16),
-        LeadPhotosSection(lead: lead),
         const SizedBox(height: 32),
       ],
     );
