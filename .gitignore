@@ -19,3 +19,4 @@ node_modules/
 
 # PowerSync DB role password (local only)
 powersync/powersync_role_password.txt
+app/env/google-keys.txt

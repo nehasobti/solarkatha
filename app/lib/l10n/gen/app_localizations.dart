@@ -3031,6 +3031,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Download Android app'**
   String get downloadApk;
+
+  /// No description provided for @searchPlaceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search address or place'**
+  String get searchPlaceHint;
+
+  /// No description provided for @detectRoof.
+  ///
+  /// In en, this message translates to:
+  /// **'Detect roof (Google)'**
+  String get detectRoof;
+
+  /// No description provided for @roofDetected.
+  ///
+  /// In en, this message translates to:
+  /// **'Google found this roof. Drag the map and adjust corners if needed.'**
+  String get roofDetected;
+
+  /// No description provided for @roofNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Google has no roof data here. Tap the roof corners to draw it.'**
+  String get roofNotFound;
+
+  /// No description provided for @googleRoofInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Google: {panels} panels fit · {hours} sun hours/year · photo {date}'**
+  String googleRoofInfo(String panels, String hours, String date);
+
+  /// No description provided for @addressLocated.
+  ///
+  /// In en, this message translates to:
+  /// **'Map moved to the lead\'s address. Check it is the right house.'**
+  String get addressLocated;
+
+  /// No description provided for @addressNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not find this address on the map. Search or use My location.'**
+  String get addressNotFound;
 }
 
 class _AppLocalizationsDelegate

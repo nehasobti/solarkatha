@@ -177,3 +177,16 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 2. **App icon.** A white sun over a navy solar panel on an orange gradient. It is drawn as SVG in `assets/icon/` and rendered to PNG, then `flutter_launcher_icons` generates the Android adaptive icon (with a monochrome layer) and the web icons. The same artwork is the in-app logo (`BrandMark`). The notification icon is a white silhouette (`ic_notification`) with an orange accent.
 3. **Offline banner.** The banner appears only after the app has been disconnected for a while: 4 s after a failed connection, 12 s otherwise. Retries don't reset this timer, and a slow web start no longer shows a false "offline". Checked on the emulator in airplane mode.
 4. **Finished stages are compact.** Only the latest finished stage keeps the Reopen and "Send update" buttons.
+
+## Google Maps Platform
+
+1. **The `maps` Edge Function** handles Geocoding, Places (New) autocomplete and the Solar API. The server key is kept in the `GOOGLE_MAPS_SERVER_KEY` secret and never reaches the app. Only signed-in members can call the function.
+2. **Typed addresses.** A lead with no GPS is geocoded when its survey opens. The map moves there, and the location is saved to the lead. The survey also has an address search box with suggestions, restricted to India.
+3. **Detect roof (Google).** The Solar API's `buildingInsights` uses LOW quality, the only level India has as of October 2026. It fills in:
+   - the building outline as a rectangle the rep then adjusts
+   - the main roof direction, rounded to 15°
+   - a shading level, from the median sunshine compared with the best spot on the roof
+   - Google's panel count, sunshine hours and imagery date, shown for comparison
+
+   Where Google has no data, the rep draws the roof by hand as before.
+4. **Imagery.** Google satellite tiles (Map Tiles API) use a session created in the app with `MAPS_API_KEY`, and the viewport copyright is shown as Google requires. If the key or the API isn't available, the map falls back to Esri automatically. Tiles need the key in the app, so that key must be locked to the app and the website.

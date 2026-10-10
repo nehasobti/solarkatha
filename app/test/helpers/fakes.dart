@@ -21,6 +21,7 @@ import 'package:solarkatha/features/bills/data/bills_repository.dart';
 import 'package:solarkatha/features/leads/data/leads_repository.dart';
 import 'package:solarkatha/features/proposals/data/proposals_repository.dart';
 import 'package:solarkatha/features/sizing/data/sizing_repository.dart';
+import 'package:solarkatha/features/survey/data/maps_api.dart';
 import 'package:solarkatha/features/survey/data/survey_repository.dart';
 import 'package:solarkatha/features/survey/presentation/survey_screen.dart';
 
@@ -90,6 +91,7 @@ Future<void> pumpApp(
   FakeProjectsRepository? projects,
   FakeAdminRepository? admin,
   FakeTrackingApi? tracking,
+  FakeMapsApi? maps,
   bool highContrast = false,
   bool largeText = false,
 }) async {
@@ -139,6 +141,7 @@ Future<void> pumpApp(
         adminRepositoryProvider.overrideWithValue(
           admin ?? FakeAdminRepository(),
         ),
+        mapsApiProvider.overrideWithValue(maps ?? FakeMapsApi()),
         trackingApiProvider.overrideWithValue(
           tracking ?? FakeTrackingApi(null),
         ),

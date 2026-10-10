@@ -57,6 +57,14 @@ class SurveyRepository {
 
   /// Panel-fitting settings from `app_config` (company row wins) and the
   /// watt peak of the first active DCR panel in the catalogue.
+  /// Saves a location found from the typed address (or a search) on a lead
+  /// that had no GPS point.
+  Future<void> setLeadLocation(String leadId, double lat, double lng) =>
+      _db.execute(
+        'UPDATE leads SET lat = ?, lng = ?, updated_at = ? WHERE id = ?',
+        [lat, lng, _now(), leadId],
+      );
+
   Future<SurveyConfig?> loadConfig(String companyId) async {
     final rows = await _db.getAll(
       'SELECT key, company_id, value FROM app_config WHERE key IN '

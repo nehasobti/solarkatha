@@ -51,7 +51,7 @@ final class SessionControllerProvider
   SessionController create() => SessionController();
 }
 
-String _$sessionControllerHash() => r'6079a2c2bcf3c4c24b191d27df527870eaad07e9';
+String _$sessionControllerHash() => r'231150afcd5a38dd2234b0996c2c5a771f3b8b63';
 
 /// Resolves the signed-in user into an [AppSession] and rebuilds whenever the
 /// Supabase user changes (sign-in, sign-out).

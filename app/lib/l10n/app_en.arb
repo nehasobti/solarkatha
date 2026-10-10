@@ -772,5 +772,25 @@
   "landingF4": "UPI advance payment links that mark themselves paid",
   "landingF5": "Track all 10 PM Surya Ghar subsidy stages; customers get a live link",
   "landingF6": "Works offline at the site and syncs when back online",
-  "downloadApk": "Download Android app"
+  "downloadApk": "Download Android app",
+  "searchPlaceHint": "Search address or place",
+  "detectRoof": "Detect roof (Google)",
+  "roofDetected": "Google found this roof. Drag the map and adjust corners if needed.",
+  "roofNotFound": "Google has no roof data here. Tap the roof corners to draw it.",
+  "googleRoofInfo": "Google: {panels} panels fit · {hours} sun hours/year · photo {date}",
+  "addressLocated": "Map moved to the lead's address. Check it is the right house.",
+  "addressNotFound": "Could not find this address on the map. Search or use My location.",
+  "@googleRoofInfo": {
+    "placeholders": {
+      "panels": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

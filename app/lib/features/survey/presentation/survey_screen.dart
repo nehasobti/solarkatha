@@ -12,12 +12,15 @@ import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:solar_core/solar_core.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../core/format/indian_format.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../leads/application/leads_providers.dart';
 import '../../leads/domain/lead.dart';
+import '../data/google_tiles.dart';
+import '../data/maps_api.dart';
 import '../data/survey_repository.dart';
 import '../domain/roof_geometry.dart';
 import '../domain/site.dart';
@@ -96,9 +99,168 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
   bool _configMissing = false;
   bool _saving = false;
 
+  // Address search (Places), Google roof detection and imagery credits.
+  final _search = TextEditingController();
+  String _session = const Uuid().v4();
+  Timer? _debounce;
+  List<PlaceSuggestion> _suggestions = const [];
+  bool _mapReady = false;
+  LatLng? _pendingMove;
+  bool _detecting = false;
+  SolarInsights? _google;
+  String? _copyright;
+  Timer? _copyrightDebounce;
+
   LatLng? get _center => widget.lead.hasLocation
       ? LatLng(widget.lead.lat!, widget.lead.lng!)
       : (_points.isNotEmpty ? _points.first : null);
+
+  String get _leadAddress =>
+      [widget.lead.address, widget.lead.district, widget.lead.pincode]
+          .whereType<String>()
+          .map((s) => s.trim())
+          .where((s) => s.isNotEmpty)
+          .join(', ');
+
+  void _moveTo(LatLng p, {double zoom = 19.5}) {
+    if (_mapReady) {
+      _map.move(p, zoom);
+    } else {
+      _pendingMove = p;
+    }
+  }
+
+  void _toast(String text) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+    }
+  }
+
+  /// A lead typed in without GPS: find the address on the map.
+  Future<void> _locateAddress() async {
+    final address = _leadAddress;
+    if (address.isEmpty) return;
+    final l10n = context.l10n;
+    try {
+      final hit = await ref.read(mapsApiProvider).geocode(address);
+      if (!mounted) return;
+      if (hit == null) {
+        _toast(l10n.addressNotFound);
+        return;
+      }
+      _moveTo(hit.point, zoom: 18.5);
+      await ref
+          .read(surveyRepositoryProvider)
+          .setLeadLocation(
+            widget.lead.id,
+            hit.point.latitude,
+            hit.point.longitude,
+          );
+      _toast(l10n.addressLocated);
+    } catch (_) {
+      // Offline: the rep can still search or use My location later.
+    }
+  }
+
+  void _onSearchChanged(String text) {
+    _debounce?.cancel();
+    if (text.trim().length < 3) {
+      setState(() => _suggestions = const []);
+      return;
+    }
+    _debounce = Timer(const Duration(milliseconds: 350), () async {
+      try {
+        final s = await ref.read(mapsApiProvider).autocomplete(text, _session);
+        if (mounted) setState(() => _suggestions = s);
+      } catch (_) {
+        if (mounted) setState(() => _suggestions = const []);
+      }
+    });
+  }
+
+  Future<void> _pickSuggestion(PlaceSuggestion s) async {
+    FocusScope.of(context).unfocus();
+    setState(() {
+      _suggestions = const [];
+      _search.text = s.text;
+    });
+    try {
+      final hit = await ref.read(mapsApiProvider).place(s.placeId, _session);
+      _session = const Uuid().v4(); // a session ends with the place lookup
+      if (hit == null) return;
+      _moveTo(hit.point);
+      if (!widget.lead.hasLocation) {
+        await ref
+            .read(surveyRepositoryProvider)
+            .setLeadLocation(
+              widget.lead.id,
+              hit.point.latitude,
+              hit.point.longitude,
+            );
+      }
+    } catch (e) {
+      if (mounted) _toast(describeError(context.l10n, e));
+    }
+  }
+
+  /// Google Solar API: outline, direction and shade of the roof under the
+  /// map centre. The rep checks and adjusts the corners.
+  Future<void> _detectRoof() async {
+    final l10n = context.l10n;
+    setState(() => _detecting = true);
+    try {
+      final at = _mapReady
+          ? _map.camera.center
+          : (_center ?? const LatLng(22.5, 79));
+      final g = await ref.read(mapsApiProvider).solar(at);
+      if (!mounted) return;
+      final outline = g?.outline;
+      if (g == null || outline == null) {
+        _toast(l10n.roofNotFound);
+        return;
+      }
+      setState(() {
+        _google = g;
+        _points = outline;
+        _orientation = g.orientationDeg ?? _orientation;
+        _shading = switch (g.shading) {
+          'none' => ShadingLevel.none,
+          'low' => ShadingLevel.low,
+          'medium' => ShadingLevel.medium,
+          'high' => ShadingLevel.high,
+          _ => _shading,
+        };
+      });
+      if (_mapReady) {
+        _map.fitCamera(
+          CameraFit.bounds(
+            bounds: LatLngBounds.fromPoints(outline),
+            padding: const EdgeInsets.all(48),
+            maxZoom: 20.5,
+          ),
+        );
+      }
+      _toast(l10n.roofDetected);
+    } catch (e) {
+      if (mounted) _toast(describeError(l10n, e));
+    } finally {
+      if (mounted) setState(() => _detecting = false);
+    }
+  }
+
+  void _updateCopyright(GoogleTiles g) {
+    _copyrightDebounce?.cancel();
+    _copyrightDebounce = Timer(const Duration(milliseconds: 600), () async {
+      if (!_mapReady) return;
+      final c = await g.copyright(
+        _map.camera.visibleBounds,
+        _map.camera.zoom.round(),
+      );
+      if (mounted && c != null && c != _copyright) {
+        setState(() => _copyright = c);
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -116,11 +278,17 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
         }
       });
     }
+    if (!widget.lead.hasLocation && _points.isEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _locateAddress());
+    }
   }
 
   @override
   void dispose() {
     _notes.dispose();
+    _search.dispose();
+    _debounce?.cancel();
+    _copyrightDebounce?.cancel();
     super.dispose();
   }
 
@@ -220,6 +388,7 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
     final lang = Localizations.localeOf(context).languageCode;
     final wide = MediaQuery.sizeOf(context).width >= 900;
     final tiles = ref.watch(satelliteTilesProvider);
+    final google = tiles ? ref.watch(googleTilesProvider).value : null;
     final layout = _layout;
 
     if (_configMissing) {
@@ -239,13 +408,35 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
               initialCenter: _center ?? const LatLng(22.5, 79),
               initialZoom: _center == null ? 5 : 19.5,
               maxZoom: 21,
-              onTap: (_, p) => setState(() => _points = [..._points, p]),
+              onTap: (_, p) {
+                FocusScope.of(context).unfocus();
+                setState(() {
+                  _suggestions = const [];
+                  _points = [..._points, p];
+                });
+              },
+              onMapReady: () {
+                _mapReady = true;
+                final p = _pendingMove;
+                if (p != null) {
+                  _pendingMove = null;
+                  _map.move(p, 18.5);
+                }
+                if (google != null) _updateCopyright(google);
+              },
+              onMapEvent: (e) {
+                if (google != null && e is MapEventMoveEnd) {
+                  _updateCopyright(google);
+                }
+              },
             ),
             children: [
               if (tiles)
                 TileLayer(
-                  urlTemplate: _esriImagery,
-                  maxNativeZoom: 19,
+                  // Google when the key and Map Tiles API work, else Esri.
+                  key: ValueKey(google?.session ?? 'esri'),
+                  urlTemplate: google?.urlTemplate ?? _esriImagery,
+                  maxNativeZoom: google != null ? 21 : 19,
                   maxZoom: 21,
                   userAgentPackageName: 'in.solarkatha.app',
                 ),
@@ -303,9 +494,16 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
                 ],
               ),
               if (tiles)
-                const RichAttributionWidget(
+                RichAttributionWidget(
+                  alignment: AttributionAlignment.bottomLeft,
                   attributions: [
-                    TextSourceAttribution('Esri, Maxar, Earthstar Geographics'),
+                    TextSourceAttribution(
+                      google != null
+                          ? (_copyright == null
+                                ? 'Google'
+                                : 'Google · $_copyright')
+                          : 'Esri, Maxar, Earthstar Geographics',
+                    ),
                   ],
                 ),
             ],
@@ -317,17 +515,54 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
           top: 8,
           child: Card(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: Row(
+              padding: const EdgeInsets.fromLTRB(8, 6, 8, 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.touch_app_outlined, size: 18),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      _center == null ? l10n.noLocationHint : l10n.drawRoofHint,
-                      style: theme.textTheme.bodySmall,
+                  TextField(
+                    key: const Key('survey.search'),
+                    controller: _search,
+                    onChanged: _onSearchChanged,
+                    textInputAction: TextInputAction.search,
+                    decoration: InputDecoration(
+                      hintText: l10n.searchPlaceHint,
+                      prefixIcon: const Icon(Icons.search),
+                      isDense: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
                     ),
                   ),
+                  for (final sug in _suggestions)
+                    ListTile(
+                      dense: true,
+                      leading: const Icon(Icons.place_outlined, size: 20),
+                      title: Text(
+                        sug.text,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      onTap: () => _pickSuggestion(sug),
+                    ),
+                  if (_suggestions.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.touch_app_outlined, size: 18),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              _center == null
+                                  ? l10n.noLocationHint
+                                  : l10n.drawRoofHint,
+                              style: theme.textTheme.bodySmall,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -391,6 +626,33 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
     final panel = ListView(
       padding: const EdgeInsets.all(16),
       children: [
+        OutlinedButton.icon(
+          key: const Key('survey.detect'),
+          onPressed: _detecting ? null : _detectRoof,
+          icon: _detecting
+              ? const SizedBox.square(
+                  dimension: 18,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              : const Icon(Icons.auto_awesome),
+          label: Text(l10n.detectRoof),
+        ),
+        if (_google case final g?)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              l10n.googleRoofInfo(
+                (g.maxPanels ?? '-').toString(),
+                IndianFormat.number(
+                  (g.maxSunshineHours ?? 0).round(),
+                  languageCode: lang,
+                ),
+                g.imageryDate ?? '-',
+              ),
+              style: theme.textTheme.bodySmall,
+            ),
+          ),
+        const SizedBox(height: 16),
         if (layout == null)
           Text(l10n.needThreePoints, style: theme.textTheme.bodyLarge)
         else ...[

@@ -1604,4 +1604,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get downloadApk => 'Android ऐप डाउनलोड करें';
+
+  @override
+  String get searchPlaceHint => 'पता या जगह खोजें';
+
+  @override
+  String get detectRoof => 'छत पहचानें (Google)';
+
+  @override
+  String get roofDetected =>
+      'Google ने यह छत ढूँढी। ज़रूरत हो तो कोने ठीक करें।';
+
+  @override
+  String get roofNotFound =>
+      'यहाँ Google के पास छत का डेटा नहीं है। छत के कोनों पर टैप करके बनाएँ।';
+
+  @override
+  String googleRoofInfo(String panels, String hours, String date) {
+    return 'Google: $panels पैनल आएँगे · $hours धूप घंटे/साल · फ़ोटो $date';
+  }
+
+  @override
+  String get addressLocated =>
+      'नक्शा लीड के पते पर ले जाया गया। जाँच लें कि घर सही है।';
+
+  @override
+  String get addressNotFound =>
+      'यह पता नक्शे पर नहीं मिला। खोजें या मेरी लोकेशन इस्तेमाल करें।';
 }

@@ -1603,4 +1603,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get downloadApk => 'Download Android app';
+
+  @override
+  String get searchPlaceHint => 'Search address or place';
+
+  @override
+  String get detectRoof => 'Detect roof (Google)';
+
+  @override
+  String get roofDetected =>
+      'Google found this roof. Drag the map and adjust corners if needed.';
+
+  @override
+  String get roofNotFound =>
+      'Google has no roof data here. Tap the roof corners to draw it.';
+
+  @override
+  String googleRoofInfo(String panels, String hours, String date) {
+    return 'Google: $panels panels fit · $hours sun hours/year · photo $date';
+  }
+
+  @override
+  String get addressLocated =>
+      'Map moved to the lead\'s address. Check it is the right house.';
+
+  @override
+  String get addressNotFound =>
+      'Could not find this address on the map. Search or use My location.';
 }
