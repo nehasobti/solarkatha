@@ -29,8 +29,8 @@ String stageStatusLabel(AppLocalizations l10n, StageStatus s) => switch (s) {
 
 Color stageStatusColor(StageStatus s) => switch (s) {
   StageStatus.pending => const Color(0xFF9E9E9E),
-  StageStatus.inProgress => const Color(0xFFE07B00),
-  StageStatus.done => const Color(0xFF2E7D32),
+  StageStatus.inProgress => const Color(0xFFEA580C),
+  StageStatus.done => const Color(0xFF16A34A),
   StageStatus.blocked => const Color(0xFFC62828),
 };
 

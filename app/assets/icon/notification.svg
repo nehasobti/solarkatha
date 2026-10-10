@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Android status bar icon: white silhouette, grid cut out with a mask -->
+  <defs>
+    <mask id="cells">
+      <rect width="1024" height="1024" fill="#fff"/>
+      <g stroke="#000" stroke-width="22">
+        <line x1="200" y1="686" x2="824" y2="686"/>
+        <line x1="441" y1="540" x2="417" y2="830"/>
+        <line x1="583" y1="540" x2="607" y2="830"/>
+      </g>
+    </mask>
+  </defs>
+  <circle cx="512" cy="372" r="104" fill="#fff"/>
+  <g stroke="#fff" stroke-width="40" stroke-linecap="round">
+    <line x1="512" y1="190" x2="512" y2="236"/>
+    <line x1="330" y1="372" x2="376" y2="372"/>
+    <line x1="648" y1="372" x2="694" y2="372"/>
+    <line x1="384" y1="244" x2="416" y2="276"/>
+    <line x1="640" y1="244" x2="608" y2="276"/>
+  </g>
+  <path d="M300 560 H724 L800 812 H224 Z" fill="#fff" mask="url(#cells)"/>
+</svg>

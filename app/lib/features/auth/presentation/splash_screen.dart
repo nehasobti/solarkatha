@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/brand_mark.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../application/session_controller.dart';
 
@@ -42,11 +43,7 @@ class SplashScreen extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.wb_sunny,
-              size: 64,
-              color: Theme.of(context).colorScheme.primary,
-            ),
+            const BrandMark(size: 72),
             const SizedBox(height: 24),
             const CircularProgressIndicator(),
             const SizedBox(height: 12),

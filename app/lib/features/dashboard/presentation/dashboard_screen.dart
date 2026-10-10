@@ -9,6 +9,7 @@ import '../../../core/widgets/offline_banner.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/router/routes.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../admin/data/admin_repository.dart';
 import '../../admin/presentation/notifications_screen.dart';
 import '../../leads/application/leads_providers.dart';
@@ -40,32 +41,37 @@ class DashboardScreen extends ConsumerWidget {
     final stats =
         ref.watch(dashboardStatsProvider).value ?? const DashboardStats();
 
-    final kpis = <(String, String, IconData)>[
+    final kpis = <(String, String, IconData, Color)>[
       (
         l10n.kpiLeadsThisMonth,
         IndianFormat.number(thisMonth, languageCode: lang),
         Icons.people_outline,
+        Brand.blue,
       ),
-      (l10n.kpiConversion, '$conversion%', Icons.trending_up),
+      (l10n.kpiConversion, '$conversion%', Icons.trending_up, Brand.green),
       (
         l10n.kpiKwSold,
         IndianFormat.kw(stats.kwSold, languageCode: lang),
         Icons.solar_power_outlined,
+        Brand.amber,
       ),
       (
         l10n.kpiRevenue,
         IndianFormat.rupees(stats.revenue, languageCode: lang),
         Icons.currency_rupee,
+        Brand.green,
       ),
       (
         l10n.kpiSubsidiesPending,
         IndianFormat.number(stats.subsidiesPending, languageCode: lang),
         Icons.account_balance_outlined,
+        Brand.orange,
       ),
       (
         l10n.kpiActiveProjects,
         IndianFormat.number(stats.activeProjects, languageCode: lang),
         Icons.engineering_outlined,
+        Brand.blue,
       ),
     ];
 
@@ -104,35 +110,28 @@ class DashboardScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              for (final (label, value, icon) in kpis)
-                SizedBox(
-                  width: 200,
-                  child: Card(
-                    margin: EdgeInsets.zero,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(icon, color: theme.colorScheme.primary),
-                          const SizedBox(height: 8),
-                          Text(
-                            value,
-                            style: theme.textTheme.headlineSmall?.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Text(label, style: theme.textTheme.bodyMedium),
-                        ],
+          LayoutBuilder(
+            builder: (context, c) {
+              final cols = c.maxWidth >= 1100 ? 6 : (c.maxWidth >= 640 ? 3 : 2);
+              const gap = 12.0;
+              final w = (c.maxWidth - gap * (cols - 1)) / cols;
+              return Wrap(
+                spacing: gap,
+                runSpacing: gap,
+                children: [
+                  for (final (label, value, icon, color) in kpis)
+                    SizedBox(
+                      width: w,
+                      child: KpiCard(
+                        label: label,
+                        value: value,
+                        icon: icon,
+                        color: color,
                       ),
                     ),
-                  ),
-                ),
-            ],
+                ],
+              );
+            },
           ),
           const SizedBox(height: 24),
           Text(l10n.pipelineTitle, style: theme.textTheme.titleMedium),
@@ -181,7 +180,7 @@ class DashboardScreen extends ConsumerWidget {
                                 1,
                                 (a, b) => b > a ? b : a,
                               ),
-                              color: const Color(0xFFE07B00),
+                              color: Brand.amber,
                               onTap: () => context.go(Routes.subsidy),
                             ),
                       ],
@@ -212,6 +211,65 @@ class DashboardScreen extends ConsumerWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Dashboard number tile: coloured icon chip, big value, small label.
+class KpiCard extends StatelessWidget {
+  const KpiCard({
+    super.key,
+    required this.label,
+    required this.value,
+    required this.icon,
+    required this.color,
+  });
+
+  final String label;
+  final String value;
+  final IconData icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Card(
+      margin: EdgeInsets.zero,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, color: color, size: 22),
+            ),
+            const SizedBox(height: 14),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                value,
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              label,
+              maxLines: 2,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

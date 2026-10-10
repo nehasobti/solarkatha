@@ -158,7 +158,7 @@ class ProjectCard extends StatelessWidget {
               LinearProgressIndicator(
                 value: summary.doneCount / 10,
                 borderRadius: BorderRadius.circular(4),
-                color: const Color(0xFF2E7D32),
+                color: const Color(0xFF16A34A),
               ),
               const SizedBox(height: 4),
               Text(

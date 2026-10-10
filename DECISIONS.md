@@ -165,3 +165,15 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 2. **Firebase options live in Dart** (`lib/core/firebase_options.dart`), not in `google-services.json`. With this Android Gradle Plugin version, the google-services Gradle plugin silently generated no resources, so Firebase never started. The values are public client identifiers.
 3. **One phone belongs to one member.** `register_device_token` moves the token to whoever signs in, and sign-out removes it first. Tokens that FCM reports as dead are deleted.
 4. **Verified on an Android 15 emulator:** the permission prompt appears, the token is registered, a "Stage done" notification arrives with the app in the background, and tapping it opens the project.
+
+## Visual refresh
+
+1. **Clean white + solar orange.** Colours are set explicitly (`Brand` in `app_theme.dart`) instead of being generated from a seed colour, which had tinted every surface peach.
+   - Navy is used for text.
+   - Orange `#EA580C` is used for actions; it passes contrast with white bold text.
+   - Green is used for "done".
+   - Cards are white with a subtle border.
+   - A dark theme and the high-contrast variant use the same structure.
+2. **App icon.** A white sun over a navy solar panel on an orange gradient. It is drawn as SVG in `assets/icon/` and rendered to PNG, then `flutter_launcher_icons` generates the Android adaptive icon (with a monochrome layer) and the web icons. The same artwork is the in-app logo (`BrandMark`). The notification icon is a white silhouette (`ic_notification`) with an orange accent.
+3. **Offline banner.** The banner appears only after the app has been disconnected for a while: 4 s after a failed connection, 12 s otherwise. Retries don't reset this timer, and a slow web start no longer shows a false "offline". Checked on the emulator in airplane mode.
+4. **Finished stages are compact.** Only the latest finished stage keeps the Reopen and "Send update" buttons.

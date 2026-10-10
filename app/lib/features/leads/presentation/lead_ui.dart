@@ -15,15 +15,15 @@ extension LeadStatusUi on LeadStatus {
   };
 
   Color get color => switch (this) {
-    LeadStatus.newLead => const Color(0xFF1E6FD9),
-    LeadStatus.surveyed => const Color(0xFF00897B),
-    LeadStatus.proposalSent => const Color(0xFFE07B00),
-    LeadStatus.won => const Color(0xFF2E7D32),
-    LeadStatus.lost => const Color(0xFF757575),
+    LeadStatus.newLead => const Color(0xFF2563EB),
+    LeadStatus.surveyed => const Color(0xFF0D9488),
+    LeadStatus.proposalSent => const Color(0xFFEA580C),
+    LeadStatus.won => const Color(0xFF16A34A),
+    LeadStatus.lost => const Color(0xFF94A3B8),
   };
 
   IconData get icon => switch (this) {
-    LeadStatus.newLead => Icons.fiber_new_outlined,
+    LeadStatus.newLead => Icons.person_add_alt_outlined,
     LeadStatus.surveyed => Icons.roofing_outlined,
     LeadStatus.proposalSent => Icons.description_outlined,
     LeadStatus.won => Icons.verified_outlined,

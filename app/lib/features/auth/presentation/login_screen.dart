@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/brand_mark.dart';
 import '../../../core/widgets/language_switcher.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../domain/validators.dart';
@@ -119,7 +120,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             children: [
               const Align(child: LanguageSwitcher()),
               const SizedBox(height: 32),
-              Icon(Icons.wb_sunny, size: 56, color: theme.colorScheme.primary),
+              const Center(child: BrandMark(size: 64)),
               const SizedBox(height: 8),
               Text(
                 l10n.appTitle,
@@ -346,7 +347,7 @@ class LandingHero extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFE07B00), Color(0xFFB34700)],
+          colors: [Color(0xFFEA580C), Color(0xFFC2410C)],
         ),
       ),
       padding: const EdgeInsets.all(48),
@@ -358,7 +359,7 @@ class LandingHero extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.wb_sunny, size: 48, color: fg),
+                const BrandMark(size: 56),
                 const SizedBox(height: 12),
                 Text(
                   l10n.appTitle,

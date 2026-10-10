@@ -48,9 +48,12 @@ dev_dependencies:
   freezed: ^4.0.2
   json_serializable: ^6.14.1
   mocktail: ^1.0.5
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icon/icon.png
   generate: true
 
   fonts:
@@ -68,3 +71,18 @@ flutter:
           weight: 500
         - asset: assets/fonts/NotoSansDevanagari-Bold.ttf
           weight: 700
+
+# dart run flutter_launcher_icons (sources in assets/icon, drawn as SVG)
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/icon/icon.png
+  adaptive_icon_background: assets/icon/background.png
+  adaptive_icon_foreground: assets/icon/foreground.png
+  adaptive_icon_monochrome: assets/icon/notification.png
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: assets/icon/icon.png
+    background_color: "#F97316"
+    theme_color: "#EA580C"

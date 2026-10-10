@@ -591,7 +591,7 @@ class _BuilderState extends ConsumerState<_Builder> {
                         leading: Icon(
                           item.passed ? Icons.check_circle : Icons.cancel,
                           color: item.passed
-                              ? const Color(0xFF2E7D32)
+                              ? const Color(0xFF16A34A)
                               : theme.colorScheme.error,
                         ),
                         title: Text(checkLabels[item.check]!),

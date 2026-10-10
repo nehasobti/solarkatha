@@ -151,7 +151,7 @@ class _TrackingScreenState extends ConsumerState<TrackingScreen> {
         final l10n = lookupAppLocalizations(Locale(lang));
         final brand =
             _hex(data?['company']?['brand_color'] as String?) ??
-            const Color(0xFFE07B00);
+            const Color(0xFFEA580C);
         return Theme(
           data: Theme.of(context)
               .copyWith(colorScheme: ColorScheme.fromSeed(seedColor: brand)),
@@ -447,14 +447,14 @@ class _Done extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: const Color(0xFF2E7D32)),
+          Icon(icon, color: const Color(0xFF16A34A)),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
               text,
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF2E7D32),
+                color: Color(0xFF16A34A),
               ),
             ),
           ),

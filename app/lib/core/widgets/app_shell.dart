@@ -7,6 +7,7 @@ import '../../features/auth/application/app_session.dart';
 import '../../features/auth/application/session_controller.dart';
 import '../l10n/l10n.dart';
 import '../router/routes.dart';
+import 'brand_mark.dart';
 import 'offline_banner.dart';
 
 class _Destination {
@@ -145,11 +146,7 @@ class AppShell extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Column(
                 children: [
-                  Icon(
-                    Icons.wb_sunny,
-                    size: 32,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                  const BrandMark(size: 40),
                   const SizedBox(height: 4),
                   Text(
                     session.company.name,

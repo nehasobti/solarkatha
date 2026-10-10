@@ -163,7 +163,7 @@ class _ScanCard extends ConsumerWidget {
       ),
       ScanStatus.done => (
         Icons.task_alt,
-        const Color(0xFF2E7D32),
+        const Color(0xFF16A34A),
         l10n.scanReady,
       ),
       ScanStatus.failed => (

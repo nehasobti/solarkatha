@@ -255,7 +255,7 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
                     Polygon(
                       points: _points,
                       color: const Color(0x40E07B00),
-                      borderColor: const Color(0xFFE07B00),
+                      borderColor: const Color(0xFFEA580C),
                       borderStrokeWidth: 3,
                     ),
                   ],
@@ -277,7 +277,7 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
                   polylines: [
                     Polyline(
                       points: _points,
-                      color: const Color(0xFFE07B00),
+                      color: const Color(0xFFEA580C),
                       strokeWidth: 3,
                     ),
                   ],
@@ -294,7 +294,7 @@ class _SurveyBodyState extends ConsumerState<_SurveyBody> {
                           color: Colors.white,
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(0xFFE07B00),
+                            color: const Color(0xFFEA580C),
                             width: 3,
                           ),
                         ),

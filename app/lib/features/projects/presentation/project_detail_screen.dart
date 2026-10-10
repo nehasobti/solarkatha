@@ -96,7 +96,7 @@ class _Body extends ConsumerWidget {
                       value: summary.doneCount / 10,
                       minHeight: 8,
                       borderRadius: BorderRadius.circular(4),
-                      color: const Color(0xFF2E7D32),
+                      color: const Color(0xFF16A34A),
                     ),
                     const SizedBox(height: 12),
                     _TrackingLink(
@@ -108,7 +108,19 @@ class _Body extends ConsumerWidget {
               ),
             ),
             if (isOwner) _Installers(project: p),
-            for (final st in stages) _StageCard(stage: st, summary: summary),
+            for (final st in stages)
+              _StageCard(
+                stage: st,
+                summary: summary,
+                // Only the latest finished stage keeps Reopen / Send update.
+                latestDone:
+                    st.status == StageStatus.done &&
+                    !stages.any(
+                      (o) =>
+                          o.status == StageStatus.done &&
+                          o.position > st.position,
+                    ),
+              ),
             const SizedBox(height: 32),
           ],
         ),
@@ -243,10 +255,15 @@ class _Installers extends ConsumerWidget {
 }
 
 class _StageCard extends ConsumerWidget {
-  const _StageCard({required this.stage, required this.summary});
+  const _StageCard({
+    required this.stage,
+    required this.summary,
+    this.latestDone = false,
+  });
 
   final StageRow stage;
   final ProjectSummary summary;
+  final bool latestDone;
 
   Future<void> _sendUpdate(BuildContext context, WidgetRef ref) async {
     final p = summary.project;
@@ -423,7 +440,7 @@ class _StageCard extends ConsumerWidget {
                       ),
                     ),
                   _StageFields(stage: stage, project: summary.project),
-                  if (active || (isOwner && stage.status == StageStatus.done))
+                  if (active || latestDone)
                     Wrap(
                       spacing: 8,
                       children: [
@@ -452,14 +469,14 @@ class _StageCard extends ConsumerWidget {
                             icon: const Icon(Icons.attach_file),
                             label: Text(l10n.addDocument),
                           ),
-                        if (isOwner && stage.status == StageStatus.done)
+                        if (isOwner && latestDone)
                           TextButton(
                             onPressed: () => ref
                                 .read(projectsRepositoryProvider)
                                 .setStageStatus(stage, StageStatus.inProgress),
                             child: Text(l10n.reopenStage),
                           ),
-                        if (stage.status == StageStatus.done)
+                        if (latestDone)
                           TextButton.icon(
                             onPressed: () => _sendUpdate(context, ref),
                             icon: const Icon(Icons.chat_outlined),

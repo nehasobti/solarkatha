@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBBF24"/>
+      <stop offset="0.55" stop-color="#F97316"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  
+  <g id="mark" transform="translate(512 512) scale(0.9) translate(-512 -500)">
+    <!-- sun -->
+    <circle cx="512" cy="372" r="104" fill="#FFFFFF"/>
+    <g stroke="#FFFFFF" stroke-width="34" stroke-linecap="round">
+      <line x1="512" y1="196" x2="512" y2="236"/>
+      <line x1="512" y1="508" x2="512" y2="548" opacity="0"/>
+      <line x1="336" y1="372" x2="376" y2="372"/>
+      <line x1="648" y1="372" x2="688" y2="372"/>
+      <line x1="388" y1="248" x2="416" y2="276"/>
+      <line x1="636" y1="248" x2="608" y2="276"/>
+    </g>
+    <!-- solar panel in perspective -->
+    <path d="M300 560 H724 L800 812 H224 Z" fill="#0F1B2D"/>
+    <g stroke="#FDBA74" stroke-width="12">
+      <line x1="262" y1="686" x2="762" y2="686"/>
+      <line x1="441" y1="560" x2="417" y2="812"/>
+      <line x1="583" y1="560" x2="607" y2="812"/>
+    </g>
+  </g>
+</svg>

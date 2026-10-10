@@ -113,7 +113,7 @@ class LeadPhotosSection extends ConsumerWidget {
               l10n.photosChecklist(done, checklistPhotoKinds.length),
               style: theme.textTheme.labelLarge?.copyWith(
                 color: done == checklistPhotoKinds.length
-                    ? const Color(0xFF2E7D32)
+                    ? const Color(0xFF16A34A)
                     : theme.colorScheme.onSurfaceVariant,
               ),
             ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -5,29 +7,68 @@ import '../../data/powersync/powersync_providers.dart';
 import '../l10n/l10n.dart';
 
 /// Shows a clear banner above [child] while sync is configured but the
-/// device can't reach the server.
-class OfflineAware extends ConsumerWidget {
-  const OfflineAware({super.key, required this.child});
+/// device can't reach the server. Brief drops (app start, reconnects) are
+/// ignored: the banner appears after [delay] when a connection attempt
+/// failed, or [slowDelay] with no connection at all.
+class OfflineAware extends ConsumerStatefulWidget {
+  const OfflineAware({
+    super.key,
+    required this.child,
+    this.delay = const Duration(seconds: 4),
+    this.slowDelay = const Duration(seconds: 12),
+  });
 
   final Widget child;
+  final Duration delay;
+  final Duration slowDelay;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<OfflineAware> createState() => _OfflineAwareState();
+}
+
+class _OfflineAwareState extends ConsumerState<OfflineAware> {
+  Timer? _timer;
+  bool _show = false;
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  /// Called from build; only the timer callback rebuilds.
+  void _update(bool offline, Duration delay) {
+    if (!offline) {
+      _timer?.cancel();
+      _timer = null;
+      _show = false; // called from build: no setState needed
+    } else if (!_show && _timer == null) {
+      _timer = Timer(delay, () {
+        if (mounted) setState(() => _show = true);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final status = ref.watch(syncStatusProvider).value;
-    final offline =
-        syncConfigured &&
-        status != null &&
-        !status.connected &&
-        !status.connecting;
+    // Retries flip 'connecting' on and off, so only 'connected' counts.
+    final offline = syncConfigured && status != null && !status.connected;
+    // Starting up (web especially) can take a few seconds without any
+    // error; a failed connection shows the banner sooner.
+    _update(
+      offline,
+      status?.downloadError != null ? widget.delay : widget.slowDelay,
+    );
     return Column(
       children: [
         AnimatedSize(
           duration: const Duration(milliseconds: 200),
-          child: offline
+          child: _show && offline
               ? const _Banner()
               : const SizedBox(width: double.infinity),
         ),
-        Expanded(child: child),
+        Expanded(child: widget.child),
       ],
     );
   }

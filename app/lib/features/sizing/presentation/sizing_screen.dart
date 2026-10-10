@@ -761,7 +761,7 @@ class _GenerationChart extends StatelessWidget {
                 BarChartRodData(
                   toY: generation[i],
                   width: 14,
-                  color: const Color(0xFFE07B00),
+                  color: const Color(0xFFEA580C),
                   borderRadius: BorderRadius.circular(4),
                 ),
               ],
@@ -886,7 +886,7 @@ class _EmiVsBill extends StatelessWidget {
             tile(
               l10n.emiLabel,
               emi,
-              const Color(0xFF2E7D32),
+              const Color(0xFF16A34A),
               const Key('sizing.emi'),
             ),
             if (bill != null) ...[
@@ -906,7 +906,7 @@ class _EmiVsBill extends StatelessWidget {
             children: [
               const Icon(
                 Icons.thumb_up_alt_outlined,
-                color: Color(0xFF2E7D32),
+                color: Color(0xFF16A34A),
                 size: 18,
               ),
               const SizedBox(width: 6),

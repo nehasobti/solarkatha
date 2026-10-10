@@ -274,7 +274,7 @@ class _ProposalActionsState extends ConsumerState<ProposalActions> {
                 children: [
                   const Icon(
                     Icons.check_circle,
-                    color: Color(0xFF2E7D32),
+                    color: Color(0xFF16A34A),
                     size: 18,
                   ),
                   const SizedBox(width: 6),
@@ -298,7 +298,7 @@ class _ProposalActionsState extends ConsumerState<ProposalActions> {
                   p.signedAt == null ? '' : formatDay(context, p.signedAt!),
                 ),
                 style: theme.textTheme.titleSmall?.copyWith(
-                  color: const Color(0xFF2E7D32),
+                  color: const Color(0xFF16A34A),
                 ),
               ),
               const SizedBox(height: 8),
@@ -347,7 +347,7 @@ class _ProposalActionsState extends ConsumerState<ProposalActions> {
                       ? Icons.verified
                       : Icons.schedule,
                   color: pay.status == PaymentStatus.paid
-                      ? const Color(0xFF2E7D32)
+                      ? const Color(0xFF16A34A)
                       : theme.colorScheme.tertiary,
                 ),
                 title: Text(

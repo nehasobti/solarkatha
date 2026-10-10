@@ -6,8 +6,8 @@ import '../../leads/application/leads_providers.dart';
 import '../data/admin_repository.dart';
 
 const brandPalette = [
-  '#E07B00',
-  '#F2A900',
+  '#EA580C',
+  '#F59E0B',
   '#2E7D32',
   '#00897B',
   '#1565C0',

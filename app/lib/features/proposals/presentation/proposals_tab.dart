@@ -20,8 +20,8 @@ String proposalStatusLabel(AppLocalizations l10n, ProposalStatus s) =>
 
 Color proposalStatusColor(ProposalStatus s) => switch (s) {
   ProposalStatus.draft => const Color(0xFF757575),
-  ProposalStatus.sent => const Color(0xFFE07B00),
-  ProposalStatus.signed => const Color(0xFF2E7D32),
+  ProposalStatus.sent => const Color(0xFFEA580C),
+  ProposalStatus.signed => const Color(0xFF16A34A),
   ProposalStatus.expired => const Color(0xFFC62828),
 };
 
