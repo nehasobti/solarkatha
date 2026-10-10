@@ -27,6 +27,18 @@ const STAGES: Record<string, { en: string; hi: string }> = {
   subsidy_credited: { en: "Subsidy credited", hi: "सब्सिडी जमा हुई" },
 };
 
+/** The secret holds the service account JSON, raw or base64-encoded. */
+export function parseServiceAccount(raw: string): ServiceAccount {
+  const text = raw.trim().startsWith("{") ? raw : new TextDecoder().decode(
+    Uint8Array.from(atob(raw.trim()), (c) => c.charCodeAt(0)),
+  );
+  const sa = JSON.parse(text) as ServiceAccount;
+  if (!sa.project_id || !sa.client_email || !sa.private_key) {
+    throw new Error("incomplete service account");
+  }
+  return sa;
+}
+
 /** Notification text in the member's language. Null for unknown kinds. */
 export function pushText(
   kind: string,

@@ -3,6 +3,7 @@ import { assert, assertEquals } from "jsr:@std/assert@1";
 import {
   fcmMessage,
   isDeadToken,
+  parseServiceAccount,
   pushText,
   safeEqual,
   serviceAccountJwt,
@@ -95,4 +96,11 @@ Deno.test("service account JWT is RS256 and verifies", async () => {
       new TextEncoder().encode(`${h}.${c}`),
     ),
   );
+});
+
+Deno.test("service account secret may be raw JSON or base64", () => {
+  const sa = { project_id: "p", client_email: "e", private_key: "k" };
+  const raw = JSON.stringify(sa);
+  assertEquals(parseServiceAccount(raw).project_id, "p");
+  assertEquals(parseServiceAccount(btoa(raw)).client_email, "e");
 });

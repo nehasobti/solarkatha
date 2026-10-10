@@ -4,7 +4,7 @@
 // with the shared secret in `x-push-secret`. Deployed with --no-verify-jwt.
 //
 // Secrets: PUSH_HOOK_SECRET (same value as vault secret push_hook_secret),
-// FCM_SERVICE_ACCOUNT (Firebase service account JSON).
+// FCM_SERVICE_ACCOUNT (Firebase service account JSON, raw or base64).
 
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -14,8 +14,8 @@ import {
   fcmMessage,
   isDeadToken,
   pushText,
+  parseServiceAccount,
   safeEqual,
-  type ServiceAccount,
 } from "../_shared/push.ts";
 
 Deno.serve(async (req) => {
@@ -71,7 +71,7 @@ Deno.serve(async (req) => {
   const text = pushText(n.kind, data, customer, profile.language ?? "en");
   if (!text) return json({ ok: true, sent: 0 });
 
-  const sa = JSON.parse(rawSa) as ServiceAccount;
+  const sa = parseServiceAccount(rawSa);
   const bearer = await accessToken(sa);
   const url =
     `https://fcm.googleapis.com/v1/projects/${sa.project_id}/messages:send`;
