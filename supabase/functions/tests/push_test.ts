@@ -41,6 +41,8 @@ Deno.test("FCM message carries the route for tap-to-open", () => {
   assertEquals(m.message.token, "tok");
   assertEquals(m.message.data.route, "/projects/p1");
   assertEquals(m.message.android.priority, "high");
+  assertEquals(m.message.android.notification.channel_id, "updates");
+  assertEquals(m.message.android.notification.sound, "default");
 });
 
 Deno.test("dead tokens are recognised", () => {

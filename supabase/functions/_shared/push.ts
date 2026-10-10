@@ -75,7 +75,16 @@ export function fcmMessage(
       token,
       notification: text,
       data,
-      android: { priority: "high" },
+      android: {
+        priority: "high",
+        // Channel created by the app (MainActivity): sound + heads-up.
+        notification: {
+          channel_id: "updates",
+          sound: "default",
+          notification_priority: "PRIORITY_HIGH",
+          default_vibrate_timings: true,
+        },
+      },
     },
   };
 }
