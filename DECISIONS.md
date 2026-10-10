@@ -155,3 +155,13 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 7. **Not done by me:**
    - **Demo video:** needs a screen recording.
    - **Performance on a real low-end phone:** I can't run one. The APK is split per ABI (23–27 MB), and the universal APK is 71 MB.
+
+## Push notifications
+
+1. **FCM HTTP v1 from an Edge Function.** When a row is inserted into `notifications`, a trigger calls the `push` function through `pg_net`.
+   - The function URL and a shared secret are kept in Supabase Vault.
+   - The Firebase service account is the `FCM_SERVICE_ACCOUNT` secret, stored base64-encoded.
+   - Text is in Hindi or English, following the member's language. Tapping a notification opens the project.
+2. **Firebase options live in Dart** (`lib/core/firebase_options.dart`), not in `google-services.json`. With this Android Gradle Plugin version, the google-services Gradle plugin silently generated no resources, so Firebase never started. The values are public client identifiers.
+3. **One phone belongs to one member.** `register_device_token` moves the token to whoever signs in, and sign-out removes it first. Tokens that FCM reports as dead are deleted.
+4. **Verified on an Android 15 emulator:** the permission prompt appears, the token is registered, a "Stage done" notification arrives with the app in the background, and tapping it opens the project.

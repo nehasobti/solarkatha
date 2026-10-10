@@ -7,6 +7,7 @@ import 'package:logging/logging.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../core/firebase_options.dart';
 import '../supabase/supabase_providers.dart';
 
 part 'push_service.g.dart';
@@ -29,7 +30,7 @@ class PushService {
   static Future<void> init() async {
     if (!supported) return;
     try {
-      await Firebase.initializeApp();
+      await Firebase.initializeApp(options: androidFirebaseOptions);
     } catch (e) {
       _log.warning('Firebase init failed: $e');
     }
