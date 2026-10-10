@@ -76,3 +76,6 @@ verify_jwt = false
 
 [functions.track]
 verify_jwt = false
+
+[functions.push]
+verify_jwt = false

@@ -8,6 +8,7 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/empty_state.dart';
 import 'data/powersync/powersync_providers.dart';
+import 'data/push/push_service.dart';
 import 'features/bills/application/scan_processor.dart';
 import 'features/auth/application/app_session.dart';
 import 'features/auth/application/session_controller.dart';
@@ -50,6 +51,13 @@ class SolarKathaApp extends ConsumerWidget {
         ref
             .read(appPreferencesControllerProvider.notifier)
             .setLanguage(now.profile.language)
+            .ignore();
+      }
+      // Phone notifications for this member; a tap opens the project.
+      if (now is Ready && now.profile.active) {
+        ref
+            .read(pushServiceProvider)
+            .start(profileId: now.profile.id, onOpen: router.push)
             .ignore();
       }
     });

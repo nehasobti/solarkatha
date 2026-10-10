@@ -6,6 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' show AuthChangeEvent;
 import '../../../data/models/company.dart';
 import '../../../data/models/profile.dart';
 import '../../../data/powersync/powersync_providers.dart';
+import '../../../data/push/push_service.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../data/repositories/profile_repository.dart';
 import 'app_session.dart';
@@ -82,5 +83,9 @@ class SessionController extends _$SessionController {
     await future;
   }
 
-  Future<void> signOut() => ref.read(authRepositoryProvider).signOut();
+  Future<void> signOut() async {
+    // While still signed in, so RLS lets us drop this phone's push token.
+    await ref.read(pushServiceProvider).stop();
+    await ref.read(authRepositoryProvider).signOut();
+  }
 }

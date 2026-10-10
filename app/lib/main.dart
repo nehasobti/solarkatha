@@ -8,6 +8,7 @@ import 'app.dart';
 import 'core/env.dart';
 import 'core/preferences/app_preferences.dart';
 import 'data/powersync/powersync_providers.dart';
+import 'data/push/push_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,7 @@ Future<void> main() async {
     publishableKey: Env.supabasePublishableKey,
   );
   final local = await LocalData.open();
+  await PushService.init();
 
   runApp(
     ProviderScope(
