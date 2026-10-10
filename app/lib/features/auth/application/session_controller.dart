@@ -27,11 +27,16 @@ class SessionController extends _$SessionController {
     final profiles = ref.watch(profileRepositoryProvider);
 
     final user = auth.currentUser;
+    var current = user?.id;
     final sub = auth.authStateChanges.listen((event) {
-      final changed = event.session?.user.id != user?.id;
-      if (changed || event.event == AuthChangeEvent.signedOut) {
-        ref.invalidateSelf();
+      // Signed out: set it directly. Rebuilding could still see the old
+      // user for a moment and land back on Ready.
+      if (event.event == AuthChangeEvent.signedOut) {
+        current = null;
+        if (state.value is! SignedOut) state = const AsyncData(SignedOut());
+        return;
       }
+      if (event.session?.user.id != current) ref.invalidateSelf();
     });
     ref.onDispose(sub.cancel);
 
@@ -87,5 +92,6 @@ class SessionController extends _$SessionController {
     // While still signed in, so RLS lets us drop this phone's push token.
     await ref.read(pushServiceProvider).stop();
     await ref.read(authRepositoryProvider).signOut();
+    state = const AsyncData(SignedOut());
   }
 }
