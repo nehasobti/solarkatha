@@ -6,11 +6,11 @@
 | --- | --- |
 | **Web demo** | https://solarkatha.vercel.app |
 | **Android app** | https://solarkatha.vercel.app/solarkatha.apk (signed release APK) |
-| **Demo login** | On the login page, tap **Owner**, **Sales rep** or **Installer** under "Try the demo". No SMS needed (test numbers 99999 00001 / 00002 / 00003, code `123456`). Demo data resets every Monday 03:00 IST. |
+| **Login** | Private: only accounts created by the administrator (mobile number + password). There is no self sign-up. |
 
 ## Screenshots
 
-| Landing and demo login | Owner dashboard |
+| Landing and login | Owner dashboard |
 | --- | --- |
 | ![Landing](docs/screenshots/web-login.png) | ![Dashboard](docs/screenshots/web-dashboard.png) |
 | **Roof survey on satellite imagery** | **Customer tracking page (Hindi)** |

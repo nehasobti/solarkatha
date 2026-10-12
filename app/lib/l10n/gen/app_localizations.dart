@@ -2954,36 +2954,6 @@ abstract class AppLocalizations {
   /// **'From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.'**
   String get panelSizeHint;
 
-  /// No description provided for @demoTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Try the demo'**
-  String get demoTitle;
-
-  /// No description provided for @demoBody.
-  ///
-  /// In en, this message translates to:
-  /// **'No SMS needed. Pick a role; it signs in with a test number (code 123456). Demo data resets every Monday.'**
-  String get demoBody;
-
-  /// No description provided for @demoAsOwner.
-  ///
-  /// In en, this message translates to:
-  /// **'Owner'**
-  String get demoAsOwner;
-
-  /// No description provided for @demoAsSales.
-  ///
-  /// In en, this message translates to:
-  /// **'Sales rep'**
-  String get demoAsSales;
-
-  /// No description provided for @demoAsInstaller.
-  ///
-  /// In en, this message translates to:
-  /// **'Installer'**
-  String get demoAsInstaller;
-
   /// No description provided for @landingHeadline.
   ///
   /// In en, this message translates to:
@@ -3073,6 +3043,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not find this address on the map. Search or use My location.'**
   String get addressNotFound;
+
+  /// No description provided for @loginPasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the mobile number and password given to you.'**
+  String get loginPasswordSubtitle;
+
+  /// No description provided for @passwordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordLabel;
+
+  /// No description provided for @showPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get showPassword;
+
+  /// No description provided for @signInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get signInButton;
+
+  /// No description provided for @wrongCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong mobile number or password.'**
+  String get wrongCredentials;
 }
 
 class _AppLocalizationsDelegate

@@ -22,6 +22,10 @@ extension UserRoleL10n on UserRole {
 String describeError(AppLocalizations l10n, Object error) {
   if (error is AuthException) {
     final code = error.code ?? '';
+    if (code == 'invalid_credentials' ||
+        error.message.toLowerCase().contains('invalid login')) {
+      return l10n.wrongCredentials;
+    }
     if (code == 'otp_expired' || code.contains('otp')) return l10n.otpIncorrect;
   }
   if (error is AuthRetryableFetchException) return l10n.errorNetwork;

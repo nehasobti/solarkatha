@@ -190,3 +190,9 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 
    Where Google has no data, the rep draws the roof by hand as before.
 4. **Imagery.** Google satellite tiles (Map Tiles API) use a session created in the app with `MAPS_API_KEY`, and the viewport copyright is shown as Google requires. If the key or the API isn't available, the map falls back to Esri automatically. Tiles need the key in the app, so that key must be locked to the app and the website.
+
+## Private access
+
+1. **No public demo logins.** The "Try the demo" card (one-tap test numbers with a fixed OTP) has been removed, because people were using the site to demo to their own clients.
+2. **Sign-in is mobile number + password.** Accounts are created by the administrator through the Supabase admin API (phone confirmed, random password). Each account also gets a team invite, which its first sign-in claims. The OTP and email sign-in screens are gone.
+3. **The old test numbers are deactivated** (99999 00001–00003). The weekly demo reset no longer turns members back on.

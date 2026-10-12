@@ -760,11 +760,6 @@
   "panelLengthLabel": "Panel length (m)",
   "panelWidthLabel": "Panel width (m)",
   "panelSizeHint": "From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.",
-  "demoTitle": "Try the demo",
-  "demoBody": "No SMS needed. Pick a role; it signs in with a test number (code 123456). Demo data resets every Monday.",
-  "demoAsOwner": "Owner",
-  "demoAsSales": "Sales rep",
-  "demoAsInstaller": "Installer",
   "landingHeadline": "Sell rooftop solar faster, from first visit to subsidy credit.",
   "landingF1": "Scan an electricity bill with AI and size the system in seconds",
   "landingF2": "Draw the roof on satellite imagery; panels fit automatically",
@@ -792,5 +787,10 @@
         "type": "String"
       }
     }
-  }
+  },
+  "loginPasswordSubtitle": "Use the mobile number and password given to you.",
+  "passwordLabel": "Password",
+  "showPassword": "Show password",
+  "signInButton": "Sign in",
+  "wrongCredentials": "Wrong mobile number or password."
 }

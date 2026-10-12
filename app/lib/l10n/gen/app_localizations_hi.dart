@@ -1561,22 +1561,6 @@ class AppLocalizationsHi extends AppLocalizations {
       'डेटाशीट से, जैसे 710 W के लिए 2.384 × 1.303। छत सर्वे में काम आता है।';
 
   @override
-  String get demoTitle => 'डेमो आज़माएँ';
-
-  @override
-  String get demoBody =>
-      'SMS की ज़रूरत नहीं। कोई भूमिका चुनें; टेस्ट नंबर से लॉगिन होगा (कोड 123456)। डेमो डेटा हर सोमवार रीसेट होता है।';
-
-  @override
-  String get demoAsOwner => 'मालिक';
-
-  @override
-  String get demoAsSales => 'सेल्स';
-
-  @override
-  String get demoAsInstaller => 'इंस्टॉलर';
-
-  @override
   String get landingHeadline =>
       'रूफटॉप सोलर तेज़ी से बेचें, पहली मुलाक़ात से सब्सिडी मिलने तक।';
 
@@ -1631,4 +1615,20 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get addressNotFound =>
       'यह पता नक्शे पर नहीं मिला। खोजें या मेरी लोकेशन इस्तेमाल करें।';
+
+  @override
+  String get loginPasswordSubtitle =>
+      'आपको दिया गया मोबाइल नंबर और पासवर्ड डालें।';
+
+  @override
+  String get passwordLabel => 'पासवर्ड';
+
+  @override
+  String get showPassword => 'पासवर्ड दिखाएँ';
+
+  @override
+  String get signInButton => 'साइन इन करें';
+
+  @override
+  String get wrongCredentials => 'मोबाइल नंबर या पासवर्ड गलत है।';
 }

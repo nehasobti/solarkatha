@@ -5,7 +5,8 @@ import '../supabase/supabase_providers.dart';
 
 part 'auth_repository.g.dart';
 
-/// Phone OTP (all roles) and email OTP (owners) sign-in through Supabase Auth.
+/// Sign-in through Supabase Auth. The app uses mobile + password; accounts
+/// are created by the administrator (sign-ups are off).
 class AuthRepository {
   AuthRepository(this._auth);
 
@@ -14,6 +15,12 @@ class AuthRepository {
   User? get currentUser => _auth.currentUser;
 
   Stream<AuthState> get authStateChanges => _auth.onAuthStateChange;
+
+  /// [phone] in E.164 form, e.g. `+919412000000`.
+  Future<void> signInWithPassword({
+    required String phone,
+    required String password,
+  }) => _auth.signInWithPassword(phone: phone, password: password);
 
   /// [phone] must be in E.164 form, e.g. `+919876543210`.
   Future<void> sendPhoneOtp(String phone) => _auth.signInWithOtp(phone: phone);

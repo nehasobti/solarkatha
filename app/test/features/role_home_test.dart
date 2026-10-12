@@ -69,7 +69,7 @@ void main() {
       );
       await tester.tap(find.byKey(const Key('settings.signOut')));
       await tester.pumpAndSettle();
-      expect(find.text('Send code'), findsOneWidget);
+      expect(find.byKey(const Key('login.password')), findsOneWidget);
     });
   });
 

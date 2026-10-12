@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,10 +10,9 @@ import '../../../core/widgets/language_switcher.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../domain/validators.dart';
 
-enum _Method { phone, email }
-
-/// Phone OTP for everyone, email OTP for owners. On success the session
-/// controller picks up the new user and the router moves on.
+/// Private sign-in: mobile number + password. Accounts are created by the
+/// administrator (no self sign-up); a member's first sign-in claims their
+/// team invite and the router moves on.
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
@@ -22,32 +22,32 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _idController = TextEditingController();
-  final _otpController = TextEditingController();
-
-  _Method _method = _Method.phone;
-  String? _sentTo;
+  final _phone = TextEditingController();
+  final _password = TextEditingController();
+  bool _obscure = true;
   bool _busy = false;
   String? _error;
 
   @override
   void dispose() {
-    _idController.dispose();
-    _otpController.dispose();
+    _phone.dispose();
+    _password.dispose();
     super.dispose();
   }
 
-  String? _normalizedId() => _method == _Method.phone
-      ? normalizeIndianMobile(_idController.text)
-      : normalizeEmail(_idController.text);
-
-  Future<void> _run(Future<void> Function() action) async {
+  Future<void> _signIn() async {
+    if (!_formKey.currentState!.validate()) return;
     setState(() {
       _busy = true;
       _error = null;
     });
     try {
-      await action();
+      await ref
+          .read(authRepositoryProvider)
+          .signInWithPassword(
+            phone: normalizeIndianMobile(_phone.text)!,
+            password: _password.text,
+          );
     } catch (e) {
       if (mounted) setState(() => _error = describeError(context.l10n, e));
     } finally {
@@ -55,183 +55,105 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     }
   }
 
-  Future<void> _sendCode() async {
-    if (!_formKey.currentState!.validate()) return;
-    final id = _normalizedId()!;
-    final auth = ref.read(authRepositoryProvider);
-    await _run(() async {
-      if (_method == _Method.phone) {
-        await auth.sendPhoneOtp(id);
-      } else {
-        await auth.sendEmailOtp(id);
-      }
-      if (mounted) setState(() => _sentTo = id);
-    });
-  }
-
-  Future<void> _verify() async {
-    if (!_formKey.currentState!.validate()) return;
-    final auth = ref.read(authRepositoryProvider);
-    final token = _otpController.text.trim();
-    await _run(() async {
-      if (_method == _Method.phone) {
-        await auth.verifyPhoneOtp(phone: _sentTo!, token: token);
-      } else {
-        await auth.verifyEmailOtp(email: _sentTo!, token: token);
-      }
-    });
-  }
-
-  /// One-tap demo login with the Supabase test numbers (fixed OTP).
-  Future<void> _demo(String phone) async {
-    final auth = ref.read(authRepositoryProvider);
-    await _run(() async {
-      await auth.sendPhoneOtp(phone);
-      await auth.verifyPhoneOtp(phone: phone, token: demoOtp);
-    });
-  }
-
-  void _reset({_Method? method}) {
-    setState(() {
-      _method = method ?? _method;
-      _sentTo = null;
-      _error = null;
-      _otpController.clear();
-      if (method != null) _idController.clear();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final theme = Theme.of(context);
-    final isPhone = _method == _Method.phone;
-    final awaitingOtp = _sentTo != null;
-
     final wide = MediaQuery.sizeOf(context).width >= 900;
+
     final login = SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 420),
         child: Form(
           key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Align(child: LanguageSwitcher()),
-              const SizedBox(height: 32),
-              const Center(child: BrandMark(size: 64)),
-              const SizedBox(height: 8),
-              Text(
-                l10n.appTitle,
-                style: theme.textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                l10n.appTagline,
-                style: theme.textTheme.bodyMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 32),
-              Text(l10n.loginTitle, style: theme.textTheme.titleLarge),
-              const SizedBox(height: 4),
-              Text(isPhone ? l10n.loginSubtitle : l10n.loginEmailSubtitle),
-              const SizedBox(height: 16),
-              if (!awaitingOtp)
+          child: AutofillGroup(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Align(child: LanguageSwitcher()),
+                const SizedBox(height: 32),
+                const Center(child: BrandMark(size: 64)),
+                const SizedBox(height: 8),
+                Text(
+                  l10n.appTitle,
+                  style: theme.textTheme.headlineMedium,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  l10n.appTagline,
+                  style: theme.textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                Text(l10n.loginTitle, style: theme.textTheme.titleLarge),
+                const SizedBox(height: 4),
+                Text(l10n.loginPasswordSubtitle),
+                const SizedBox(height: 16),
                 TextFormField(
                   key: const Key('login.id'),
-                  controller: _idController,
+                  controller: _phone,
                   enabled: !_busy,
                   autofocus: true,
-                  keyboardType: isPhone
-                      ? TextInputType.phone
-                      : TextInputType.emailAddress,
-                  autofillHints: [
-                    isPhone
-                        ? AutofillHints.telephoneNumberNational
-                        : AutofillHints.email,
+                  keyboardType: TextInputType.phone,
+                  autofillHints: const [AutofillHints.telephoneNumberNational],
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9+ ]')),
                   ],
-                  inputFormatters: isPhone
-                      ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9+ ]'))]
-                      : null,
                   style: theme.textTheme.titleMedium,
                   decoration: InputDecoration(
-                    labelText: isPhone ? l10n.phoneLabel : l10n.emailLabel,
-                    hintText: isPhone ? l10n.phoneHint : null,
-                    prefixText: isPhone ? '+91 ' : null,
+                    labelText: l10n.phoneLabel,
+                    hintText: l10n.phoneHint,
+                    prefixText: '+91 ',
                   ),
-                  validator: (_) => _normalizedId() != null
+                  validator: (v) => normalizeIndianMobile(v ?? '') != null
                       ? null
-                      : (isPhone ? l10n.invalidPhone : l10n.invalidEmail),
-                  onFieldSubmitted: (_) => _sendCode(),
-                )
-              else ...[
-                Row(
-                  children: [
-                    Expanded(child: Text(l10n.otpSentTo(_sentTo!))),
-                    TextButton(
-                      onPressed: _busy ? null : _reset,
-                      child: Text(l10n.changeNumber),
-                    ),
-                  ],
+                      : l10n.invalidPhone,
+                  textInputAction: TextInputAction.next,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 TextFormField(
-                  key: const Key('login.otp'),
-                  controller: _otpController,
+                  key: const Key('login.password'),
+                  controller: _password,
                   enabled: !_busy,
-                  autofocus: true,
-                  keyboardType: TextInputType.number,
-                  autofillHints: const [AutofillHints.oneTimeCode],
-                  maxLength: 6,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    letterSpacing: 8,
-                  ),
-                  textAlign: TextAlign.center,
+                  obscureText: _obscure,
+                  autofillHints: const [AutofillHints.password],
+                  style: theme.textTheme.titleMedium,
                   decoration: InputDecoration(
-                    labelText: l10n.otpLabel,
-                    counterText: '',
+                    labelText: l10n.passwordLabel,
+                    suffixIcon: IconButton(
+                      tooltip: l10n.showPassword,
+                      icon: Icon(
+                        _obscure ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () => setState(() => _obscure = !_obscure),
+                    ),
                   ),
                   validator: (v) =>
-                      isValidOtp(v ?? '') ? null : l10n.invalidOtp,
-                  onFieldSubmitted: (_) => _verify(),
+                      (v ?? '').isEmpty ? l10n.requiredField : null,
+                  onFieldSubmitted: (_) => _signIn(),
                 ),
+                if (_error != null) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    _error!,
+                    style: TextStyle(color: theme.colorScheme.error),
+                  ),
+                ],
+                const SizedBox(height: 16),
+                FilledButton(
+                  key: const Key('login.submit'),
+                  onPressed: _busy ? null : _signIn,
+                  child: _busy
+                      ? const SizedBox.square(
+                          dimension: 24,
+                          child: CircularProgressIndicator(strokeWidth: 3),
+                        )
+                      : Text(l10n.signInButton),
+                ),
+                if (kIsWeb) ...[const SizedBox(height: 12), const ApkButton()],
               ],
-              if (_error != null) ...[
-                const SizedBox(height: 12),
-                Text(_error!, style: TextStyle(color: theme.colorScheme.error)),
-              ],
-              const SizedBox(height: 16),
-              FilledButton(
-                key: const Key('login.submit'),
-                onPressed: _busy ? null : (awaitingOtp ? _verify : _sendCode),
-                child: _busy
-                    ? const SizedBox.square(
-                        dimension: 24,
-                        child: CircularProgressIndicator(strokeWidth: 3),
-                      )
-                    : Text(awaitingOtp ? l10n.verifyOtp : l10n.sendOtp),
-              ),
-              if (awaitingOtp)
-                TextButton(
-                  onPressed: _busy ? null : _sendCodeAgain,
-                  child: Text(l10n.resendOtp),
-                ),
-              const SizedBox(height: 8),
-              TextButton(
-                onPressed: _busy
-                    ? null
-                    : () => _reset(
-                        method: isPhone ? _Method.email : _Method.phone,
-                      ),
-                child: Text(
-                  isPhone ? l10n.useEmailInstead : l10n.usePhoneInstead,
-                ),
-              ),
-              const SizedBox(height: 16),
-              _DemoCard(busy: _busy, onPick: _demo),
-            ],
+            ),
           ),
         ),
       ),
@@ -246,75 +168,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ],
               )
             : Center(child: login),
-      ),
-    );
-  }
-
-  Future<void> _sendCodeAgain() async {
-    final id = _sentTo!;
-    final auth = ref.read(authRepositoryProvider);
-    await _run(
-      () => _method == _Method.phone
-          ? auth.sendPhoneOtp(id)
-          : auth.sendEmailOtp(id),
-    );
-  }
-}
-
-/// Test numbers configured in Supabase Auth (Phone > test OTPs).
-const demoOtp = '123456';
-const demoPhones = {
-  'owner': '+919999900001',
-  'sales': '+919999900002',
-  'installer': '+919999900003',
-};
-
-class _DemoCard extends StatelessWidget {
-  const _DemoCard({required this.busy, required this.onPick});
-
-  final bool busy;
-  final void Function(String phone) onPick;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final theme = Theme.of(context);
-    return Card(
-      margin: EdgeInsets.zero,
-      color: theme.colorScheme.secondaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              l10n.demoTitle,
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(l10n.demoBody, style: theme.textTheme.bodySmall),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (final (role, label, icon) in [
-                  ('owner', l10n.demoAsOwner, Icons.insights),
-                  ('sales', l10n.demoAsSales, Icons.person_search),
-                  ('installer', l10n.demoAsInstaller, Icons.engineering),
-                ])
-                  FilledButton.tonalIcon(
-                    key: Key('login.demo.$role'),
-                    onPressed: busy ? null : () => onPick(demoPhones[role]!),
-                    icon: Icon(icon, size: 18),
-                    label: Text(label),
-                  ),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }

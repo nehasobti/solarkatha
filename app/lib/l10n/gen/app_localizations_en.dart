@@ -1559,22 +1559,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'From the datasheet, e.g. 2.384 × 1.303 for 710 W. Used by the roof survey.';
 
   @override
-  String get demoTitle => 'Try the demo';
-
-  @override
-  String get demoBody =>
-      'No SMS needed. Pick a role; it signs in with a test number (code 123456). Demo data resets every Monday.';
-
-  @override
-  String get demoAsOwner => 'Owner';
-
-  @override
-  String get demoAsSales => 'Sales rep';
-
-  @override
-  String get demoAsInstaller => 'Installer';
-
-  @override
   String get landingHeadline =>
       'Sell rooftop solar faster, from first visit to subsidy credit.';
 
@@ -1630,4 +1614,20 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get addressNotFound =>
       'Could not find this address on the map. Search or use My location.';
+
+  @override
+  String get loginPasswordSubtitle =>
+      'Use the mobile number and password given to you.';
+
+  @override
+  String get passwordLabel => 'Password';
+
+  @override
+  String get showPassword => 'Show password';
+
+  @override
+  String get signInButton => 'Sign in';
+
+  @override
+  String get wrongCredentials => 'Wrong mobile number or password.';
 }
