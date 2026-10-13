@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -18,6 +19,7 @@ import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/sizing/presentation/sizing_screen.dart';
 import '../../features/survey/presentation/survey_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
+import '../../features/landing/presentation/landing_screen.dart';
 import '../../features/leads/presentation/lead_detail_screen.dart';
 import '../../features/leads/presentation/lead_form_screen.dart';
 import '../../features/leads/presentation/leads_screen.dart';
@@ -58,7 +60,7 @@ GoRouter appRouter(Ref ref) {
   final router = GoRouter(
     refreshListenable: session,
     redirect: (context, state) =>
-        resolveRedirect(session: session.value, uri: state.uri),
+        resolveRedirect(session: session.value, uri: state.uri, web: kIsWeb),
     errorBuilder: (context, state) => const NotFoundScreen(),
     routes: [
       GoRoute(
@@ -76,6 +78,10 @@ GoRouter appRouter(Ref ref) {
       GoRoute(
         path: Routes.deactivated,
         builder: (context, state) => const DeactivatedScreen(),
+      ),
+      GoRoute(
+        path: Routes.landing,
+        builder: (context, state) => const LandingScreen(),
       ),
       GoRoute(
         path: '${Routes.trackingPrefix}:token',

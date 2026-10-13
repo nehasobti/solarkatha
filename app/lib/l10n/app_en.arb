@@ -802,5 +802,70 @@
   "assistantError": "Sorry, I could not answer just now. Please check your internet and try again.",
   "assistantQ1": "What does SolarKatha do?",
   "assistantQ2": "How much subsidy for 3 kW?",
-  "assistantQ3": "How do I get access?"
+  "assistantQ3": "How do I get access?",
+  "landingSub": "One app for your sales team, installers and customers: bill scan, roof survey, proposals, payments and PM Surya Ghar subsidy tracking. In Hindi and English.",
+  "requestAccess": "Request access",
+  "landingAccessNote": "Access is by invitation. Write to {email}.",
+  "landingScreenshotLabel": "SolarKatha owner dashboard",
+  "featuresTitle": "Everything a solar installer needs",
+  "featuresSub": "From the first site visit to the subsidy in the customer's bank account.",
+  "featBill": "Bill scan & sizing",
+  "featRoof": "Roof survey",
+  "featProposal": "Proposals on WhatsApp",
+  "featPayments": "UPI payments",
+  "featSubsidy": "Subsidy tracking",
+  "featOffline": "Works offline",
+  "calcTitle": "Solar savings calculator",
+  "calcSub": "Enter the monthly units from your electricity bill and see an estimate.",
+  "calcUnits": "Monthly units",
+  "calcBill": "Monthly bill (optional)",
+  "calcStateUP": "Uttar Pradesh",
+  "calcStateOther": "Other state",
+  "calcUnavailable": "The calculator is unavailable right now. Please try again later.",
+  "calcNeedUnits": "Enter at least 30 units a month.",
+  "calcSize": "Recommended system",
+  "calcSubsidy": "Government subsidy",
+  "calcCost": "Your cost after subsidy",
+  "calcSaving": "Saving per month",
+  "calcPayback": "Payback",
+  "calcYears": "{years} years",
+  "calcNote": "Estimate using standard prices and PM Surya Ghar rules. Actual figures depend on your roof, panels and installer.",
+  "newsTitle": "Latest solar news",
+  "newsSub": "PM Surya Ghar and rooftop solar in India, updated every day.",
+  "newsEmpty": "No news right now. Please check back later.",
+  "newsRead": "Read",
+  "newsToday": "Today",
+  "newsDaysAgo": "{days, plural, =1{1 day ago} other{{days} days ago}}",
+  "contactTitle": "Want SolarKatha for your company?",
+  "contactBody": "Email us and we will set up your team with logins, your products and your prices.",
+  "footerCopyright": "© {year} Tychon Software. SolarKatha.",
+  "backHome": "Home",
+  "@landingAccessNote": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@calcYears": {
+    "placeholders": {
+      "years": {
+        "type": "String"
+      }
+    }
+  },
+  "@newsDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@footerCopyright": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  }
 }

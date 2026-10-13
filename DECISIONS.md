@@ -206,3 +206,14 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
    - It replies in Hindi or English.
 3. **Abuse limits:** 30 questions per hour per hashed IP and 1,000 per day overall (`assistant_hits`, pruned after 7 days by pg_cron). Only the last 10 turns of 600 characters each are sent.
 4. **Updating the facts:** when features or subsidy rules change, edit `FACTS` in `_shared/assistant.ts` and redeploy the function. No app release is needed.
+
+## Public landing page
+
+1. **`/` on the web is a public landing page.** It has a pitch, feature cards, a savings calculator, daily solar news, contact details and the assistant. **Sign in** goes to `/login`. In the Android app, `/` still goes straight to login or the user's home screen (`resolveRedirect(web: kIsWeb)`).
+2. **Calculator.** It reuses the app's own sizing maths (`SizingCalculator` and `solar_core`) with the **platform default** settings. Anonymous visitors can read only the default rows: a whitelist of sizing keys from `app_config`, plus the default subsidy rules, tariffs and loan presets. Company overrides stay private. It uses the configured flat yield, not PVGIS (which needs a login).
+3. **News.** `news-refresh` runs daily at 06:00 IST through pg_cron, pg_net and a Vault secret.
+   - It reads Google News RSS: two English searches and one Hindi search.
+   - It keeps Indian solar stories only (a keyword filter plus a foreign-country deny list) and removes duplicate stories.
+   - It stores the headline, source, date and link only, with no article text.
+   - Up to 30 stories per language are kept, for 45 days. The page shows the newest 9 in the visitor's language.
+4. **Contact** is info@tychonsoftware.com ("Request access" opens an email). Access remains by invitation only.

@@ -86,4 +86,18 @@ void main() {
       expect(redirect(installer, '/settings'), isNull);
     });
   });
+
+  group('web landing page', () {
+    String? web(AsyncValue<AppSession> session, String location) =>
+        resolveRedirect(session: session, uri: Uri.parse(location), web: true);
+
+    test('is public on the web whatever the session', () {
+      expect(web(const AsyncLoading(), '/'), isNull);
+      expect(web(const AsyncData(SignedOut()), '/'), isNull);
+    });
+
+    test('the Android app still sends / to login', () {
+      expect(redirect(const AsyncData(SignedOut()), '/'), Routes.login);
+    });
+  });
 }

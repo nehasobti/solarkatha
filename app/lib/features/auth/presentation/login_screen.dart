@@ -2,9 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/l10n/l10n.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/widgets/brand_mark.dart';
 import '../../../core/widgets/language_switcher.dart';
 import '../../../data/repositories/auth_repository.dart';
@@ -72,7 +74,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Align(child: LanguageSwitcher()),
+                Row(
+                  children: [
+                    if (kIsWeb)
+                      TextButton.icon(
+                        key: const Key('login.home'),
+                        onPressed: () => context.go(Routes.landing),
+                        icon: const Icon(Icons.arrow_back),
+                        label: Text(l10n.backHome),
+                      ),
+                    const Spacer(),
+                    const LanguageSwitcher(),
+                  ],
+                ),
                 const SizedBox(height: 32),
                 const Center(child: BrandMark(size: 64)),
                 const SizedBox(height: 8),

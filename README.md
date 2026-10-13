@@ -4,15 +4,15 @@
 
 | | |
 | --- | --- |
-| **Web demo** | https://solarkatha.vercel.app |
+| **Website** | https://solarkatha.vercel.app (landing page with savings calculator and daily solar news; Login at the top) |
 | **Android app** | https://solarkatha.vercel.app/solarkatha.apk (signed release APK) |
 | **Login** | Private: only accounts created by the administrator (mobile number + password). There is no self sign-up. |
 
 ## Screenshots
 
-| Landing and login | Owner dashboard |
+| Landing page | Owner dashboard |
 | --- | --- |
-| ![Landing](docs/screenshots/web-login.png) | ![Dashboard](docs/screenshots/web-dashboard.png) |
+| ![Landing](docs/screenshots/web-landing.png) | ![Dashboard](docs/screenshots/web-dashboard.png) |
 | **Roof survey on satellite imagery** | **Customer tracking page (Hindi)** |
 | ![Survey](docs/screenshots/web-survey.png) | ![Tracking](docs/screenshots/web-tracking.png) |
 

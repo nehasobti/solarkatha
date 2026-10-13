@@ -3,6 +3,7 @@ import '../../data/models/user_role.dart';
 /// Route paths. Kept separate from the router so redirect rules can be tested
 /// without Flutter.
 abstract final class Routes {
+  static const landing = '/';
   static const splash = '/splash';
   static const login = '/login';
   static const onboarding = '/onboarding';
@@ -65,7 +66,10 @@ abstract final class Routes {
 
   static bool isAuthFlow(String path) => _authFlow.contains(path);
 
-  static bool isPublic(String path) => path.startsWith(trackingPrefix);
+  /// Public on the web: the landing page (`/`) and customer tracking pages.
+  /// In the Android app `/` goes straight to the role home or login.
+  static bool isPublic(String path, {bool web = false}) =>
+      path.startsWith(trackingPrefix) || (web && path == landing);
 
   /// Whether [role] may open [path] (top-level section match).
   static bool isAllowed(UserRole role, String path) {

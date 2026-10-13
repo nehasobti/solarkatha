@@ -9,19 +9,33 @@ import '../data/assistant_api.dart';
 class AssistantFab extends StatelessWidget {
   const AssistantFab({super.key});
 
-  @override
-  Widget build(BuildContext context) => FloatingActionButton.extended(
-    key: const Key('assistant.open'),
-    onPressed: () => showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      constraints: const BoxConstraints(maxWidth: 560),
-      builder: (_) => const AssistantSheet(),
-    ),
-    icon: const Icon(Icons.auto_awesome),
-    label: Text(context.l10n.assistantButton),
+  void _open(BuildContext context) => showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    showDragHandle: true,
+    constraints: const BoxConstraints(maxWidth: 560),
+    builder: (_) => const AssistantSheet(),
   );
+
+  @override
+  Widget build(BuildContext context) {
+    final label = context.l10n.assistantButton;
+    // Phones: a round button so it doesn't cover the page.
+    if (MediaQuery.sizeOf(context).width < 600) {
+      return FloatingActionButton(
+        key: const Key('assistant.open'),
+        tooltip: label,
+        onPressed: () => _open(context),
+        child: const Icon(Icons.auto_awesome),
+      );
+    }
+    return FloatingActionButton.extended(
+      key: const Key('assistant.open'),
+      onPressed: () => _open(context),
+      icon: const Icon(Icons.auto_awesome),
+      label: Text(label),
+    );
+  }
 }
 
 class AssistantSheet extends ConsumerStatefulWidget {

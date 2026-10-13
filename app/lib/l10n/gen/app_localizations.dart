@@ -3133,6 +3133,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How do I get access?'**
   String get assistantQ3;
+
+  /// No description provided for @landingSub.
+  ///
+  /// In en, this message translates to:
+  /// **'One app for your sales team, installers and customers: bill scan, roof survey, proposals, payments and PM Surya Ghar subsidy tracking. In Hindi and English.'**
+  String get landingSub;
+
+  /// No description provided for @requestAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Request access'**
+  String get requestAccess;
+
+  /// No description provided for @landingAccessNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Access is by invitation. Write to {email}.'**
+  String landingAccessNote(String email);
+
+  /// No description provided for @landingScreenshotLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'SolarKatha owner dashboard'**
+  String get landingScreenshotLabel;
+
+  /// No description provided for @featuresTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything a solar installer needs'**
+  String get featuresTitle;
+
+  /// No description provided for @featuresSub.
+  ///
+  /// In en, this message translates to:
+  /// **'From the first site visit to the subsidy in the customer\'s bank account.'**
+  String get featuresSub;
+
+  /// No description provided for @featBill.
+  ///
+  /// In en, this message translates to:
+  /// **'Bill scan & sizing'**
+  String get featBill;
+
+  /// No description provided for @featRoof.
+  ///
+  /// In en, this message translates to:
+  /// **'Roof survey'**
+  String get featRoof;
+
+  /// No description provided for @featProposal.
+  ///
+  /// In en, this message translates to:
+  /// **'Proposals on WhatsApp'**
+  String get featProposal;
+
+  /// No description provided for @featPayments.
+  ///
+  /// In en, this message translates to:
+  /// **'UPI payments'**
+  String get featPayments;
+
+  /// No description provided for @featSubsidy.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy tracking'**
+  String get featSubsidy;
+
+  /// No description provided for @featOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Works offline'**
+  String get featOffline;
+
+  /// No description provided for @calcTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solar savings calculator'**
+  String get calcTitle;
+
+  /// No description provided for @calcSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the monthly units from your electricity bill and see an estimate.'**
+  String get calcSub;
+
+  /// No description provided for @calcUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly units'**
+  String get calcUnits;
+
+  /// No description provided for @calcBill.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly bill (optional)'**
+  String get calcBill;
+
+  /// No description provided for @calcStateUP.
+  ///
+  /// In en, this message translates to:
+  /// **'Uttar Pradesh'**
+  String get calcStateUP;
+
+  /// No description provided for @calcStateOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other state'**
+  String get calcStateOther;
+
+  /// No description provided for @calcUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The calculator is unavailable right now. Please try again later.'**
+  String get calcUnavailable;
+
+  /// No description provided for @calcNeedUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 30 units a month.'**
+  String get calcNeedUnits;
+
+  /// No description provided for @calcSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended system'**
+  String get calcSize;
+
+  /// No description provided for @calcSubsidy.
+  ///
+  /// In en, this message translates to:
+  /// **'Government subsidy'**
+  String get calcSubsidy;
+
+  /// No description provided for @calcCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cost after subsidy'**
+  String get calcCost;
+
+  /// No description provided for @calcSaving.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving per month'**
+  String get calcSaving;
+
+  /// No description provided for @calcPayback.
+  ///
+  /// In en, this message translates to:
+  /// **'Payback'**
+  String get calcPayback;
+
+  /// No description provided for @calcYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{years} years'**
+  String calcYears(String years);
+
+  /// No description provided for @calcNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate using standard prices and PM Surya Ghar rules. Actual figures depend on your roof, panels and installer.'**
+  String get calcNote;
+
+  /// No description provided for @newsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest solar news'**
+  String get newsTitle;
+
+  /// No description provided for @newsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'PM Surya Ghar and rooftop solar in India, updated every day.'**
+  String get newsSub;
+
+  /// No description provided for @newsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No news right now. Please check back later.'**
+  String get newsEmpty;
+
+  /// No description provided for @newsRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read'**
+  String get newsRead;
+
+  /// No description provided for @newsToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get newsToday;
+
+  /// No description provided for @newsDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{1 day ago} other{{days} days ago}}'**
+  String newsDaysAgo(int days);
+
+  /// No description provided for @contactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Want SolarKatha for your company?'**
+  String get contactTitle;
+
+  /// No description provided for @contactBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Email us and we will set up your team with logins, your products and your prices.'**
+  String get contactBody;
+
+  /// No description provided for @footerCopyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© {year} Tychon Software. SolarKatha.'**
+  String footerCopyright(String year);
+
+  /// No description provided for @backHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get backHome;
 }
 
 class _AppLocalizationsDelegate

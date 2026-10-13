@@ -82,3 +82,6 @@ verify_jwt = false
 
 [functions.assistant]
 verify_jwt = false
+
+[functions.news-refresh]
+verify_jwt = false

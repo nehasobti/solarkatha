@@ -8,9 +8,10 @@ import 'routes.dart';
 String? resolveRedirect({
   required AsyncValue<AppSession> session,
   required Uri uri,
+  bool web = false,
 }) {
   final path = uri.path;
-  if (Routes.isPublic(path)) return null;
+  if (Routes.isPublic(path, web: web)) return null;
 
   final current = session.value;
 

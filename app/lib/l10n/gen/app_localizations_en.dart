@@ -1663,4 +1663,136 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get assistantQ3 => 'How do I get access?';
+
+  @override
+  String get landingSub =>
+      'One app for your sales team, installers and customers: bill scan, roof survey, proposals, payments and PM Surya Ghar subsidy tracking. In Hindi and English.';
+
+  @override
+  String get requestAccess => 'Request access';
+
+  @override
+  String landingAccessNote(String email) {
+    return 'Access is by invitation. Write to $email.';
+  }
+
+  @override
+  String get landingScreenshotLabel => 'SolarKatha owner dashboard';
+
+  @override
+  String get featuresTitle => 'Everything a solar installer needs';
+
+  @override
+  String get featuresSub =>
+      'From the first site visit to the subsidy in the customer\'s bank account.';
+
+  @override
+  String get featBill => 'Bill scan & sizing';
+
+  @override
+  String get featRoof => 'Roof survey';
+
+  @override
+  String get featProposal => 'Proposals on WhatsApp';
+
+  @override
+  String get featPayments => 'UPI payments';
+
+  @override
+  String get featSubsidy => 'Subsidy tracking';
+
+  @override
+  String get featOffline => 'Works offline';
+
+  @override
+  String get calcTitle => 'Solar savings calculator';
+
+  @override
+  String get calcSub =>
+      'Enter the monthly units from your electricity bill and see an estimate.';
+
+  @override
+  String get calcUnits => 'Monthly units';
+
+  @override
+  String get calcBill => 'Monthly bill (optional)';
+
+  @override
+  String get calcStateUP => 'Uttar Pradesh';
+
+  @override
+  String get calcStateOther => 'Other state';
+
+  @override
+  String get calcUnavailable =>
+      'The calculator is unavailable right now. Please try again later.';
+
+  @override
+  String get calcNeedUnits => 'Enter at least 30 units a month.';
+
+  @override
+  String get calcSize => 'Recommended system';
+
+  @override
+  String get calcSubsidy => 'Government subsidy';
+
+  @override
+  String get calcCost => 'Your cost after subsidy';
+
+  @override
+  String get calcSaving => 'Saving per month';
+
+  @override
+  String get calcPayback => 'Payback';
+
+  @override
+  String calcYears(String years) {
+    return '$years years';
+  }
+
+  @override
+  String get calcNote =>
+      'Estimate using standard prices and PM Surya Ghar rules. Actual figures depend on your roof, panels and installer.';
+
+  @override
+  String get newsTitle => 'Latest solar news';
+
+  @override
+  String get newsSub =>
+      'PM Surya Ghar and rooftop solar in India, updated every day.';
+
+  @override
+  String get newsEmpty => 'No news right now. Please check back later.';
+
+  @override
+  String get newsRead => 'Read';
+
+  @override
+  String get newsToday => 'Today';
+
+  @override
+  String newsDaysAgo(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days ago',
+      one: '1 day ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get contactTitle => 'Want SolarKatha for your company?';
+
+  @override
+  String get contactBody =>
+      'Email us and we will set up your team with logins, your products and your prices.';
+
+  @override
+  String footerCopyright(String year) {
+    return '© $year Tychon Software. SolarKatha.';
+  }
+
+  @override
+  String get backHome => 'Home';
 }
