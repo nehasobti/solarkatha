@@ -3355,6 +3355,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Home'**
   String get backHome;
+
+  /// No description provided for @landingPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SolarKatha – Rooftop Solar CRM & PM Surya Ghar Subsidy Tracking for Installers'**
+  String get landingPageTitle;
 }
 
 class _AppLocalizationsDelegate

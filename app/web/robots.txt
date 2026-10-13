@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# Customer tracking links are private.
+Disallow: /t/
+
+Sitemap: https://www.solarkatha.in/sitemap.xml

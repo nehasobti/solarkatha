@@ -4,8 +4,8 @@
 
 | | |
 | --- | --- |
-| **Website** | https://solarkatha.vercel.app (landing page with savings calculator and daily solar news; Login at the top) |
-| **Android app** | https://solarkatha.vercel.app/solarkatha.apk (signed release APK) |
+| **Website** | https://www.solarkatha.in (landing page with savings calculator and daily solar news; Login at the top) |
+| **Android app** | https://www.solarkatha.in/solarkatha.apk (signed release APK) |
 | **Login** | Private: only accounts created by the administrator (mobile number + password). There is no self sign-up. |
 
 ## Screenshots

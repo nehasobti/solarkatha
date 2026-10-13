@@ -1,6 +1,23 @@
 {
   "version": 3,
   "routes": [
+    {
+      "src": "/(.*)",
+      "has": [{ "type": "host", "value": "www.solarkatha.com" }],
+      "status": 308,
+      "headers": { "Location": "https://www.solarkatha.in/$1" }
+    },
+    {
+      "src": "/(.*)",
+      "has": [{ "type": "host", "value": "solarkatha.vercel.app" }],
+      "status": 308,
+      "headers": { "Location": "https://www.solarkatha.in/$1" }
+    },
+    {
+      "src": "/t/(.*)",
+      "headers": { "X-Robots-Tag": "noindex, nofollow" },
+      "continue": true
+    },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]

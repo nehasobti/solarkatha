@@ -1,38 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-IN">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="SolarKatha – rooftop solar sales and PM Surya Ghar subsidy tracking for installers.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SolarKatha – Rooftop Solar CRM &amp; PM Surya Ghar Subsidy Tracking for Installers</title>
+  <meta name="description" content="SolarKatha is a Hindi and English app for Indian rooftop solar installers: AI electricity bill scan, system sizing with PM Surya Ghar subsidy and EMI, roof survey on satellite maps, WhatsApp PDF proposals, UPI payments and tracking of all 10 subsidy stages.">
+  <meta name="keywords" content="rooftop solar CRM, solar installer software, PM Surya Ghar, solar subsidy calculator, solar proposal software India, solar EPC app, सोलर सब्सिडी, पीएम सूर्य घर योजना">
+  <link rel="canonical" href="https://www.solarkatha.in/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tychon Software">
+
+  <!-- Social sharing (WhatsApp, Facebook, LinkedIn, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SolarKatha">
+  <meta property="og:url" content="https://www.solarkatha.in/">
+  <meta property="og:title" content="SolarKatha – Sell rooftop solar faster, from first visit to subsidy credit">
+  <meta property="og:description" content="Bill scan, roof survey, proposals, UPI payments and PM Surya Ghar subsidy tracking for Indian solar installers. In Hindi and English.">
+  <meta property="og:image" content="https://www.solarkatha.in/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:locale:alternate" content="hi_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SolarKatha – Rooftop solar CRM for Indian installers">
+  <meta name="twitter:description" content="Bill scan, roof survey, proposals, UPI payments and PM Surya Ghar subsidy tracking. Hindi and English.">
+  <meta name="twitter:image" content="https://www.solarkatha.in/og-image.png">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="SolarKatha">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <meta name="theme-color" content="#E07B00">
-
-  <title>SolarKatha</title>
+  <meta name="theme-color" content="#EA580C">
   <link rel="manifest" href="manifest.json">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.solarkatha.in/#org",
+        "name": "Tychon Software",
+        "url": "https://www.solarkatha.in/",
+        "email": "info@tychonsoftware.com",
+        "logo": "https://www.solarkatha.in/icons/Icon-512.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "SolarKatha",
+        "url": "https://www.solarkatha.in/",
+        "image": "https://www.solarkatha.in/og-image.png",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android, Web",
+        "inLanguage": ["en-IN", "hi-IN"],
+        "description": "Rooftop solar sales and PM Surya Ghar subsidy tracking app for Indian installers: AI bill scan, sizing with subsidy and EMI, satellite roof survey, WhatsApp proposals, UPI payments and project tracking.",
+        "publisher": { "@id": "https://www.solarkatha.in/#org" }
+      },
+      {
+        "@type": "WebSite",
+        "name": "SolarKatha",
+        "url": "https://www.solarkatha.in/",
+        "inLanguage": "en-IN"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* Shown while the app loads (and readable by search engines). */
+    #seo { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #0F1B2D; max-width: 880px; margin: 0 auto; padding: 32px 20px; line-height: 1.5; }
+    #seo h1 { font-size: 30px; margin: 0 0 12px; }
+    #seo h2 { font-size: 20px; margin: 28px 0 8px; }
+    #seo a { color: #EA580C; }
+    #seo .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; margin-bottom: 24px; }
+    #seo .brand img { width: 40px; height: 40px; border-radius: 10px; }
+  </style>
+
   <!-- Vercel Web Analytics (enabled in the Vercel dashboard). -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -40,14 +89,31 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <main id="seo">
+    <div class="brand"><img src="icons/Icon-192.png" alt="SolarKatha logo">SolarKatha</div>
+    <h1>Sell rooftop solar faster, from first visit to subsidy credit</h1>
+    <p>SolarKatha is one app for your sales team, installers and customers: AI electricity bill scan, roof survey, proposals, UPI payments and PM Surya Ghar subsidy tracking. In Hindi and English.</p>
+    <h2>Features for Indian solar installers</h2>
+    <ul>
+      <li><strong>Bill scan &amp; sizing:</strong> scan an electricity bill with AI and size the system in seconds, with central and state subsidy, EMI and payback.</li>
+      <li><strong>Roof survey:</strong> draw the roof on satellite imagery; panels fit automatically and Google can detect the roof.</li>
+      <li><strong>Proposals on WhatsApp:</strong> Hindi and English PDF proposals, signed on the phone.</li>
+      <li><strong>UPI payments:</strong> advance payment links through Razorpay that mark themselves paid.</li>
+      <li><strong>Subsidy tracking:</strong> all 10 PM Surya Ghar stages with due dates; customers get a live tracking link.</li>
+      <li><strong>Works offline:</strong> at the site with no signal; syncs when back online.</li>
+    </ul>
+    <h2>Solar savings calculator and latest solar news</h2>
+    <p>Estimate the right system size, PM Surya Ghar subsidy, cost and monthly savings from your electricity units, and read the latest rooftop solar news from India, updated every day.</p>
+    <h2>Get SolarKatha for your company</h2>
+    <p>Access is by invitation. Email <a href="mailto:info@tychonsoftware.com">info@tychonsoftware.com</a>.</p>
+  </main>
+  <script>
+    // Hide the loading content once the app has drawn its first frame.
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('seo');
+      if (el) el.remove();
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

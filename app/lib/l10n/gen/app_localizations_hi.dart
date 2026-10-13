@@ -1794,4 +1794,8 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get backHome => 'होम';
+
+  @override
+  String get landingPageTitle =>
+      'SolarKatha – सोलर इंस्टॉलर के लिए ऐप: पीएम सूर्य घर सब्सिडी ट्रैकिंग';
 }

@@ -217,3 +217,14 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
    - It stores the headline, source, date and link only, with no article text.
    - Up to 30 stories per language are kept, for 45 days. The page shows the newest 9 in the visitor's language.
 4. **Contact** is info@tychonsoftware.com ("Request access" opens an email). Access remains by invitation only.
+
+## Domains and SEO
+
+1. **Canonical address: https://www.solarkatha.in.** A `.in` domain helps Google target Indian searches.
+   - solarkatha.in, (www.)solarkatha.com and solarkatha.vercel.app all 308-redirect to it, keeping the path (host-based routes in `app/vercel/config.json`).
+   - `public_web_url` now builds customer tracking links on this domain, and links sent earlier redirect.
+2. **Search engines can read the Flutter page.**
+   - On the web the app calls `SemanticsBinding.ensureSemantics()`, so the landing page is rendered as real HTML text with an h1 and h2s (via `Semantics(headingLevel:)`) and a proper document title (`Title`). This also helps screen readers.
+   - `index.html` carries the title, description, canonical, Open Graph and Twitter tags with a 1200×630 share image, and JSON-LD (Organization, SoftwareApplication, WebSite).
+   - A static summary of the page shows while the app loads, and is removed after the first frame.
+3. **Crawling:** `robots.txt` allows everything except `/t/` (private customer links, which also send `X-Robots-Tag: noindex`). `sitemap.xml` lists the home page.

@@ -1795,4 +1795,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backHome => 'Home';
+
+  @override
+  String get landingPageTitle =>
+      'SolarKatha – Rooftop Solar CRM & PM Surya Ghar Subsidy Tracking for Installers';
 }

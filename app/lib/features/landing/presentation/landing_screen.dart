@@ -49,6 +49,24 @@ class LandingScreen extends ConsumerWidget {
       ),
     );
 
+    // Browser tab and search-result title.
+    return Title(
+      title: context.l10n.landingPageTitle,
+      color: Brand.orange,
+      child: _page(pad, section),
+    );
+  }
+
+  Widget _page(double pad, Widget Function(Widget, {Color? color}) section) {
+    return Builder(builder: (context) => _scaffold(context, pad, section));
+  }
+
+  Widget _scaffold(
+    BuildContext context,
+    double pad,
+    Widget Function(Widget, {Color? color}) section,
+  ) {
+    final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       floatingActionButton: const AssistantFab(),
       body: CustomScrollView(
@@ -120,17 +138,21 @@ class _Hero extends StatelessWidget {
           child: const LanguageSwitcher(),
         ),
         const SizedBox(height: 20),
-        Text(
-          l10n.landingHeadline,
-          style:
-              (wide
-                      ? theme.textTheme.displaySmall
-                      : theme.textTheme.headlineMedium)
-                  ?.copyWith(
-                    color: fg,
-                    fontWeight: FontWeight.w800,
-                    height: 1.15,
-                  ),
+        // Real headings in the HTML: h1 here, h2 for each section.
+        Semantics(
+          headingLevel: 1,
+          child: Text(
+            l10n.landingHeadline,
+            style:
+                (wide
+                        ? theme.textTheme.displaySmall
+                        : theme.textTheme.headlineMedium)
+                    ?.copyWith(
+                      color: fg,
+                      fontWeight: FontWeight.w800,
+                      height: 1.15,
+                    ),
+          ),
         ),
         const SizedBox(height: 16),
         Text(
@@ -239,7 +261,10 @@ class _SectionTitle extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: theme.textTheme.headlineSmall),
+          Semantics(
+            headingLevel: 2,
+            child: Text(title, style: theme.textTheme.headlineSmall),
+          ),
           if (subtitle != null) ...[
             const SizedBox(height: 6),
             Text(
