@@ -196,3 +196,13 @@ Choices made where the spec was silent or unclear. Newest at the bottom of each 
 1. **No public demo logins.** The "Try the demo" card (one-tap test numbers with a fixed OTP) has been removed, because people were using the site to demo to their own clients.
 2. **Sign-in is mobile number + password.** Accounts are created by the administrator through the Supabase admin API (phone confirmed, random password). Each account also gets a team invite, which its first sign-in claims. The OTP and email sign-in screens are gone.
 3. **The old test numbers are deactivated** (99999 00001–00003). The weekly demo reset no longer turns members back on.
+
+## Landing-page assistant
+
+1. **"Ask SolarKatha" floating button** on the login/landing page (web and app), in place of the removed demo logins. It opens a chat sheet with suggested questions.
+2. **Public `assistant` Edge Function** (no login) calls Gemini.
+   - It answers only from a fixed fact sheet in `_shared/assistant.ts`, plus general rooftop-solar questions.
+   - It refuses unrelated requests, never invents SolarKatha prices or contact details, and has no access to any customer or company data.
+   - It replies in Hindi or English.
+3. **Abuse limits:** 30 questions per hour per hashed IP and 1,000 per day overall (`assistant_hits`, pruned after 7 days by pg_cron). Only the last 10 turns of 600 characters each are sent.
+4. **Updating the facts:** when features or subsidy rules change, edit `FACTS` in `_shared/assistant.ts` and redeploy the function. No app release is needed.

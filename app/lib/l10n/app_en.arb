@@ -792,5 +792,15 @@
   "passwordLabel": "Password",
   "showPassword": "Show password",
   "signInButton": "Sign in",
-  "wrongCredentials": "Wrong mobile number or password."
+  "wrongCredentials": "Wrong mobile number or password.",
+  "assistantButton": "Ask SolarKatha",
+  "assistantTitle": "SolarKatha assistant",
+  "assistantIntro": "Namaste! Ask me anything about SolarKatha: what it does, how features work, subsidy basics, or how to get access.",
+  "assistantHint": "Type your question…",
+  "assistantSend": "Send",
+  "assistantLimited": "Too many questions right now. Please try again in a while.",
+  "assistantError": "Sorry, I could not answer just now. Please check your internet and try again.",
+  "assistantQ1": "What does SolarKatha do?",
+  "assistantQ2": "How much subsidy for 3 kW?",
+  "assistantQ3": "How do I get access?"
 }

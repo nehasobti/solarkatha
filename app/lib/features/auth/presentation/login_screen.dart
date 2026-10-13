@@ -8,6 +8,7 @@ import '../../../core/l10n/l10n.dart';
 import '../../../core/widgets/brand_mark.dart';
 import '../../../core/widgets/language_switcher.dart';
 import '../../../data/repositories/auth_repository.dart';
+import '../../assistant/presentation/assistant_sheet.dart';
 import '../domain/validators.dart';
 
 /// Private sign-in: mobile number + password. Accounts are created by the
@@ -159,6 +160,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       ),
     );
     return Scaffold(
+      floatingActionButton: const AssistantFab(),
       body: SafeArea(
         child: wide
             ? Row(

@@ -76,10 +76,7 @@ void main() {
     await tester.tap(find.byKey(const Key('login.submit')));
     await tester.pumpAndSettle();
     verify(
-      () => auth.signInWithPassword(
-        phone: '+919412000000',
-        password: 'secret',
-      ),
+      () => auth.signInWithPassword(phone: '+919412000000', password: 'secret'),
     ).called(1);
   });
 
@@ -112,5 +109,26 @@ void main() {
       size: const Size(1280, 900),
     );
     expect(find.textContaining('Sell rooftop solar faster'), findsOneWidget);
+  });
+
+  testWidgets('floating assistant answers a suggested question', (
+    tester,
+  ) async {
+    final assistant = FakeAssistantApi();
+    await pumpApp(
+      tester,
+      session: const SignedOut(),
+      auth: auth,
+      assistant: assistant,
+    );
+    await tester.tap(find.byKey(const Key('assistant.open')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('What does SolarKatha do?'));
+    await tester.pumpAndSettle();
+    expect(assistant.asked.single.single.text, 'What does SolarKatha do?');
+    expect(
+      find.text('SolarKatha helps rooftop solar installers.'),
+      findsOneWidget,
+    );
   });
 }

@@ -3073,6 +3073,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wrong mobile number or password.'**
   String get wrongCredentials;
+
+  /// No description provided for @assistantButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask SolarKatha'**
+  String get assistantButton;
+
+  /// No description provided for @assistantTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SolarKatha assistant'**
+  String get assistantTitle;
+
+  /// No description provided for @assistantIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Namaste! Ask me anything about SolarKatha: what it does, how features work, subsidy basics, or how to get access.'**
+  String get assistantIntro;
+
+  /// No description provided for @assistantHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your question…'**
+  String get assistantHint;
+
+  /// No description provided for @assistantSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get assistantSend;
+
+  /// No description provided for @assistantLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many questions right now. Please try again in a while.'**
+  String get assistantLimited;
+
+  /// No description provided for @assistantError.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, I could not answer just now. Please check your internet and try again.'**
+  String get assistantError;
+
+  /// No description provided for @assistantQ1.
+  ///
+  /// In en, this message translates to:
+  /// **'What does SolarKatha do?'**
+  String get assistantQ1;
+
+  /// No description provided for @assistantQ2.
+  ///
+  /// In en, this message translates to:
+  /// **'How much subsidy for 3 kW?'**
+  String get assistantQ2;
+
+  /// No description provided for @assistantQ3.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I get access?'**
+  String get assistantQ3;
 }
 
 class _AppLocalizationsDelegate

@@ -1630,4 +1630,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wrongCredentials => 'Wrong mobile number or password.';
+
+  @override
+  String get assistantButton => 'Ask SolarKatha';
+
+  @override
+  String get assistantTitle => 'SolarKatha assistant';
+
+  @override
+  String get assistantIntro =>
+      'Namaste! Ask me anything about SolarKatha: what it does, how features work, subsidy basics, or how to get access.';
+
+  @override
+  String get assistantHint => 'Type your question…';
+
+  @override
+  String get assistantSend => 'Send';
+
+  @override
+  String get assistantLimited =>
+      'Too many questions right now. Please try again in a while.';
+
+  @override
+  String get assistantError =>
+      'Sorry, I could not answer just now. Please check your internet and try again.';
+
+  @override
+  String get assistantQ1 => 'What does SolarKatha do?';
+
+  @override
+  String get assistantQ2 => 'How much subsidy for 3 kW?';
+
+  @override
+  String get assistantQ3 => 'How do I get access?';
 }

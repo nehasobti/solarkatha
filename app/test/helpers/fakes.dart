@@ -21,6 +21,7 @@ import 'package:solarkatha/features/bills/data/bills_repository.dart';
 import 'package:solarkatha/features/leads/data/leads_repository.dart';
 import 'package:solarkatha/features/proposals/data/proposals_repository.dart';
 import 'package:solarkatha/features/sizing/data/sizing_repository.dart';
+import 'package:solarkatha/features/assistant/data/assistant_api.dart';
 import 'package:solarkatha/features/survey/data/maps_api.dart';
 import 'package:solarkatha/features/survey/data/survey_repository.dart';
 import 'package:solarkatha/features/survey/presentation/survey_screen.dart';
@@ -92,6 +93,7 @@ Future<void> pumpApp(
   FakeAdminRepository? admin,
   FakeTrackingApi? tracking,
   FakeMapsApi? maps,
+  FakeAssistantApi? assistant,
   bool highContrast = false,
   bool largeText = false,
 }) async {
@@ -142,6 +144,7 @@ Future<void> pumpApp(
           admin ?? FakeAdminRepository(),
         ),
         mapsApiProvider.overrideWithValue(maps ?? FakeMapsApi()),
+        assistantApiProvider.overrideWithValue(assistant ?? FakeAssistantApi()),
         trackingApiProvider.overrideWithValue(
           tracking ?? FakeTrackingApi(null),
         ),
@@ -150,4 +153,14 @@ Future<void> pumpApp(
     ),
   );
   await tester.pumpAndSettle();
+}
+
+class FakeAssistantApi extends Mock implements AssistantApi {
+  final asked = <List<ChatTurn>>[];
+
+  @override
+  Future<String> ask(List<ChatTurn> turns, String lang) async {
+    asked.add([...turns]);
+    return 'SolarKatha helps rooftop solar installers.';
+  }
 }
